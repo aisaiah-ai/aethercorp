@@ -1,0 +1,15 @@
+# Cloudflare Pages Configuration
+# Build settings for automatic deployment
+
+# Build command
+build_command = "cd aether_corp_web && flutter build web --release"
+
+# Build output directory
+build_output_directory = "aether_corp_web/build/web"
+
+# Node.js version (if needed for any build tools)
+node_version = "18"
+
+# Environment variables
+[env]
+FLUTTER_VERSION = "3.24.0"
