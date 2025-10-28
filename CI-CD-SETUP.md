@@ -2,7 +2,7 @@
 
 ## 🚀 Automatic Deployment to Cloudflare Pages
 
-This guide will help you set up automatic deployment to Cloudflare Pages whenever you push to the main branch.
+This guide will help you set up automatic deployment to Cloudflare Pages whenever you push to the main branch. Adding comments for redeploy
 
 ## 📋 Prerequisites
 
