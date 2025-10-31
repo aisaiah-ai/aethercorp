@@ -17,13 +17,19 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.24.0'
+        flutter-version: '3.27.0'
         channel: 'stable'
+        cache: true
         
     - name: Install dependencies
       run: |
         cd aether_corp_web
         flutter pub get
+        
+    - name: Run Flutter analyze
+      run: |
+        cd aether_corp_web
+        flutter analyze --no-fatal-infos || true
         
     - name: Build Flutter web app
       run: |
@@ -38,3 +44,4 @@ jobs:
         projectName: aethercorp
         directory: aether_corp_web/build/web
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        wranglerVersion: '3'
