@@ -34,14 +34,17 @@ jobs:
     - name: Build Flutter web app
       run: |
         cd aether_corp_web
-        flutter build web --release --verbose
+        flutter build web --release || {
+          echo "❌ Build failed"
+          exit 1
+        }
         if [ ! -f "build/web/index.html" ]; then
           echo "❌ Build failed - index.html not found"
+          echo "Build directory contents:"
           ls -la build/web/ || echo "Build directory doesn't exist"
           exit 1
         fi
         echo "✅ Build successful - index.html found"
-        ls -la build/web/ | head -20
         
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/pages-action@v1
