@@ -31,8 +31,8 @@ ios/Runner/GeneratedPluginRegistrant.*
 # macOS
 macos/Flutter/GeneratedPluginRegistrant.swift
 
-# Web
-web/
+# Web (only ignore build output, not source files)
+**/build/web/
 
 # IDE
 .vscode/
