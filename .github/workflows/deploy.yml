@@ -47,11 +47,14 @@ jobs:
         echo "✅ Build successful - index.html found"
         
     - name: Deploy to Cloudflare Pages
-      uses: cloudflare/pages-action@v1
-      with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        projectName: aethercorp
-        directory: aether_corp_web/build/web
-        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        wranglerVersion: '3'
+      run: |
+        npm install -g wrangler@3
+        cd aether_corp_web/build/web
+        wrangler pages deploy . \
+          --project-name=aethercorp \
+          --account-id=${{ secrets.CLOUDFLARE_ACCOUNT_ID }} \
+          --branch=main \
+          --commit-hash=${{ github.sha }} \
+          --commit-message="${{ github.event.head_commit.message }}"
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
