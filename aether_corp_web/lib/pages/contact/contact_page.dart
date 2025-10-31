@@ -191,7 +191,7 @@ class _ContactPageState extends State<ContactPage> {
                         const SizedBox(height: 24),
 
                         DropdownButtonFormField<String>(
-                          initialValue: _selectedService.isEmpty
+                          value: _selectedService.isEmpty
                               ? null
                               : _selectedService,
                           decoration: const InputDecoration(
@@ -509,6 +509,8 @@ class _ContactPageState extends State<ContactPage> {
         serviceInterest: _selectedService,
       );
 
+      if (!mounted) return;
+
       setState(() {
         _isSubmitting = false;
       });
@@ -546,6 +548,8 @@ class _ContactPageState extends State<ContactPage> {
         );
       }
     } catch (e) {
+      if (!mounted) return;
+
       setState(() {
         _isSubmitting = false;
       });

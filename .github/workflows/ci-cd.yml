@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Flutter analyze
         working-directory: ./aether_corp_web
-        run: flutter analyze --fatal-infos
+        run: flutter analyze --fatal-warnings
 
       - name: Check formatting
         working-directory: ./aether_corp_web

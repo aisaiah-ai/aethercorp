@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -36,7 +37,7 @@ class FirebaseService {
 
       return true;
     } catch (e) {
-      print('Error submitting project request: $e');
+      debugPrint('Error submitting project request: $e');
       return false;
     }
   }
@@ -61,7 +62,7 @@ class FirebaseService {
           .update({'status': status});
       return true;
     } catch (e) {
-      print('Error updating project request status: $e');
+      debugPrint('Error updating project request status: $e');
       return false;
     }
   }
@@ -74,7 +75,7 @@ class FirebaseService {
           .doc(documentId)
           .get();
     } catch (e) {
-      print('Error getting project request: $e');
+      debugPrint('Error getting project request: $e');
       return null;
     }
   }
@@ -88,7 +89,7 @@ class FirebaseService {
           .delete();
       return true;
     } catch (e) {
-      print('Error deleting project request: $e');
+      debugPrint('Error deleting project request: $e');
       return false;
     }
   }
@@ -111,7 +112,7 @@ class FirebaseService {
           .get();
       return querySnapshot.docs.length;
     } catch (e) {
-      print('Error getting project requests count: $e');
+      debugPrint('Error getting project requests count: $e');
       return 0;
     }
   }
@@ -124,7 +125,7 @@ class FirebaseService {
           .get();
       return querySnapshot.docs.length;
     } catch (e) {
-      print('Error getting total project requests count: $e');
+      debugPrint('Error getting total project requests count: $e');
       return 0;
     }
   }
