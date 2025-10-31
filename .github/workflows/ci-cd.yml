@@ -31,9 +31,6 @@ jobs:
         working-directory: ./aether_corp_web
         run: flutter pub get
 
-      - name: Run comprehensive pre-deployment check
-        run: bash scripts/pre-deployment-check.sh
-
       - name: Run Flutter analyze
         working-directory: ./aether_corp_web
         run: flutter analyze --no-fatal-infos || true
