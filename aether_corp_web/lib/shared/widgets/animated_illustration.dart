@@ -167,7 +167,7 @@ class FloatingParticles extends StatelessWidget {
                     width: particleSize,
                     height: particleSize,
                     decoration: BoxDecoration(
-                      color: particleColor.withOpacity(0.6),
+                      color: particleColor.withValues(alpha: 0.6),
                       shape: BoxShape.circle,
                     ),
                   )

@@ -57,7 +57,7 @@ class AppTheme {
       ),
       cardTheme: CardThemeData(
         elevation: 4,
-        shadowColor: darkGray.withOpacity(0.1),
+        shadowColor: darkGray.withValues(alpha: 0.1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -151,7 +151,7 @@ class AppTheme {
       ),
       cardTheme: CardThemeData(
         elevation: 4,
-        shadowColor: Colors.black.withOpacity(0.3),
+        shadowColor: Colors.black.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(

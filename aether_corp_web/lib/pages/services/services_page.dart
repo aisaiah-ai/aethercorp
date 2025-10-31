@@ -42,7 +42,7 @@ class ServicesPage extends StatelessWidget {
                 'Comprehensive solutions for your digital transformation journey',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
               )
@@ -189,7 +189,7 @@ class ServicesPage extends StatelessWidget {
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
                                   color: (service['color'] as Color)
-                                      .withOpacity(0.1),
+                                      .withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Icon(
@@ -361,7 +361,7 @@ class ServicesPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Theme.of(
                               context,
-                            ).colorScheme.primary.withOpacity(0.1),
+                            ).colorScheme.primary.withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Center(
@@ -412,7 +412,7 @@ class ServicesPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: Theme.of(
                                 context,
-                              ).colorScheme.primary.withOpacity(0.1),
+                              ).colorScheme.primary.withValues(alpha: 0.1),
                               shape: BoxShape.circle,
                             ),
                             child: Center(
@@ -470,7 +470,7 @@ class ServicesPage extends StatelessWidget {
                 'Let\'s discuss how we can help transform your business',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
               )
               .animate()

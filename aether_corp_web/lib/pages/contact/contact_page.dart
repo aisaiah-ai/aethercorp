@@ -78,7 +78,7 @@ class _ContactPageState extends State<ContactPage> {
                 'Let\'s discuss your project and how we can help transform your business',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
               )
@@ -191,7 +191,7 @@ class _ContactPageState extends State<ContactPage> {
                         const SizedBox(height: 24),
 
                         DropdownButtonFormField<String>(
-                          value: _selectedService.isEmpty
+                          initialValue: _selectedService.isEmpty
                               ? null
                               : _selectedService,
                           decoration: const InputDecoration(
@@ -344,7 +344,7 @@ class _ContactPageState extends State<ContactPage> {
                           end: Alignment.bottomRight,
                           colors: [
                             Colors.white,
-                            (info['color'] as Color).withOpacity(0.05),
+                            (info['color'] as Color).withValues(alpha: 0.05),
                           ],
                         ),
                       ),
@@ -355,10 +355,10 @@ class _ContactPageState extends State<ContactPage> {
                             width: 100,
                             height: 100,
                             decoration: BoxDecoration(
-                              color: (info['color'] as Color).withOpacity(0.1),
+                              color: (info['color'] as Color).withValues(alpha: 0.1),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: (info['color'] as Color).withOpacity(
+                                color: (info['color'] as Color).withValues(alpha: 
                                   0.2,
                                 ),
                                 width: 2,
@@ -399,10 +399,10 @@ class _ContactPageState extends State<ContactPage> {
                               vertical: 12,
                             ),
                             decoration: BoxDecoration(
-                              color: (info['color'] as Color).withOpacity(0.1),
+                              color: (info['color'] as Color).withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: (info['color'] as Color).withOpacity(
+                                color: (info['color'] as Color).withValues(alpha: 
                                   0.2,
                                 ),
                                 width: 1,
@@ -456,7 +456,7 @@ class _ContactPageState extends State<ContactPage> {
                 'Join hundreds of companies that trust AetherCorp for their digital transformation',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
               )
               .animate()
@@ -613,7 +613,7 @@ class _ContactPageState extends State<ContactPage> {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 20,
                       offset: const Offset(0, 10),
                     ),
@@ -627,8 +627,8 @@ class _ContactPageState extends State<ContactPage> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          AppTheme.primaryBlue.withOpacity(0.8),
-                          AppTheme.primaryViolet.withOpacity(0.8),
+                          AppTheme.primaryBlue.withValues(alpha: 0.8),
+                          AppTheme.primaryViolet.withValues(alpha: 0.8),
                         ],
                       ),
                     ),
@@ -644,7 +644,7 @@ class _ContactPageState extends State<ContactPage> {
                                 ),
                                 fit: BoxFit.cover,
                                 colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.3),
+                                  Colors.black.withValues(alpha: 0.3),
                                   BlendMode.darken,
                                 ),
                               ),
@@ -661,10 +661,10 @@ class _ContactPageState extends State<ContactPage> {
                                 width: 120,
                                 height: 120,
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
+                                  color: Colors.white.withValues(alpha: 0.2),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white.withOpacity(0.3),
+                                    color: Colors.white.withValues(alpha: 0.3),
                                     width: 3,
                                   ),
                                 ),
@@ -691,7 +691,7 @@ class _ContactPageState extends State<ContactPage> {
                               Text(
                                 'Transform your business with our expertise',
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.9),
+                                  color: Colors.white.withValues(alpha: 0.9),
                                   fontSize: 16,
                                 ),
                               ),
@@ -746,10 +746,10 @@ class _ContactPageState extends State<ContactPage> {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: AppTheme.primaryBlue.withOpacity(0.1),
+              color: AppTheme.primaryBlue.withValues(alpha: 0.1),
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppTheme.primaryBlue.withOpacity(0.3),
+                color: AppTheme.primaryBlue.withValues(alpha: 0.3),
                 width: 2,
               ),
             ),
@@ -776,7 +776,7 @@ class _ContactPageState extends State<ContactPage> {
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Theme.of(
                 context,
-              ).textTheme.bodySmall?.color?.withOpacity(0.7),
+              ).textTheme.bodySmall?.color?.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),

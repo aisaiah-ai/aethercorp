@@ -42,7 +42,7 @@ class BlogPage extends StatelessWidget {
                 'Insights, trends, and best practices in AI, Cloud, and Data technologies',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
               )
@@ -80,8 +80,8 @@ class BlogPage extends StatelessWidget {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppTheme.primaryBlue.withOpacity(0.1),
-                        AppTheme.primaryViolet.withOpacity(0.1),
+                        AppTheme.primaryBlue.withValues(alpha: 0.1),
+                        AppTheme.primaryViolet.withValues(alpha: 0.1),
                       ],
                     ),
                   ),
@@ -132,7 +132,7 @@ class BlogPage extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 20,
-                              backgroundColor: AppTheme.primaryBlue.withOpacity(
+                              backgroundColor: AppTheme.primaryBlue.withValues(alpha: 
                                 0.1,
                               ),
                               child: Text(
@@ -311,7 +311,7 @@ class BlogPage extends StatelessWidget {
                                     vertical: 6,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: (post['color'] as Color).withOpacity(
+                                    color: (post['color'] as Color).withValues(alpha: 
                                       0.1,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
@@ -363,7 +363,7 @@ class BlogPage extends StatelessWidget {
                                 CircleAvatar(
                                   radius: 12,
                                   backgroundColor: (post['color'] as Color)
-                                      .withOpacity(0.1),
+                                      .withValues(alpha: 0.1),
                                   child: Text(
                                     (post['author'] as String)
                                         .split(' ')
@@ -443,7 +443,7 @@ class BlogPage extends StatelessWidget {
                 'Subscribe to our newsletter for the latest trends and insights in AI, Cloud, and Data technologies',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
               )
               .animate()

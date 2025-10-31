@@ -124,7 +124,7 @@ class BackgroundVideoPlayer extends StatelessWidget {
         ),
         // Dark overlay
         Positioned.fill(
-          child: Container(color: Colors.black.withOpacity(opacity)),
+          child: Container(color: Colors.black.withValues(alpha: opacity)),
         ),
         // Content
         child,

@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                               height: 1.2,
                               shadows: [
                                 Shadow(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withValues(alpha: 0.3),
                                   offset: const Offset(0, 2),
                                   blurRadius: 4,
                                 ),
@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.headlineMedium
                             ?.copyWith(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Colors.white.withValues(alpha: 0.9),
                               fontWeight: FontWeight.w400,
                             ),
                       )
@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                               elevation: 8,
-                              shadowColor: Colors.black.withOpacity(0.3),
+                              shadowColor: Colors.black.withValues(alpha: 0.3),
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -208,10 +208,10 @@ class HomePage extends StatelessWidget {
                     width: 80,
                     height: 80,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.1),
+                      color: Colors.white.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         width: 1,
                       ),
                     ),
@@ -239,7 +239,7 @@ class HomePage extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.08),
+                      color: Colors.white.withValues(alpha: 0.08),
                       shape: BoxShape.circle,
                     ),
                   )
@@ -266,7 +266,7 @@ class HomePage extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.12),
+                      color: Colors.white.withValues(alpha: 0.12),
                       shape: BoxShape.circle,
                     ),
                   )
@@ -320,7 +320,7 @@ class HomePage extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: 0.8),
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -344,7 +344,7 @@ class HomePage extends StatelessWidget {
                 end: Alignment.bottomRight,
                 colors: [
                   Colors.white,
-                  (service['color'] as Color).withOpacity(0.05),
+                  (service['color'] as Color).withValues(alpha: 0.05),
                 ],
               ),
             ),
@@ -359,10 +359,10 @@ class HomePage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: (service['color'] as Color).withOpacity(0.1),
+                          color: (service['color'] as Color).withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
-                            color: (service['color'] as Color).withOpacity(0.2),
+                            color: (service['color'] as Color).withValues(alpha: 0.2),
                             width: 1,
                           ),
                         ),
@@ -389,7 +389,7 @@ class HomePage extends StatelessWidget {
                                 vertical: 4,
                               ),
                               decoration: BoxDecoration(
-                                color: (service['color'] as Color).withOpacity(
+                                color: (service['color'] as Color).withValues(alpha: 
                                   0.1,
                                 ),
                                 borderRadius: BorderRadius.circular(12),
@@ -434,12 +434,12 @@ class HomePage extends StatelessWidget {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: (service['color'] as Color).withOpacity(
+                              color: (service['color'] as Color).withValues(alpha: 
                                 0.1,
                               ),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: (service['color'] as Color).withOpacity(
+                                color: (service['color'] as Color).withValues(alpha: 
                                   0.2,
                                 ),
                                 width: 1,
@@ -643,7 +643,7 @@ class HomePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
+                                  color: Colors.black.withValues(alpha: 0.1),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -695,7 +695,7 @@ class HomePage extends StatelessWidget {
                 'Let\'s build your next big thing together',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
               )
               .animate()

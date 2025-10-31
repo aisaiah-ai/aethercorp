@@ -45,10 +45,10 @@ class CaseStudiesPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(25),
               border: Border.all(
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha: 0.3),
                 width: 1,
               ),
             ),
@@ -79,7 +79,7 @@ class CaseStudiesPage extends StatelessWidget {
               fontSize: isMobile ? 48 : 64,
               shadows: [
                 Shadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   offset: const Offset(0, 4),
                   blurRadius: 8,
                 ),
@@ -93,7 +93,7 @@ class CaseStudiesPage extends StatelessWidget {
                 'Real-world success stories from our enterprise clients',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white.withOpacity(0.95),
+                  color: Colors.white.withValues(alpha: 0.95),
                   fontWeight: FontWeight.w500,
                   fontSize: isMobile ? 20 : 24,
                 ),
@@ -108,7 +108,7 @@ class CaseStudiesPage extends StatelessWidget {
                 'Discover how we\'ve transformed businesses with cutting-edge AI, Cloud, and Data solutions',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white.withValues(alpha: 0.8),
                   fontWeight: FontWeight.w400,
                 ),
               )
@@ -140,7 +140,7 @@ class CaseStudiesPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                       elevation: 8,
-                      shadowColor: Colors.black.withOpacity(0.3),
+                      shadowColor: Colors.black.withValues(alpha: 0.3),
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -309,13 +309,13 @@ class CaseStudiesPage extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  AppTheme.primaryBlue.withOpacity(0.1),
-                  AppTheme.primaryViolet.withOpacity(0.1),
+                  AppTheme.primaryBlue.withValues(alpha: 0.1),
+                  AppTheme.primaryViolet.withValues(alpha: 0.1),
                 ],
               ),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: AppTheme.primaryBlue.withOpacity(0.2),
+                color: AppTheme.primaryBlue.withValues(alpha: 0.2),
                 width: 2,
               ),
             ),
@@ -393,7 +393,7 @@ class CaseStudiesPage extends StatelessWidget {
                           end: Alignment.bottomRight,
                           colors: [
                             Colors.white,
-                            (caseStudy['color'] as Color).withOpacity(0.08),
+                            (caseStudy['color'] as Color).withValues(alpha: 0.08),
                           ],
                         ),
                       ),
@@ -418,11 +418,11 @@ class CaseStudiesPage extends StatelessWidget {
                                     ),
                                     decoration: BoxDecoration(
                                       color: (caseStudy['color'] as Color)
-                                          .withOpacity(0.15),
+                                          .withValues(alpha: 0.15),
                                       borderRadius: BorderRadius.circular(16),
                                       border: Border.all(
                                         color: (caseStudy['color'] as Color)
-                                            .withOpacity(0.4),
+                                            .withValues(alpha: 0.4),
                                         width: 1,
                                       ),
                                     ),
@@ -464,7 +464,7 @@ class CaseStudiesPage extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(
                                       color: (caseStudy['color'] as Color)
-                                          .withOpacity(0.8),
+                                          .withValues(alpha: 0.8),
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
@@ -499,14 +499,14 @@ class CaseStudiesPage extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               color:
                                                   (caseStudy['color'] as Color)
-                                                      .withOpacity(0.1),
+                                                      .withValues(alpha: 0.1),
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                               border: Border.all(
                                                 color:
                                                     (caseStudy['color']
                                                             as Color)
-                                                        .withOpacity(0.3),
+                                                        .withValues(alpha: 0.3),
                                                 width: 1,
                                               ),
                                             ),
@@ -580,7 +580,7 @@ class CaseStudiesPage extends StatelessWidget {
                 'Let\'s discuss how we can help you achieve similar results',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withValues(alpha: 0.9),
                 ),
               )
               .animate()
@@ -715,8 +715,8 @@ class CaseStudiesPage extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          AppTheme.primaryBlue.withOpacity(0.8),
-                          AppTheme.primaryViolet.withOpacity(0.8),
+                          AppTheme.primaryBlue.withValues(alpha: 0.8),
+                          AppTheme.primaryViolet.withValues(alpha: 0.8),
                         ],
                       ),
                     ),
@@ -728,7 +728,7 @@ class CaseStudiesPage extends StatelessWidget {
                             width: 80,
                             height: 80,
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
+                              color: Colors.white.withValues(alpha: 0.2),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -750,7 +750,7 @@ class CaseStudiesPage extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.3),
+                                  color: Colors.black.withValues(alpha: 0.3),
                                 ),
                                 child: const Center(
                                   child: Icon(
@@ -807,7 +807,7 @@ class CaseStudiesPage extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 16,
-                              backgroundColor: AppTheme.primaryBlue.withOpacity(
+                              backgroundColor: AppTheme.primaryBlue.withValues(alpha: 
                                 0.1,
                               ),
                               child: Text(
@@ -840,7 +840,7 @@ class CaseStudiesPage extends StatelessWidget {
                                               .textTheme
                                               .bodySmall
                                               ?.color
-                                              ?.withOpacity(0.7),
+                                              ?.withValues(alpha: 0.7),
                                         ),
                                   ),
                                 ],
@@ -900,7 +900,7 @@ class CaseStudiesPage extends StatelessWidget {
                       Text(
                         'Click to play testimonial video',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                           fontSize: 14,
                         ),
                       ),
@@ -933,10 +933,10 @@ class CaseStudiesPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: AppTheme.primaryBlue.withOpacity(0.1),
+        color: AppTheme.primaryBlue.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: AppTheme.primaryBlue.withOpacity(0.3),
+          color: AppTheme.primaryBlue.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -953,7 +953,7 @@ class CaseStudiesPage extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              color: AppTheme.primaryBlue.withOpacity(0.8),
+              color: AppTheme.primaryBlue.withValues(alpha: 0.8),
               fontSize: 12,
               fontWeight: FontWeight.w500,
             ),

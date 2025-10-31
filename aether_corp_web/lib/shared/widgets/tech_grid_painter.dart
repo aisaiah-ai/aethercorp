@@ -4,7 +4,7 @@ class TechGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.05)
+      ..color = Colors.white.withValues(alpha: 0.05)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
 
@@ -22,7 +22,7 @@ class TechGridPainter extends CustomPainter {
 
     // Draw diagonal accent lines
     final accentPaint = Paint()
-      ..color = Colors.white.withOpacity(0.03)
+      ..color = Colors.white.withValues(alpha: 0.03)
       ..strokeWidth = 0.5
       ..style = PaintingStyle.stroke;
 
