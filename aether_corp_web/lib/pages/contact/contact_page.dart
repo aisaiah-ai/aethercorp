@@ -191,7 +191,7 @@ class _ContactPageState extends State<ContactPage> {
                         const SizedBox(height: 24),
 
                         DropdownButtonFormField<String>(
-                          initialValue: _selectedService.isEmpty
+                          value: _selectedService.isEmpty
                               ? null
                               : _selectedService,
                           decoration: const InputDecoration(
