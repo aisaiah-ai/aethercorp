@@ -48,11 +48,10 @@ jobs:
         
     - name: Deploy to Cloudflare Pages
       run: |
-        npm install -g wrangler@3
+        npm install -g wrangler@latest
         cd aether_corp_web/build/web
         wrangler pages deploy . \
           --project-name=aethercorp \
-          --account-id=${{ secrets.CLOUDFLARE_ACCOUNT_ID }} \
           --branch=main \
           --commit-hash=${{ github.sha }} \
           --commit-message="${{ github.event.head_commit.message }}"
