@@ -1,0 +1,239 @@
+name: AetherCorp CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+env:
+  FLUTTER_VERSION: '3.24.0'
+  NODE_VERSION: '18'
+
+jobs:
+  # Lint and analyze code
+  lint:
+    name: 🔍 Lint & Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: ./aether_corp_web
+        run: flutter pub get
+
+      - name: Run Flutter analyze
+        working-directory: ./aether_corp_web
+        run: flutter analyze --fatal-infos
+
+      - name: Check formatting
+        working-directory: ./aether_corp_web
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Run linter
+        working-directory: ./aether_corp_web
+        run: dart run flutter_lints
+
+  # Run tests
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: ./aether_corp_web
+        run: flutter pub get
+
+      - name: Run tests
+        working-directory: ./aether_corp_web
+        run: flutter test --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./aether_corp_web/coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+  # Build and check for errors
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: ./aether_corp_web
+        run: flutter pub get
+
+      - name: Build web app
+        working-directory: ./aether_corp_web
+        run: flutter build web --release --verbose
+
+      - name: Check build output
+        run: |
+          if [ ! -d "aether_corp_web/build/web" ]; then
+            echo "❌ Build failed - web directory not found"
+            exit 1
+          fi
+          
+          if [ ! -f "aether_corp_web/build/web/index.html" ]; then
+            echo "❌ Build failed - index.html not found"
+            exit 1
+          fi
+          
+          echo "✅ Build successful"
+          ls -la aether_corp_web/build/web/
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: web-build
+          path: aether_corp_web/build/web/
+          retention-days: 7
+
+  # Deploy to Cloudflare Pages
+  deploy:
+    name: 🚀 Deploy to Cloudflare Pages
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: web-build
+          path: ./build/web
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: aethercorp
+          directory: ./build/web
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: '3'
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Deployment completed successfully"
+          echo "🌐 Site should be available at: https://aethercorp.us"
+
+  # Security scan
+  security:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        working-directory: ./aether_corp_web
+        run: flutter pub get
+
+      - name: Run security audit
+        working-directory: ./aether_corp_web
+        run: flutter pub audit
+
+      - name: Check for vulnerabilities
+        working-directory: ./aether_corp_web
+        run: |
+          echo "🔍 Checking for known vulnerabilities..."
+          if flutter pub audit --json | jq -e '.vulnerabilities | length > 0' > /dev/null; then
+            echo "❌ Vulnerabilities found:"
+            flutter pub audit
+            exit 1
+          else
+            echo "✅ No vulnerabilities found"
+          fi
+
+  # Performance check
+  performance:
+    name: ⚡ Performance Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: web-build
+          path: ./build/web
+
+      - name: Check bundle size
+        run: |
+          echo "📊 Checking bundle size..."
+          cd build/web
+          
+          # Check main JS file size
+          MAIN_JS_SIZE=$(du -h main.dart.js | cut -f1)
+          echo "Main JS file size: $MAIN_JS_SIZE"
+          
+          # Check total build size
+          TOTAL_SIZE=$(du -sh . | cut -f1)
+          echo "Total build size: $TOTAL_SIZE"
+          
+          # Warn if main JS is too large (>2MB)
+          MAIN_JS_BYTES=$(stat -f%z main.dart.js 2>/dev/null || stat -c%s main.dart.js)
+          if [ "$MAIN_JS_BYTES" -gt 2097152 ]; then
+            echo "⚠️ Warning: Main JS file is larger than 2MB"
+          else
+            echo "✅ Main JS file size is acceptable"
+          fi
+
+      - name: Check for performance issues
+        run: |
+          echo "🔍 Checking for performance issues..."
+          cd build/web
+          
+          # Check for large images
+          find . -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" | while read file; do
+            size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file")
+            if [ "$size" -gt 1048576 ]; then
+              echo "⚠️ Large image found: $file ($(du -h "$file" | cut -f1))"
+            fi
+          done
+          
+          echo "✅ Performance check completed"

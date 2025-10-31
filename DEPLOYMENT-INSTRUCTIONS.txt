@@ -1,0 +1,62 @@
+🚀 AetherCorp Deployment Instructions
+=====================================
+
+Build Status: ✅ READY
+Lint Status: ✅ FIXED
+Repository: https://github.com/aisaiah-ai/aethercorp.git
+
+DEPLOYMENT METHOD: Automated CI/CD (Recommended)
+================================================
+
+Step 1: Commit and Push to Main Branch
+----------------------------------------
+Execute these commands in your terminal:
+
+cd /Users/Shared/users/AMDShared/WorkspaceShared/flutter/aether_corp
+
+git add .
+git commit -m "Fix lint errors and prepare for automated deployment"
+git push origin main
+
+Step 2: Monitor GitHub Actions
+---------------------------------
+1. Go to: https://github.com/aisaiah-ai/aethercorp/actions
+2. Watch the CI/CD pipeline run
+3. Check for successful deployment
+
+Step 3: Verify Deployment
+--------------------------
+1. Check site: https://www.aethercorp.us
+2. Verify all pages load correctly
+3. Test functionality
+
+Expected Timeline:
+- Build time: ~3-5 minutes
+- Deployment: ~2-3 minutes
+- Total: ~5-8 minutes
+
+PREREQUISITES (If not already configured):
+==========================================
+
+1. GitHub Secrets (Settings → Secrets and variables → Actions):
+   - CLOUDFLARE_API_TOKEN
+   - CLOUDFLARE_ACCOUNT_ID
+
+2. Cloudflare Pages Project:
+   - Create project or connect GitHub repo
+   - Custom domain: aethercorp.us
+
+ALTERNATIVE: Manual Deployment
+===============================
+
+If automated deployment isn't configured:
+
+1. Go to: https://dash.cloudflare.com/pages
+2. Upload files from: aether_corp_web/build/web/
+3. Deploy
+
+SUPPORT:
+=======
+- GitHub Actions: https://github.com/aisaiah-ai/aethercorp/actions
+- Cloudflare Pages: https://dash.cloudflare.com/pages
+- Site: https://www.aethercorp.us
