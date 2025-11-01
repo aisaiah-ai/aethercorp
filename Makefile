@@ -15,6 +15,7 @@ help:
 	@echo "  make clean         - Clean build artifacts"
 	@echo ""
 	@echo "CI/CD:"
+	@echo "  make pre-commit    - Run pre-commit checks (format, analyze, build)"
 	@echo "  make pre-deploy-check - Run comprehensive pre-deployment check"
 	@echo "  make check         - Run all checks (lint, error, deployment)"
 	@echo "  make deploy         - Deploy to Cloudflare Pages"
@@ -70,6 +71,10 @@ upgrade:
 	@cd aether_corp_web && flutter pub upgrade
 
 # CI/CD commands
+pre-commit:
+	@echo "🔍 Running pre-commit checks..."
+	@bash scripts/pre-commit-hook.sh
+
 pre-deploy-check:
 	@echo "🔍 Running pre-deployment check..."
 	@bash scripts/pre-deployment-check.sh

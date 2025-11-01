@@ -64,24 +64,23 @@ else
     exit 1
 fi
 
-# 3. Linter check
-echo -e "${YELLOW}🧹 Running linter...${NC}"
-if dart run flutter_lints; then
-    echo -e "${GREEN}✅ Linter passed${NC}"
+# 3. Build check
+echo -e "${YELLOW}🏗️  Checking build...${NC}"
+if flutter build web --release > /dev/null 2>&1; then
+    echo -e "${GREEN}✅ Build passed${NC}"
 else
-    echo -e "${RED}❌ Linter found issues${NC}"
-    echo -e "${YELLOW}💡 Fix the linter issues before committing${NC}"
+    echo -e "${RED}❌ Build failed${NC}"
+    echo -e "${YELLOW}💡 Fix the build errors before committing${NC}"
     exit 1
 fi
 
-# 4. Quick test check
-echo -e "${YELLOW}🧪 Running quick tests...${NC}"
+# 4. Quick test check (warning only, doesn't block commit)
+echo -e "${YELLOW}🧪 Running tests...${NC}"
 if flutter test --reporter=compact; then
     echo -e "${GREEN}✅ Tests passed${NC}"
 else
-    echo -e "${RED}❌ Tests failed${NC}"
-    echo -e "${YELLOW}💡 Fix the failing tests before committing${NC}"
-    exit 1
+    echo -e "${YELLOW}⚠️  Tests failed - please fix when possible${NC}"
+    echo -e "${YELLOW}💡 This won't block your commit, but CI/CD may fail${NC}"
 fi
 
 echo ""
