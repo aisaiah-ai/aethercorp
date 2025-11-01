@@ -1,0 +1,32 @@
+AetherCorp Deployment Report
+===========================
+Timestamp: 20251101_075236
+Flutter Version: Flutter 3.35.6 • channel stable • https://github.com/flutter/flutter.git
+Build Directory: build/web
+Package Size:  11M
+
+Build Contents:
+total 5384
+drwxr-xr-x@ 14 acthercop  wheel      448 Nov  1 07:53 .
+drwxr-xr-x@  6 acthercop  wheel      192 Nov  1 07:52 ..
+-rw-r--r--@  1 acthercop  wheel       32 Nov  1 07:53 .last_build_id
+drwxr-xr-x@ 11 acthercop  wheel      352 Nov  1 07:53 assets
+drwxr-xr-x@ 12 acthercop  wheel      384 Nov  1 07:52 canvaskit
+-rw-r--r--@  1 acthercop  admin      917 Oct  9 13:00 favicon.png
+-rw-r--r--@  1 acthercop  admin     9262 Oct  7 13:41 flutter.js
+-rw-r--r--@  1 acthercop  wheel     9590 Nov  1 07:52 flutter_bootstrap.js
+-rw-r--r--@  1 acthercop  wheel     8959 Nov  1 07:53 flutter_service_worker.js
+drwxr-xr-x@  6 acthercop  wheel      192 Nov  1 07:53 icons
+-rw-r--r--@  1 acthercop  wheel     1211 Nov  1 07:52 index.html
+-rw-r--r--@  1 acthercop  wheel  2696234 Nov  1 07:53 main.dart.js
+-rw-r--r--@  1 acthercop  wheel      926 Oct 24 15:48 manifest.json
+-rw-r--r--@  1 acthercop  wheel      100 Nov  1 07:53 version.json
+
+Key Files:
+- index.html: ✅ Present
+- main.dart.js: ✅ Present
+- flutter.js: ✅ Present
+- manifest.json: ✅ Present
+
+Assets Directory: ✅ Present
+
