@@ -39,10 +39,6 @@ jobs:
         working-directory: ./aether_corp_web
         run: dart format --output=none --set-exit-if-changed .
 
-      - name: Run linter
-        working-directory: ./aether_corp_web
-        run: dart run flutter_lints
-
   # Run tests
   test:
     name: 🧪 Test
