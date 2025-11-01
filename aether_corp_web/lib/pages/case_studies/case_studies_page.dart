@@ -90,14 +90,14 @@ class CaseStudiesPage extends StatelessWidget {
           const SizedBox(height: 24),
 
           Text(
-                'Real-world success stories from our enterprise clients',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            'Real-world success stories from our enterprise clients',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.95),
                   fontWeight: FontWeight.w500,
                   fontSize: isMobile ? 20 : 24,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -105,13 +105,13 @@ class CaseStudiesPage extends StatelessWidget {
           const SizedBox(height: 16),
 
           Text(
-                'Discover how we\'ve transformed businesses with cutting-edge AI, Cloud, and Data solutions',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            'Discover how we\'ve transformed businesses with cutting-edge AI, Cloud, and Data solutions',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.8),
                   fontWeight: FontWeight.w400,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -120,49 +120,49 @@ class CaseStudiesPage extends StatelessWidget {
 
           // Call-to-action buttons
           Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      // Scroll to case studies grid
-                    },
-                    icon: const Icon(Icons.visibility, size: 20),
-                    label: const Text('View All Case Studies'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: AppTheme.primaryBlue,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 16,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      elevation: 8,
-                      shadowColor: Colors.black.withValues(alpha: 0.3),
-                    ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Scroll to case studies grid
+                },
+                icon: const Icon(Icons.visibility, size: 20),
+                label: const Text('View All Case Studies'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: AppTheme.primaryBlue,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
                   ),
-                  const SizedBox(width: 16),
-                  OutlinedButton.icon(
-                    onPressed: () => context.go('/contact'),
-                    icon: const Icon(Icons.contact_mail, size: 20),
-                    label: const Text('Start Your Project'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.white, width: 2),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 16,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
-                ],
-              )
+                  elevation: 8,
+                  shadowColor: Colors.black.withValues(alpha: 0.3),
+                ),
+              ),
+              const SizedBox(width: 16),
+              OutlinedButton.icon(
+                onPressed: () => context.go('/contact'),
+                icon: const Icon(Icons.contact_mail, size: 20),
+                label: const Text('Start Your Project'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  side: const BorderSide(color: Colors.white, width: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
+                  ),
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          )
               .animate()
               .fadeIn(delay: 600.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -332,12 +332,12 @@ class CaseStudiesPage extends StatelessWidget {
                     const SizedBox(width: 16),
                     Text(
                       'Success Stories',
-                      style: Theme.of(context).textTheme.headlineMedium
-                          ?.copyWith(
-                            color: AppTheme.primaryBlue,
-                            fontWeight: FontWeight.w800,
-                            fontSize: isMobile ? 24 : 32,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                color: AppTheme.primaryBlue,
+                                fontWeight: FontWeight.w800,
+                                fontSize: isMobile ? 24 : 32,
+                              ),
                     ),
                   ],
                 ),
@@ -346,9 +346,9 @@ class CaseStudiesPage extends StatelessWidget {
                   'Explore our most impactful projects and see how we\'ve transformed businesses across industries',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.w500,
-                  ),
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
                 const SizedBox(height: 20),
                 Row(
@@ -381,174 +381,173 @@ class CaseStudiesPage extends StatelessWidget {
               final caseStudy = caseStudies[index];
 
               return Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Colors.white,
+                        (caseStudy['color'] as Color).withValues(alpha: 0.08),
+                      ],
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Colors.white,
-                            (caseStudy['color'] as Color).withValues(alpha: 0.08),
-                          ],
-                        ),
-                      ),
-                      child: InkWell(
-                        onTap: () =>
-                            context.go('/case-studies/${caseStudy['id']}'),
-                        borderRadius: BorderRadius.circular(20),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  child: InkWell(
+                    onTap: () => context.go('/case-studies/${caseStudy['id']}'),
+                    borderRadius: BorderRadius.circular(20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Header with industry badge
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              // Header with industry badge
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: (caseStudy['color'] as Color)
+                                      .withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(
+                                    color: (caseStudy['color'] as Color)
+                                        .withValues(alpha: 0.4),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Text(
+                                  caseStudy['industry'] as String,
+                                  style: TextStyle(
+                                    color: caseStudy['color'] as Color,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.color,
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          // Title and subtitle
+                          Text(
+                            caseStudy['title'] as String,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: (caseStudy['color'] as Color),
+                                ),
+                          ),
+
+                          const SizedBox(height: 2),
+
+                          Text(
+                            caseStudy['subtitle'] as String,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: (caseStudy['color'] as Color)
+                                      .withValues(alpha: 0.8),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          // Description
+                          Expanded(
+                            child: Text(
+                              caseStudy['description'] as String,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          // Technologies
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 4,
+                            children: ((caseStudy['technologies']
+                                    as List<String>)
+                                .take(3)
+                                .map(
+                                  (tech) => Container(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 6,
+                                      horizontal: 8,
+                                      vertical: 4,
                                     ),
                                     decoration: BoxDecoration(
                                       color: (caseStudy['color'] as Color)
-                                          .withValues(alpha: 0.15),
-                                      borderRadius: BorderRadius.circular(16),
+                                          .withValues(alpha: 0.1),
+                                      borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
                                         color: (caseStudy['color'] as Color)
-                                            .withValues(alpha: 0.4),
+                                            .withValues(alpha: 0.3),
                                         width: 1,
                                       ),
                                     ),
                                     child: Text(
-                                      caseStudy['industry'] as String,
-                                      style: TextStyle(
-                                        color: caseStudy['color'] as Color,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 16,
-                                    color: Theme.of(
-                                      context,
-                                    ).textTheme.bodyMedium?.color,
-                                  ),
-                                ],
-                              ),
-
-                              const SizedBox(height: 8),
-
-                              // Title and subtitle
-                              Text(
-                                caseStudy['title'] as String,
-                                style: Theme.of(context).textTheme.headlineSmall
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      color: (caseStudy['color'] as Color),
-                                    ),
-                              ),
-
-                              const SizedBox(height: 2),
-
-                              Text(
-                                caseStudy['subtitle'] as String,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
-                                      color: (caseStudy['color'] as Color)
-                                          .withValues(alpha: 0.8),
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-
-                              const SizedBox(height: 8),
-
-                              // Description
-                              Expanded(
-                                child: Text(
-                                  caseStudy['description'] as String,
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-
-                              const SizedBox(height: 8),
-
-                              // Technologies
-                              Wrap(
-                                spacing: 8,
-                                runSpacing: 4,
-                                children:
-                                    ((caseStudy['technologies'] as List<String>)
-                                        .take(3)
-                                        .map(
-                                          (tech) => Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 4,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  (caseStudy['color'] as Color)
-                                                      .withValues(alpha: 0.1),
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                              border: Border.all(
-                                                color:
-                                                    (caseStudy['color']
-                                                            as Color)
-                                                        .withValues(alpha: 0.3),
-                                                width: 1,
-                                              ),
-                                            ),
-                                            child: Text(
-                                              tech,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    color:
-                                                        (caseStudy['color']
-                                                            as Color),
-                                                  ),
-                                            ),
+                                      tech,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color:
+                                                (caseStudy['color'] as Color),
                                           ),
-                                        )
-                                        .toList()),
-                              ),
-
-                              if ((caseStudy['technologies'] as List<String>)
-                                      .length >
-                                  3)
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 4),
-                                  child: Text(
-                                    '+${(caseStudy['technologies'] as List<String>).length - 3} more',
-                                    style: Theme.of(context).textTheme.bodySmall
-                                        ?.copyWith(
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                            ],
+                                )
+                                .toList()),
                           ),
-                        ),
+
+                          if ((caseStudy['technologies'] as List<String>)
+                                  .length >
+                              3)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4),
+                              child: Text(
+                                '+${(caseStudy['technologies'] as List<String>).length - 3} more',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.primary,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                        ],
                       ),
                     ),
-                  )
+                  ),
+                ),
+              )
                   .animate(delay: (index * 100).ms)
                   .fadeIn(duration: 600.ms)
                   .slideY(begin: 0.3, end: 0);
@@ -569,42 +568,38 @@ class CaseStudiesPage extends StatelessWidget {
             'Ready to Create Your Success Story?',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Let\'s discuss how we can help you achieve similar results',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Let\'s discuss how we can help you achieve similar results',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           ElevatedButton(
-                onPressed: () => context.go('/contact'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryBlue,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 20,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                child: const Text('Start Your Project'),
-              )
+            onPressed: () => context.go('/contact'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppTheme.primaryBlue,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48,
+                vertical: 20,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            child: const Text('Start Your Project'),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -624,20 +619,20 @@ class CaseStudiesPage extends StatelessWidget {
           Text(
             'Client Success Stories',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: AppTheme.primaryBlue,
-            ),
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.primaryBlue,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
 
           const SizedBox(height: 16),
 
           Text(
-                'Hear directly from our clients about their transformation journey',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            'Hear directly from our clients about their transformation journey',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -697,165 +692,166 @@ class CaseStudiesPage extends StatelessWidget {
     final testimonial = testimonials[index];
 
     return Card(
-          elevation: 8,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Column(
-              children: [
-                // Video player section
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          AppTheme.primaryBlue.withValues(alpha: 0.8),
-                          AppTheme.primaryViolet.withValues(alpha: 0.8),
-                        ],
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Column(
+          children: [
+            // Video player section
+            Expanded(
+              flex: 3,
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppTheme.primaryBlue.withValues(alpha: 0.8),
+                      AppTheme.primaryViolet.withValues(alpha: 0.8),
+                    ],
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    // Video player (placeholder for now)
+                    Center(
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.play_arrow,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
                     ),
-                    child: Stack(
-                      children: [
-                        // Video player (placeholder for now)
-                        Center(
+
+                    // Play button overlay
+                    Positioned.fill(
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            // TODO: Implement video playback
+                            _showVideoModal(context, testimonial);
+                          },
                           child: Container(
-                            width: 80,
-                            height: 80,
                             decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.2),
-                              shape: BoxShape.circle,
+                              color: Colors.black.withValues(alpha: 0.3),
                             ),
-                            child: const Icon(
-                              Icons.play_arrow,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
-                        ),
-
-                        // Play button overlay
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                // TODO: Implement video playback
-                                _showVideoModal(context, testimonial);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withValues(alpha: 0.3),
-                                ),
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.play_circle_filled,
-                                    color: Colors.white,
-                                    size: 60,
-                                  ),
-                                ),
+                            child: const Center(
+                              child: Icon(
+                                Icons.play_circle_filled,
+                                color: Colors.white,
+                                size: 60,
                               ),
                             ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-
-                // Content section
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            testimonial['title'] as String,
-                            style: Theme.of(context).textTheme.titleLarge
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-
-                        const SizedBox(height: 8),
-
-                        Flexible(
-                          child: Text(
-                            '"${testimonial['quote'] as String}"',
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  fontStyle: FontStyle.italic,
-                                  height: 1.4,
-                                ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-
-                        const Spacer(),
-
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 16,
-                              backgroundColor: AppTheme.primaryBlue.withValues(alpha: 
-                                0.1,
-                              ),
-                              child: Text(
-                                (testimonial['client'] as String)
-                                    .split(' ')
-                                    .map((n) => n[0])
-                                    .join(),
-                                style: TextStyle(
-                                  color: AppTheme.primaryBlue,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    testimonial['client'] as String,
-                                    style: Theme.of(context).textTheme.bodySmall
-                                        ?.copyWith(fontWeight: FontWeight.w600),
-                                  ),
-                                  Text(
-                                    testimonial['company'] as String,
-                                    style: Theme.of(context).textTheme.bodySmall
-                                        ?.copyWith(
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall
-                                              ?.color
-                                              ?.withValues(alpha: 0.7),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        )
+
+            // Content section
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        testimonial['title'] as String,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Flexible(
+                      child: Text(
+                        '"${testimonial['quote'] as String}"',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontStyle: FontStyle.italic,
+                              height: 1.4,
+                            ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const Spacer(),
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 16,
+                          backgroundColor: AppTheme.primaryBlue.withValues(
+                            alpha: 0.1,
+                          ),
+                          child: Text(
+                            (testimonial['client'] as String)
+                                .split(' ')
+                                .map((n) => n[0])
+                                .join(),
+                            style: TextStyle(
+                              color: AppTheme.primaryBlue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                testimonial['client'] as String,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                testimonial['company'] as String,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.color
+                                          ?.withValues(alpha: 0.7),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    )
         .animate(delay: (index * 200).ms)
         .fadeIn(duration: 600.ms)
         .slideY(begin: 0.3, end: 0);

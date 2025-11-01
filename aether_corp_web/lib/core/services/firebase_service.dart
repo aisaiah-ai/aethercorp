@@ -120,9 +120,8 @@ class FirebaseService {
   /// Get total project requests count
   static Future<int> getTotalProjectRequestsCount() async {
     try {
-      final querySnapshot = await _firestore
-          .collection(_projectRequestsCollection)
-          .get();
+      final querySnapshot =
+          await _firestore.collection(_projectRequestsCollection).get();
       return querySnapshot.docs.length;
     } catch (e) {
       debugPrint('Error getting total project requests count: $e');

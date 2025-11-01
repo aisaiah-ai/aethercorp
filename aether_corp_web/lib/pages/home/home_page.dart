@@ -65,22 +65,21 @@ class HomePage extends StatelessWidget {
 
                   // Main heading with enhanced typography
                   Text(
-                        'Engineering the Future\nwith Data + AI',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.displayLarge
-                            ?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              height: 1.2,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black.withValues(alpha: 0.3),
-                                  offset: const Offset(0, 2),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                            ),
-                      )
+                    'Engineering the Future\nwith Data + AI',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      height: 1.2,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.3),
+                          offset: const Offset(0, 2),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                  )
                       .animate()
                       .fadeIn(duration: 800.ms)
                       .slideY(begin: 0.3, end: 0),
@@ -89,14 +88,13 @@ class HomePage extends StatelessWidget {
 
                   // Enhanced subtitle with animation
                   Text(
-                        'Elite AI, Cloud, and Data Consultancy for Enterprise Success',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headlineMedium
-                            ?.copyWith(
-                              color: Colors.white.withValues(alpha: 0.9),
-                              fontWeight: FontWeight.w400,
-                            ),
-                      )
+                    'Elite AI, Cloud, and Data Consultancy for Enterprise Success',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: Colors.white.withValues(alpha: 0.9),
+                          fontWeight: FontWeight.w400,
+                        ),
+                  )
                       .animate()
                       .fadeIn(delay: 200.ms, duration: 800.ms)
                       .slideY(begin: 0.3, end: 0),
@@ -105,50 +103,50 @@ class HomePage extends StatelessWidget {
 
                   // Enhanced CTA Buttons with animations
                   Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: () => context.go('/contact'),
-                            icon: const Icon(Icons.video_call, size: 20),
-                            label: const Text('Schedule a Discovery Call'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: AppTheme.primaryBlue,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 16,
-                              ),
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              elevation: 8,
-                              shadowColor: Colors.black.withValues(alpha: 0.3),
-                            ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () => context.go('/contact'),
+                        icon: const Icon(Icons.video_call, size: 20),
+                        label: const Text('Schedule a Discovery Call'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: AppTheme.primaryBlue,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 32,
+                            vertical: 16,
                           ),
-                          const SizedBox(width: 16),
-                          OutlinedButton.icon(
-                            onPressed: () => context.go('/services'),
-                            icon: const Icon(Icons.explore, size: 20),
-                            label: const Text('Explore Services'),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              side: const BorderSide(
-                                color: Colors.white,
-                                width: 2,
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 32,
-                                vertical: 16,
-                              ),
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ],
-                      )
+                          elevation: 8,
+                          shadowColor: Colors.black.withValues(alpha: 0.3),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      OutlinedButton.icon(
+                        onPressed: () => context.go('/services'),
+                        icon: const Icon(Icons.explore, size: 20),
+                        label: const Text('Explore Services'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          side: const BorderSide(
+                            color: Colors.white,
+                            width: 2,
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 32,
+                            vertical: 16,
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                       .animate()
                       .fadeIn(delay: 400.ms, duration: 800.ms)
                       .slideY(begin: 0.3, end: 0)
@@ -203,85 +201,82 @@ class HomePage extends StatelessWidget {
         Positioned(
           top: 100,
           left: 100,
-          child:
-              Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.1),
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.2),
-                        width: 1,
-                      ),
-                    ),
-                  )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .scale(
-                    duration: 4.seconds,
-                    begin: const Offset(0.8, 0.8),
-                    end: const Offset(1.2, 1.2),
-                  )
-                  .then()
-                  .scale(
-                    duration: 4.seconds,
-                    begin: const Offset(1.2, 1.2),
-                    end: const Offset(0.8, 0.8),
-                  ),
+          child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.1),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.2),
+                width: 1,
+              ),
+            ),
+          )
+              .animate(onPlay: (controller) => controller.repeat())
+              .scale(
+                duration: 4.seconds,
+                begin: const Offset(0.8, 0.8),
+                end: const Offset(1.2, 1.2),
+              )
+              .then()
+              .scale(
+                duration: 4.seconds,
+                begin: const Offset(1.2, 1.2),
+                end: const Offset(0.8, 0.8),
+              ),
         ),
 
         // Medium circle
         Positioned(
           top: 200,
           right: 150,
-          child:
-              Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.08),
-                      shape: BoxShape.circle,
-                    ),
-                  )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .scale(
-                    duration: 3.seconds,
-                    begin: const Offset(0.9, 0.9),
-                    end: const Offset(1.1, 1.1),
-                  )
-                  .then()
-                  .scale(
-                    duration: 3.seconds,
-                    begin: const Offset(1.1, 1.1),
-                    end: const Offset(0.9, 0.9),
-                  ),
+          child: Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.08),
+              shape: BoxShape.circle,
+            ),
+          )
+              .animate(onPlay: (controller) => controller.repeat())
+              .scale(
+                duration: 3.seconds,
+                begin: const Offset(0.9, 0.9),
+                end: const Offset(1.1, 1.1),
+              )
+              .then()
+              .scale(
+                duration: 3.seconds,
+                begin: const Offset(1.1, 1.1),
+                end: const Offset(0.9, 0.9),
+              ),
         ),
 
         // Small circle
         Positioned(
           bottom: 150,
           left: 200,
-          child:
-              Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.12),
-                      shape: BoxShape.circle,
-                    ),
-                  )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .scale(
-                    duration: 2.seconds,
-                    begin: const Offset(0.7, 0.7),
-                    end: const Offset(1.3, 1.3),
-                  )
-                  .then()
-                  .scale(
-                    duration: 2.seconds,
-                    begin: const Offset(1.3, 1.3),
-                    end: const Offset(0.7, 0.7),
-                  ),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+            ),
+          )
+              .animate(onPlay: (controller) => controller.repeat())
+              .scale(
+                duration: 2.seconds,
+                begin: const Offset(0.7, 0.7),
+                end: const Offset(1.3, 1.3),
+              )
+              .then()
+              .scale(
+                duration: 2.seconds,
+                begin: const Offset(1.3, 1.3),
+                end: const Offset(0.7, 0.7),
+              ),
         ),
 
         // Tech grid pattern
@@ -292,15 +287,15 @@ class HomePage extends StatelessWidget {
 
   Widget _buildTrustIndicators(BuildContext context) {
     return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildTrustBadge('500+', 'Projects'),
-            const SizedBox(width: 32),
-            _buildTrustBadge('99%', 'Success Rate'),
-            const SizedBox(width: 32),
-            _buildTrustBadge('24/7', 'Support'),
-          ],
-        )
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildTrustBadge('500+', 'Projects'),
+        const SizedBox(width: 32),
+        _buildTrustBadge('99%', 'Success Rate'),
+        const SizedBox(width: 32),
+        _buildTrustBadge('24/7', 'Support'),
+      ],
+    )
         .animate()
         .fadeIn(delay: 600.ms, duration: 800.ms)
         .slideY(begin: 0.3, end: 0);
@@ -335,146 +330,149 @@ class HomePage extends StatelessWidget {
     int index,
   ) {
     return Card(
-          elevation: 8,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.white,
-                  (service['color'] as Color).withValues(alpha: 0.05),
+      elevation: 8,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.white,
+              (service['color'] as Color).withValues(alpha: 0.05),
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Enhanced header with animated illustration
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: (service['color'] as Color).withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color:
+                            (service['color'] as Color).withValues(alpha: 0.2),
+                        width: 1,
+                      ),
+                    ),
+                    child: ServiceIllustration(
+                      serviceType: service['serviceType'] as String,
+                      size: 40,
+                      animate: true,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          service['title'] as String,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: (service['color'] as Color).withValues(
+                              alpha: 0.1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            service['serviceType'] as String,
+                            style: TextStyle(
+                              color: service['color'] as Color,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Enhanced header with animated illustration
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16),
+
+              const SizedBox(height: 16),
+
+              // Description
+              Text(
+                service['description'] as String,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(height: 1.5),
+              ),
+
+              const SizedBox(height: 16),
+
+              // Technology tags
+              Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                children: ((service['technologies'] as List<String>)
+                    .take(3)
+                    .map(
+                      (tech) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
-                          color: (service['color'] as Color).withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(16),
+                          color: (service['color'] as Color).withValues(
+                            alpha: 0.1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: (service['color'] as Color).withValues(alpha: 0.2),
+                            color: (service['color'] as Color).withValues(
+                              alpha: 0.2,
+                            ),
                             width: 1,
                           ),
                         ),
-                        child: ServiceIllustration(
-                          serviceType: service['serviceType'] as String,
-                          size: 40,
-                          animate: true,
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              service['title'] as String,
-                              style: Theme.of(context).textTheme.headlineSmall
-                                  ?.copyWith(fontWeight: FontWeight.w600),
-                            ),
-                            const SizedBox(height: 4),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: (service['color'] as Color).withValues(alpha: 
-                                  0.1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                service['serviceType'] as String,
-                                style: TextStyle(
-                                  color: service['color'] as Color,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Description
-                  Text(
-                    service['description'] as String,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(height: 1.5),
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Technology tags
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 4,
-                    children: ((service['technologies'] as List<String>)
-                        .take(3)
-                        .map(
-                          (tech) => Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: (service['color'] as Color).withValues(alpha: 
-                                0.1,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: (service['color'] as Color).withValues(alpha: 
-                                  0.2,
-                                ),
-                                width: 1,
-                              ),
-                            ),
-                            child: Text(
-                              tech,
-                              style: TextStyle(
-                                color: service['color'] as Color,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                        child: Text(
+                          tech,
+                          style: TextStyle(
+                            color: service['color'] as Color,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
                           ),
-                        )
-                        .toList()),
-                  ),
-
-                  if ((service['technologies'] as List<String>).length > 3)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Text(
-                        '+${(service['technologies'] as List<String>).length - 3} more technologies',
-                        style: TextStyle(
-                          color: (service['color'] as Color),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                    ),
-                ],
+                    )
+                    .toList()),
               ),
-            ),
+
+              if ((service['technologies'] as List<String>).length > 3)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(
+                    '+${(service['technologies'] as List<String>).length - 3} more technologies',
+                    style: TextStyle(
+                      color: (service['color'] as Color),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+            ],
           ),
-        )
+        ),
+      ),
+    )
         .animate(delay: (index * 100).ms)
         .fadeIn(duration: 600.ms)
         .slideY(begin: 0.3, end: 0)
@@ -495,21 +493,17 @@ class HomePage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 16),
-
           Text(
-                'Comprehensive solutions for your digital transformation journey',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Comprehensive solutions for your digital transformation journey',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).textTheme.bodyMedium?.color,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -623,49 +617,42 @@ class HomePage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           Wrap(
             spacing: 32,
             runSpacing: 24,
             alignment: WrapAlignment.center,
             children: techLogos
                 .map(
-                  (tech) =>
-                      Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 24,
-                              vertical: 12,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).cardColor,
-                              borderRadius: BorderRadius.circular(8),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.1),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 2),
-                                ),
-                              ],
-                            ),
-                            child: Text(
-                              tech,
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                  ),
-                            ),
-                          )
-                          .animate()
-                          .fadeIn(duration: 600.ms)
-                          .scale(
-                            begin: const Offset(0.8, 0.8),
-                            end: const Offset(1.0, 1.0),
+                  (tech) => Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      tech,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary,
                           ),
+                    ),
+                  ).animate().fadeIn(duration: 600.ms).scale(
+                        begin: const Offset(0.8, 0.8),
+                        end: const Offset(1.0, 1.0),
+                      ),
                 )
                 .toList(),
           ),
@@ -684,42 +671,38 @@ class HomePage extends StatelessWidget {
             'Ready to Transform Your Business?',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Let\'s build your next big thing together',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Let\'s build your next big thing together',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           ElevatedButton(
-                onPressed: () => context.go('/contact'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryBlue,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 20,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                child: const Text('Get Started Today'),
-              )
+            onPressed: () => context.go('/contact'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppTheme.primaryBlue,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48,
+                vertical: 20,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            child: const Text('Get Started Today'),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),

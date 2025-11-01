@@ -31,21 +31,19 @@ class ServicesPage extends StatelessWidget {
           Text(
             'Our Services',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Comprehensive solutions for your digital transformation journey',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            'Comprehensive solutions for your digital transformation journey',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -160,9 +158,7 @@ class ServicesPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -177,103 +173,100 @@ class ServicesPage extends StatelessWidget {
               final service = services[index];
 
               return Card(
-                    elevation: 8,
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                elevation: 8,
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: (service['color'] as Color)
-                                      .withValues(alpha: 0.1),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Icon(
-                                  service['icon'] as IconData,
-                                  size: 32,
-                                  color: service['color'] as Color,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Text(
-                                  service['title'] as String,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ],
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: (service['color'] as Color)
+                                  .withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              service['icon'] as IconData,
+                              size: 32,
+                              color: service['color'] as Color,
+                            ),
                           ),
-
-                          const SizedBox(height: 16),
-
-                          Text(
-                            service['description'] as String,
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium?.color,
-                                ),
-                          ),
-
-                          const SizedBox(height: 16),
-
+                          const SizedBox(width: 16),
                           Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Key Capabilities:',
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.primary,
-                                      ),
-                                ),
-                                const SizedBox(height: 8),
-                                ...((service['features'] as List<String>)
-                                    .map(
-                                      (feature) => Padding(
-                                        padding: const EdgeInsets.only(
-                                          bottom: 4,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.check_circle,
-                                              size: 16,
-                                              color: service['color'] as Color,
-                                            ),
-                                            const SizedBox(width: 8),
-                                            Expanded(
-                                              child: Text(
-                                                feature,
-                                                style: Theme.of(
-                                                  context,
-                                                ).textTheme.bodySmall,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                    .toList()),
-                              ],
+                            child: Text(
+                              service['title'] as String,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall
+                                  ?.copyWith(fontWeight: FontWeight.w600),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  )
+                      const SizedBox(height: 16),
+                      Text(
+                        service['description'] as String,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.color,
+                            ),
+                      ),
+                      const SizedBox(height: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Key Capabilities:',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                  ),
+                            ),
+                            const SizedBox(height: 8),
+                            ...((service['features'] as List<String>)
+                                .map(
+                                  (feature) => Padding(
+                                    padding: const EdgeInsets.only(
+                                      bottom: 4,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check_circle,
+                                          size: 16,
+                                          color: service['color'] as Color,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Expanded(
+                                          child: Text(
+                                            feature,
+                                            style: Theme.of(
+                                              context,
+                                            ).textTheme.bodySmall,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                                .toList()),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
                   .animate(delay: (index * 100).ms)
                   .fadeIn(duration: 600.ms)
                   .slideY(begin: 0.3, end: 0);
@@ -331,68 +324,66 @@ class ServicesPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'A systematic approach to delivering exceptional results',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'A systematic approach to delivering exceptional results',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).textTheme.bodyMedium?.color,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           if (isMobile)
             ...steps.asMap().entries.map((entry) {
               final index = entry.key;
               final step = entry.value;
 
               return Container(
-                    margin: const EdgeInsets.only(bottom: 24),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.primary.withValues(alpha: 0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Icon(
-                              step['icon'] as IconData,
-                              color: Theme.of(context).colorScheme.primary,
-                              size: 24,
-                            ),
-                          ),
+                margin: const EdgeInsets.only(bottom: 24),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Icon(
+                          step['icon'] as IconData,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 24,
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${index + 1}. ${step['title'] as String}',
-                                style: Theme.of(context).textTheme.headlineSmall
-                                    ?.copyWith(fontWeight: FontWeight.w600),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                step['description'] as String,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  )
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${index + 1}. ${step['title'] as String}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            step['description'] as String,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
                   .animate(delay: (index * 100).ms)
                   .fadeIn(duration: 600.ms)
                   .slideX(begin: -0.3, end: 0);
@@ -404,41 +395,43 @@ class ServicesPage extends StatelessWidget {
                 final step = entry.value;
 
                 return Expanded(
-                      child: Column(
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.primary.withValues(alpha: 0.1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Icon(
-                                step['icon'] as IconData,
-                                color: Theme.of(context).colorScheme.primary,
-                                size: 32,
-                              ),
-                            ),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primary.withValues(alpha: 0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            step['icon'] as IconData,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 32,
                           ),
-                          const SizedBox(height: 16),
-                          Text(
-                            '${index + 1}. ${step['title'] as String}',
-                            style: Theme.of(context).textTheme.headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            step['description'] as String,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                        ),
                       ),
-                    )
+                      const SizedBox(height: 16),
+                      Text(
+                        '${index + 1}. ${step['title'] as String}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        step['description'] as String,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                )
                     .animate(delay: (index * 100).ms)
                     .fadeIn(duration: 600.ms)
                     .slideY(begin: 0.3, end: 0);
@@ -459,42 +452,38 @@ class ServicesPage extends StatelessWidget {
             'Ready to Start Your Project?',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Let\'s discuss how we can help transform your business',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Let\'s discuss how we can help transform your business',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/contact'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryBlue,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 20,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                child: const Text('Schedule a Consultation'),
-              )
+            onPressed: () => Navigator.pushNamed(context, '/contact'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppTheme.primaryBlue,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48,
+                vertical: 20,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            child: const Text('Schedule a Consultation'),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),

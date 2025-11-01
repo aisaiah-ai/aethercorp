@@ -107,9 +107,9 @@ class _MainLayoutState extends State<MainLayout> {
           Text(
             'AetherCorp',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.primary,
-            ),
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
         ],
       ),
@@ -159,9 +159,10 @@ class _MainLayoutState extends State<MainLayout> {
             Text(
               label,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: isActive ? Theme.of(context).colorScheme.primary : null,
-                fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-              ),
+                    color:
+                        isActive ? Theme.of(context).colorScheme.primary : null,
+                    fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                  ),
             ),
           ],
         ),

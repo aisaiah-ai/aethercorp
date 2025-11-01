@@ -31,21 +31,19 @@ class BlogPage extends StatelessWidget {
           Text(
             'AetherCorp Blog',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Insights, trends, and best practices in AI, Cloud, and Data technologies',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            'Insights, trends, and best practices in AI, Cloud, and Data technologies',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -67,124 +65,121 @@ class BlogPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           Card(
-                elevation: 8,
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppTheme.primaryBlue.withValues(alpha: 0.1),
-                        AppTheme.primaryViolet.withValues(alpha: 0.1),
-                      ],
+            elevation: 8,
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    AppTheme.primaryBlue.withValues(alpha: 0.1),
+                    AppTheme.primaryViolet.withValues(alpha: 0.1),
+                  ],
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.primaryBlue,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'AI & Machine Learning',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    const SizedBox(height: 16),
+                    Text(
+                      'The Future of Generative AI in Enterprise Applications',
+                      style: Theme.of(context)
+                          .textTheme
+                          .displaySmall
+                          ?.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Explore how generative AI is revolutionizing enterprise applications, from automated content creation to intelligent decision-making systems. Learn about the latest trends, challenges, and opportunities in this rapidly evolving field.',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyLarge?.copyWith(height: 1.6),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppTheme.primaryBlue,
-                            borderRadius: BorderRadius.circular(20),
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: AppTheme.primaryBlue.withValues(
+                            alpha: 0.1,
                           ),
                           child: Text(
-                            'AI & Machine Learning',
-                            style: Theme.of(context).textTheme.bodySmall
-                                ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            'SC',
+                            style: TextStyle(
+                              color: AppTheme.primaryBlue,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-
-                        const SizedBox(height: 16),
-
-                        Text(
-                          'The Future of Generative AI in Enterprise Applications',
-                          style: Theme.of(context).textTheme.displaySmall
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-
-                        const SizedBox(height: 16),
-
-                        Text(
-                          'Explore how generative AI is revolutionizing enterprise applications, from automated content creation to intelligent decision-making systems. Learn about the latest trends, challenges, and opportunities in this rapidly evolving field.',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodyLarge?.copyWith(height: 1.6),
-                        ),
-
-                        const SizedBox(height: 24),
-
-                        Row(
+                        const SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                              radius: 20,
-                              backgroundColor: AppTheme.primaryBlue.withValues(alpha: 
-                                0.1,
-                              ),
-                              child: Text(
-                                'SC',
-                                style: TextStyle(
-                                  color: AppTheme.primaryBlue,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                            Text(
+                              'Dr. Sarah Chen',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(fontWeight: FontWeight.w600),
                             ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Dr. Sarah Chen',
-                                  style: Theme.of(context).textTheme.bodyMedium
-                                      ?.copyWith(fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                  'December 15, 2024 • 8 min read',
-                                  style: Theme.of(context).textTheme.bodySmall
-                                      ?.copyWith(
-                                        color: Theme.of(
-                                          context,
-                                        ).textTheme.bodyMedium?.color,
-                                      ),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            ElevatedButton(
-                              onPressed: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Opening article...'),
+                            Text(
+                              'December 15, 2024 • 8 min read',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium?.color,
                                   ),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme.primaryBlue,
-                                foregroundColor: Colors.white,
-                              ),
-                              child: const Text('Read More'),
                             ),
                           ],
                         ),
+                        const Spacer(),
+                        ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Opening article...'),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppTheme.primaryBlue,
+                            foregroundColor: Colors.white,
+                          ),
+                          child: const Text('Read More'),
+                        ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
-              )
+              ),
+            ),
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -270,9 +265,7 @@ class BlogPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -287,131 +280,128 @@ class BlogPage extends StatelessWidget {
               final post = blogPosts[index];
 
               return Card(
-                    elevation: 4,
-                    child: InkWell(
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Opening "${post['title']}"...'),
-                          ),
-                        );
-                      },
-                      borderRadius: BorderRadius.circular(16),
-                      child: Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                elevation: 4,
+                child: InkWell(
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Opening "${post['title']}"...'),
+                      ),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(16),
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 6,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: (post['color'] as Color).withValues(alpha: 
-                                      0.1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Text(
-                                    post['category'] as String,
-                                    style: Theme.of(context).textTheme.bodySmall
-                                        ?.copyWith(
-                                          color: post['color'] as Color,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  size: 16,
-                                  color: Theme.of(
-                                    context,
-                                  ).textTheme.bodyMedium?.color,
-                                ),
-                              ],
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            Text(
-                              post['title'] as String,
-                              style: Theme.of(context).textTheme.headlineSmall
-                                  ?.copyWith(fontWeight: FontWeight.w600),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-
-                            const SizedBox(height: 12),
-
-                            Expanded(
-                              child: Text(
-                                post['excerpt'] as String,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
                               ),
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 12,
-                                  backgroundColor: (post['color'] as Color)
-                                      .withValues(alpha: 0.1),
-                                  child: Text(
-                                    (post['author'] as String)
-                                        .split(' ')
-                                        .map((name) => name[0])
-                                        .join(''),
-                                    style: TextStyle(
+                              decoration: BoxDecoration(
+                                color: (post['color'] as Color).withValues(
+                                  alpha: 0.1,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                post['category'] as String,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
                                       color: post['color'] as Color,
-                                      fontSize: 10,
                                       fontWeight: FontWeight.w600,
                                     ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        post['author'] as String,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                      Text(
-                                        '${post['date']} • ${post['readTime']}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall
-                                            ?.copyWith(
-                                              color: Theme.of(
-                                                context,
-                                              ).textTheme.bodyMedium?.color,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                              ),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                              color: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.color,
                             ),
                           ],
                         ),
-                      ),
+                        const SizedBox(height: 16),
+                        Text(
+                          post['title'] as String,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 12),
+                        Expanded(
+                          child: Text(
+                            post['excerpt'] as String,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundColor: (post['color'] as Color)
+                                  .withValues(alpha: 0.1),
+                              child: Text(
+                                (post['author'] as String)
+                                    .split(' ')
+                                    .map((name) => name[0])
+                                    .join(''),
+                                style: TextStyle(
+                                  color: post['color'] as Color,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    post['author'] as String,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                  Text(
+                                    '${post['date']} • ${post['readTime']}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: Theme.of(
+                                            context,
+                                          ).textTheme.bodyMedium?.color,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  )
+                  ),
+                ),
+              )
                   .animate(delay: (index * 100).ms)
                   .fadeIn(duration: 600.ms)
                   .slideY(begin: 0.3, end: 0);
@@ -432,72 +422,68 @@ class BlogPage extends StatelessWidget {
             'Stay Updated with Our Insights',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Subscribe to our newsletter for the latest trends and insights in AI, Cloud, and Data technologies',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Subscribe to our newsletter for the latest trends and insights in AI, Cloud, and Data technologies',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 300,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Enter your email address',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 16,
-                        ),
-                      ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email address',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 16,
                     ),
                   ),
-                  const SizedBox(width: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Thank you for subscribing!'),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: AppTheme.primaryBlue,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 16,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Thank you for subscribing!'),
                     ),
-                    child: const Text('Subscribe'),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: AppTheme.primaryBlue,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
                   ),
-                ],
-              )
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                child: const Text('Subscribe'),
+              ),
+            ],
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),

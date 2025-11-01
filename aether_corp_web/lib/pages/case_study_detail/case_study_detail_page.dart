@@ -80,33 +80,29 @@ class CaseStudyDetailPage extends StatelessWidget {
             child: Text(
               caseStudy['industry'] as String,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-              ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ),
-
           const SizedBox(height: 24),
-
           Text(
             caseStudy['title'] as String,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 16),
-
           Text(
-                caseStudy['subtitle'] as String,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            caseStudy['subtitle'] as String,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -130,15 +126,13 @@ class CaseStudyDetailPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                caseStudy['description'] as String,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(height: 1.6),
-              )
+            caseStudy['description'] as String,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(height: 1.6),
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -163,69 +157,69 @@ class CaseStudyDetailPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Card(
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            elevation: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.warning_outlined,
-                            color: Colors.orange,
-                            size: 32,
-                          ),
-                          const SizedBox(width: 16),
-                          Text(
-                            'Key Challenges',
-                            style: Theme.of(context).textTheme.headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                      Icon(
+                        Icons.warning_outlined,
+                        color: Colors.orange,
+                        size: 32,
                       ),
-                      const SizedBox(height: 16),
-                      ...((caseStudy['challenges'] as List<String>? ??
-                              [
-                                'Legacy system integration complexity',
-                                'Data migration without downtime',
-                                'Performance optimization requirements',
-                                'Scalability and security concerns',
-                              ])
-                          .map(
-                            (challenge) => Padding(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_right,
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text(
-                                      challenge,
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodyMedium,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList()),
+                      const SizedBox(width: 16),
+                      Text(
+                        'Key Challenges',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
-                ),
-              )
+                  const SizedBox(height: 16),
+                  ...((caseStudy['challenges'] as List<String>? ??
+                          [
+                            'Legacy system integration complexity',
+                            'Data migration without downtime',
+                            'Performance optimization requirements',
+                            'Scalability and security concerns',
+                          ])
+                      .map(
+                        (challenge) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.arrow_right,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
+                                size: 20,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  challenge,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList()),
+                ],
+              ),
+            ),
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -249,67 +243,67 @@ class CaseStudyDetailPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Card(
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            elevation: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.lightbulb_outline,
-                            color: Colors.green,
-                            size: 32,
-                          ),
-                          const SizedBox(width: 16),
-                          Text(
-                            'Solution Approach',
-                            style: Theme.of(context).textTheme.headlineSmall
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                      Icon(
+                        Icons.lightbulb_outline,
+                        color: Colors.green,
+                        size: 32,
                       ),
-                      const SizedBox(height: 16),
-                      ...((caseStudy['solution'] as List<String>? ??
-                              [
-                                'Comprehensive architecture design and planning',
-                                'Phased implementation with minimal disruption',
-                                'Advanced monitoring and optimization',
-                                'Comprehensive testing and quality assurance',
-                              ])
-                          .map(
-                            (solution) => Padding(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.check_circle,
-                                    color: Colors.green,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text(
-                                      solution,
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodyMedium,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                          .toList()),
+                      const SizedBox(width: 16),
+                      Text(
+                        'Solution Approach',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
-                ),
-              )
+                  const SizedBox(height: 16),
+                  ...((caseStudy['solution'] as List<String>? ??
+                          [
+                            'Comprehensive architecture design and planning',
+                            'Phased implementation with minimal disruption',
+                            'Advanced monitoring and optimization',
+                            'Comprehensive testing and quality assurance',
+                          ])
+                      .map(
+                        (solution) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.check_circle,
+                                color: Colors.green,
+                                size: 20,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  solution,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList()),
+                ],
+              ),
+            ),
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -334,9 +328,7 @@ class CaseStudyDetailPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -351,41 +343,40 @@ class CaseStudyDetailPage extends StatelessWidget {
               final result = (caseStudy['results'] as List<String>)[index];
 
               return Card(
-                    elevation: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.green.withValues(alpha: 0.1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Icon(
-                                Icons.trending_up,
-                                color: Colors.green,
-                                size: 32,
-                              ),
-                            ),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: Colors.green.withValues(alpha: 0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.trending_up,
+                            color: Colors.green,
+                            size: 32,
                           ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Text(
-                              result,
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  )
-                  .animate(delay: (index * 100).ms)
-                  .fadeIn(duration: 600.ms)
-                  .scale(
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Text(
+                          result,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ).animate(delay: (index * 100).ms).fadeIn(duration: 600.ms).scale(
                     begin: const Offset(0.8, 0.8),
                     end: const Offset(1.0, 1.0),
                   );
@@ -411,49 +402,42 @@ class CaseStudyDetailPage extends StatelessWidget {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Wrap(
             spacing: 16,
             runSpacing: 16,
             children: (caseStudy['technologies'] as List<String>)
                 .map(
-                  (tech) =>
-                      Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 12,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.primary.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(25),
-                              border: Border.all(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.primary.withValues(alpha: 0.3),
-                                width: 1,
-                              ),
-                            ),
-                            child: Text(
-                              tech,
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                            ),
-                          )
-                          .animate()
-                          .fadeIn(duration: 600.ms)
-                          .scale(
-                            begin: const Offset(0.8, 0.8),
-                            end: const Offset(1.0, 1.0),
+                  (tech) => Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: 0.3),
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      tech,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary,
+                            fontWeight: FontWeight.w600,
                           ),
+                    ),
+                  ).animate().fadeIn(duration: 600.ms).scale(
+                        begin: const Offset(0.8, 0.8),
+                        end: const Offset(1.0, 1.0),
+                      ),
                 )
                 .toList(),
           ),
@@ -472,42 +456,38 @@ class CaseStudyDetailPage extends StatelessWidget {
             'Inspired by This Success Story?',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Let\'s discuss how we can help you achieve similar results',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Let\'s discuss how we can help you achieve similar results',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           ElevatedButton(
-                onPressed: () => context.go('/contact'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryBlue,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 20,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                child: const Text('Start Your Project'),
-              )
+            onPressed: () => context.go('/contact'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppTheme.primaryBlue,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48,
+                vertical: 20,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            child: const Text('Start Your Project'),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),

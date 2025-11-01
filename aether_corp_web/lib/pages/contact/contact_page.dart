@@ -67,21 +67,19 @@ class _ContactPageState extends State<ContactPage> {
           Text(
             'Get in Touch',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Let\'s discuss your project and how we can help transform your business',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            'Let\'s discuss your project and how we can help transform your business',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                   fontWeight: FontWeight.w400,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -103,176 +101,165 @@ class _ContactPageState extends State<ContactPage> {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           Card(
-                elevation: 8,
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            elevation: 8,
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: _nameController,
-                                decoration: const InputDecoration(
-                                  labelText: 'Full Name *',
-                                  prefixIcon: Icon(Icons.person_outline),
-                                  border: OutlineInputBorder(),
-                                ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your name';
-                                  }
-                                  return null;
-                                },
-                              ),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _nameController,
+                            decoration: const InputDecoration(
+                              labelText: 'Full Name *',
+                              prefixIcon: Icon(Icons.person_outline),
+                              border: OutlineInputBorder(),
                             ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: TextFormField(
-                                controller: _emailController,
-                                decoration: const InputDecoration(
-                                  labelText: 'Email Address *',
-                                  prefixIcon: Icon(Icons.email_outlined),
-                                  border: OutlineInputBorder(),
-                                ),
-                                keyboardType: TextInputType.emailAddress,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your email';
-                                  }
-                                  if (!RegExp(
-                                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                                  ).hasMatch(value)) {
-                                    return 'Please enter a valid email';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 24),
-
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                controller: _companyController,
-                                decoration: const InputDecoration(
-                                  labelText: 'Company',
-                                  prefixIcon: Icon(Icons.business_outlined),
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: TextFormField(
-                                controller: _phoneController,
-                                decoration: const InputDecoration(
-                                  labelText: 'Phone Number',
-                                  prefixIcon: Icon(Icons.phone_outlined),
-                                  border: OutlineInputBorder(),
-                                ),
-                                keyboardType: TextInputType.phone,
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 24),
-
-                        DropdownButtonFormField<String>(
-                          value: _selectedService.isEmpty ? null : _selectedService,
-                          decoration: const InputDecoration(
-                            labelText: 'Service Interest',
-                            prefixIcon: Icon(Icons.engineering_outlined),
-                            border: OutlineInputBorder(),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your name';
+                              }
+                              return null;
+                            },
                           ),
-                          items: _services
-                              .map(
-                                (service) => DropdownMenuItem(
-                                  value: service,
-                                  child: Text(service),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedService = value ?? '';
-                            });
-                          },
                         ),
-
-                        const SizedBox(height: 24),
-
-                        TextFormField(
-                          controller: _messageController,
-                          decoration: const InputDecoration(
-                            labelText: 'Project Details *',
-                            prefixIcon: Icon(Icons.message_outlined),
-                            border: OutlineInputBorder(),
-                            alignLabelWithHint: true,
-                          ),
-                          maxLines: 5,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please describe your project';
-                            }
-                            return null;
-                          },
-                        ),
-
-                        const SizedBox(height: 32),
-
-                        SizedBox(
-                          width: double.infinity,
-                          height: 56,
-                          child: ElevatedButton(
-                            onPressed: _isSubmitting ? null : _submitForm,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppTheme.primaryBlue,
-                              foregroundColor: Colors.white,
-                              textStyle: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                              labelText: 'Email Address *',
+                              prefixIcon: Icon(Icons.email_outlined),
+                              border: OutlineInputBorder(),
                             ),
-                            child: _isSubmitting
-                                ? const Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                                Colors.white,
-                                              ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 12),
-                                      Text('Submitting...'),
-                                    ],
-                                  )
-                                : const Text('Send Message'),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your email';
+                              }
+                              if (!RegExp(
+                                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                              ).hasMatch(value)) {
+                                return 'Please enter a valid email';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 24),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: _companyController,
+                            decoration: const InputDecoration(
+                              labelText: 'Company',
+                              prefixIcon: Icon(Icons.business_outlined),
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: TextFormField(
+                            controller: _phoneController,
+                            decoration: const InputDecoration(
+                              labelText: 'Phone Number',
+                              prefixIcon: Icon(Icons.phone_outlined),
+                              border: OutlineInputBorder(),
+                            ),
+                            keyboardType: TextInputType.phone,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    DropdownButtonFormField<String>(
+                      value: _selectedService.isEmpty ? null : _selectedService,
+                      decoration: const InputDecoration(
+                        labelText: 'Service Interest',
+                        prefixIcon: Icon(Icons.engineering_outlined),
+                        border: OutlineInputBorder(),
+                      ),
+                      items: _services
+                          .map(
+                            (service) => DropdownMenuItem(
+                              value: service,
+                              child: Text(service),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedService = value ?? '';
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    TextFormField(
+                      controller: _messageController,
+                      decoration: const InputDecoration(
+                        labelText: 'Project Details *',
+                        prefixIcon: Icon(Icons.message_outlined),
+                        border: OutlineInputBorder(),
+                        alignLabelWithHint: true,
+                      ),
+                      maxLines: 5,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please describe your project';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 32),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: _isSubmitting ? null : _submitForm,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppTheme.primaryBlue,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        child: _isSubmitting
+                            ? const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  Text('Submitting...'),
+                                ],
+                              )
+                            : const Text('Send Message'),
+                      ),
+                    ),
+                  ],
                 ),
-              )
+              ),
+            ),
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -295,9 +282,7 @@ class _ContactPageState extends State<ContactPage> {
               context,
             ).textTheme.displayMedium?.copyWith(fontWeight: FontWeight.w700),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 48),
-
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -329,100 +314,98 @@ class _ContactPageState extends State<ContactPage> {
               final info = contactInfo[index];
 
               return Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                elevation: 8,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(32),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Colors.white,
+                        (info['color'] as Color).withValues(alpha: 0.05),
+                      ],
                     ),
-                    child: Container(
-                      padding: const EdgeInsets.all(32),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Colors.white,
-                            (info['color'] as Color).withValues(alpha: 0.05),
-                          ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color:
+                              (info['color'] as Color).withValues(alpha: 0.1),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: (info['color'] as Color).withValues(
+                              alpha: 0.2,
+                            ),
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            info['icon'] as IconData,
+                            size: 50,
+                            color: info['color'] as Color,
+                          ),
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: (info['color'] as Color).withValues(alpha: 0.1),
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: (info['color'] as Color).withValues(alpha: 
-                                  0.2,
-                                ),
-                                width: 2,
-                              ),
-                            ),
-                            child: Center(
-                              child: Icon(
-                                info['icon'] as IconData,
-                                size: 50,
-                                color: info['color'] as Color,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 24),
-                          Text(
-                            info['title'] as String,
-                            style: Theme.of(context).textTheme.headlineSmall
-                                ?.copyWith(
+                      const SizedBox(height: 24),
+                      Text(
+                        info['title'] as String,
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   fontWeight: FontWeight.w700,
                                   color: AppTheme.primaryBlue,
                                 ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            info['subtitle'] as String,
-                            style: Theme.of(context).textTheme.bodyLarge
-                                ?.copyWith(
-                                  color: Colors.grey[600],
-                                  height: 1.4,
-                                ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 16),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        info['subtitle'] as String,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Colors.grey[600],
+                              height: 1.4,
                             ),
-                            decoration: BoxDecoration(
-                              color: (info['color'] as Color).withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: (info['color'] as Color).withValues(alpha: 
-                                  0.2,
-                                ),
-                                width: 1,
-                              ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color:
+                              (info['color'] as Color).withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: (info['color'] as Color).withValues(
+                              alpha: 0.2,
                             ),
-                            child: Text(
-                              info['content'] as String,
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(
+                            width: 1,
+                          ),
+                        ),
+                        child: Text(
+                          info['content'] as String,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: info['color'] as Color,
                                   ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                  )
-                  .animate(delay: (index * 100).ms)
-                  .fadeIn(duration: 600.ms)
-                  .scale(
+                    ],
+                  ),
+                ),
+              ).animate(delay: (index * 100).ms).fadeIn(duration: 600.ms).scale(
                     begin: const Offset(0.8, 0.8),
                     end: const Offset(1.0, 1.0),
                   );
@@ -443,42 +426,38 @@ class _ContactPageState extends State<ContactPage> {
             'Ready to Transform Your Business?',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 24),
-
           Text(
-                'Join hundreds of companies that trust AetherCorp for their digital transformation',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            'Join hundreds of companies that trust AetherCorp for their digital transformation',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
-
           const SizedBox(height: 32),
-
           ElevatedButton(
-                onPressed: () => _scrollToForm(),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryBlue,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 20,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                child: const Text('Start Your Project Today'),
-              )
+            onPressed: () => _scrollToForm(),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppTheme.primaryBlue,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 48,
+                vertical: 20,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            child: const Text('Start Your Project Today'),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -583,20 +562,20 @@ class _ContactPageState extends State<ContactPage> {
           Text(
             'Ready to Transform Your Business?',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: AppTheme.primaryBlue,
-            ),
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.primaryBlue,
+                ),
           ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.3, end: 0),
 
           const SizedBox(height: 16),
 
           Text(
-                'Let\'s discuss how we can help you achieve your digital transformation goals',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            'Let\'s discuss how we can help you achieve your digital transformation goals',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
-              )
+          )
               .animate()
               .fadeIn(delay: 200.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -605,102 +584,100 @@ class _ContactPageState extends State<ContactPage> {
 
           // Contact image section
           Container(
-                width: double.infinity,
-                height: isMobile ? 300 : 500,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 20,
-                      offset: const Offset(0, 10),
-                    ),
-                  ],
+            width: double.infinity,
+            height: isMobile ? 300 : 500,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10),
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          AppTheme.primaryBlue.withValues(alpha: 0.8),
-                          AppTheme.primaryViolet.withValues(alpha: 0.8),
-                        ],
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        // Background pattern
-                        Positioned.fill(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'assets/images/contact-hero.jpg',
-                                ),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.black.withValues(alpha: 0.3),
-                                  BlendMode.darken,
-                                ),
-                              ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppTheme.primaryBlue.withValues(alpha: 0.8),
+                      AppTheme.primaryViolet.withValues(alpha: 0.8),
+                    ],
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    // Background pattern
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                              'assets/images/contact-hero.jpg',
+                            ),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Colors.black.withValues(alpha: 0.3),
+                              BlendMode.darken,
                             ),
                           ),
                         ),
-
-                        // Content overlay
-                        Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.2),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Colors.white.withValues(alpha: 0.3),
-                                    width: 3,
-                                  ),
-                                ),
-                                child: const Icon(
-                                  Icons.handshake_outlined,
-                                  color: Colors.white,
-                                  size: 60,
-                                ),
-                              ),
-
-                              const SizedBox(height: 24),
-
-                              Text(
-                                'Let\'s Work Together',
-                                style: Theme.of(context).textTheme.headlineSmall
-                                    ?.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-
-                              const SizedBox(height: 8),
-
-                              Text(
-                                'Transform your business with our expertise',
-                                style: TextStyle(
-                                  color: Colors.white.withValues(alpha: 0.9),
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+
+                    // Content overlay
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 120,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.2),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white.withValues(alpha: 0.3),
+                                width: 3,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.handshake_outlined,
+                              color: Colors.white,
+                              size: 60,
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            'Let\'s Work Together',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall
+                                ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Transform your business with our expertise',
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.9),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              )
+              ),
+            ),
+          )
               .animate()
               .fadeIn(delay: 400.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -709,25 +686,25 @@ class _ContactPageState extends State<ContactPage> {
 
           // Key benefits
           Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildBenefitItem(
-                    Icons.speed,
-                    'Fast Delivery',
-                    'Quick turnaround times',
-                  ),
-                  _buildBenefitItem(
-                    Icons.security,
-                    'Secure & Reliable',
-                    'Enterprise-grade security',
-                  ),
-                  _buildBenefitItem(
-                    Icons.support_agent,
-                    '24/7 Support',
-                    'Round-the-clock assistance',
-                  ),
-                ],
-              )
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildBenefitItem(
+                Icons.speed,
+                'Fast Delivery',
+                'Quick turnaround times',
+              ),
+              _buildBenefitItem(
+                Icons.security,
+                'Secure & Reliable',
+                'Enterprise-grade security',
+              ),
+              _buildBenefitItem(
+                Icons.support_agent,
+                '24/7 Support',
+                'Round-the-clock assistance',
+              ),
+            ],
+          )
               .animate()
               .fadeIn(delay: 600.ms, duration: 600.ms)
               .slideY(begin: 0.3, end: 0),
@@ -755,27 +732,23 @@ class _ContactPageState extends State<ContactPage> {
               child: Icon(icon, color: AppTheme.primaryBlue, size: 24),
             ),
           ),
-
           const SizedBox(height: 16),
-
           Text(
             title,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: AppTheme.primaryBlue,
-            ),
+                  fontWeight: FontWeight.w600,
+                  color: AppTheme.primaryBlue,
+                ),
             textAlign: TextAlign.center,
           ),
-
           const SizedBox(height: 8),
-
           Text(
             description,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: Theme.of(
-                context,
-              ).textTheme.bodySmall?.color?.withValues(alpha: 0.7),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.color?.withValues(alpha: 0.7),
+                ),
             textAlign: TextAlign.center,
           ),
         ],

@@ -39,9 +39,8 @@ class AnimatedIllustration extends StatelessWidget {
         svgPath!,
         width: size,
         height: size,
-        colorFilter: color != null
-            ? ColorFilter.mode(color!, BlendMode.srcIn)
-            : null,
+        colorFilter:
+            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       );
     } else if (icon != null) {
       illustration = Icon(
@@ -162,26 +161,25 @@ class FloatingParticles extends StatelessWidget {
         return Positioned(
           left: (index * 50.0) % MediaQuery.of(context).size.width,
           top: (index * 30.0) % MediaQuery.of(context).size.height,
-          child:
-              Container(
-                    width: particleSize,
-                    height: particleSize,
-                    decoration: BoxDecoration(
-                      color: particleColor.withValues(alpha: 0.6),
-                      shape: BoxShape.circle,
-                    ),
-                  )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .fadeIn(duration: animationDuration)
-                  .then()
-                  .fadeOut(duration: animationDuration)
-                  .then()
-                  .moveY(
-                    begin: 0,
-                    end: -100,
-                    duration: animationDuration,
-                    curve: Curves.easeInOut,
-                  ),
+          child: Container(
+            width: particleSize,
+            height: particleSize,
+            decoration: BoxDecoration(
+              color: particleColor.withValues(alpha: 0.6),
+              shape: BoxShape.circle,
+            ),
+          )
+              .animate(onPlay: (controller) => controller.repeat())
+              .fadeIn(duration: animationDuration)
+              .then()
+              .fadeOut(duration: animationDuration)
+              .then()
+              .moveY(
+                begin: 0,
+                end: -100,
+                duration: animationDuration,
+                curve: Curves.easeInOut,
+              ),
         );
       }),
     );
