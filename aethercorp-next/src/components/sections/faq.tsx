@@ -31,61 +31,71 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Section id="faq">
-      <div className="grid gap-12 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-            ↳ Frequently asked
-          </span>
-          <h2 className="editorial-display mt-6 text-5xl md:text-6xl lg:text-7xl">
-            Asked
-            <br />
-            <span className="text-accent">first.</span>
+      <div className="mb-16 grid items-end gap-8 border-b-2 border-[--color-ink] pb-12 md:grid-cols-12">
+        <div className="md:col-span-1">
+          <div className="label">§ VI.</div>
+        </div>
+        <div className="md:col-span-7">
+          <div className="label text-[--color-ink-muted]">↳ Asked & answered</div>
+          <h2
+            className="display-italic mt-6 text-6xl text-[--color-ink] md:text-8xl lg:text-[110px]"
+            style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+          >
+            Footnotes.
           </h2>
         </div>
-
-        <div className="md:col-span-8">
-          <div className="border-t border-[--color-border]">
-            {FAQS.map((f, i) => {
-              const isOpen = open === i;
-              const num = String(i + 1).padStart(2, "0");
-              return (
-                <button
-                  key={f.q}
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="block w-full border-b border-[--color-border] text-left transition hover:bg-[--color-bg-soft]/40"
-                  aria-expanded={isOpen}
-                >
-                  <div className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-8">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-                      {num}
-                    </span>
-                    <span className="font-[family-name:var(--font-display)] text-xl tracking-[-0.01em] text-[--color-fg] md:text-2xl">
-                      {f.q}
-                    </span>
-                    <span
-                      className={cn(
-                        "size-6 shrink-0 text-[--color-fg]/60 transition-transform",
-                        isOpen && "rotate-45 text-[--color-accent]"
-                      )}
-                    >
-                      +
-                    </span>
-                  </div>
-                  <div
-                    className={cn(
-                      "grid overflow-hidden transition-[grid-template-rows] duration-300",
-                      isOpen ? "grid-rows-[1fr] pb-8" : "grid-rows-[0fr]"
-                    )}
-                  >
-                    <p className="overflow-hidden pl-[3.5rem] text-base leading-relaxed text-[--color-fg]/75">
-                      {f.a}
-                    </p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+        <div className="md:col-span-4">
+          <p className="serif-body text-lg text-[--color-ink]">
+            Things teams typically ask before they hire us — answered up front
+            so you don&apos;t have to.
+          </p>
         </div>
+      </div>
+
+      <div className="border-t border-[--color-ink]">
+        {FAQS.map((f, i) => {
+          const isOpen = open === i;
+          const num = `0${i + 1}`;
+          return (
+            <button
+              key={f.q}
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="block w-full border-b border-[--color-ink]/15 text-left transition hover:bg-[--color-paper-deep]"
+              aria-expanded={isOpen}
+            >
+              <div className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-8 md:gap-10">
+                <span className="label w-10 text-[--color-ink-dim]">
+                  {num}
+                </span>
+                <span
+                  className="display-italic text-2xl text-[--color-ink] md:text-4xl"
+                  style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+                >
+                  {f.q}
+                </span>
+                <span
+                  className={cn(
+                    "display-italic shrink-0 text-2xl text-[--color-ink]/60 transition-transform md:text-3xl",
+                    isOpen && "rotate-45 text-[--color-oxblood]"
+                  )}
+                  style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+                >
+                  +
+                </span>
+              </div>
+              <div
+                className={cn(
+                  "grid overflow-hidden transition-[grid-template-rows] duration-300",
+                  isOpen ? "grid-rows-[1fr] pb-8" : "grid-rows-[0fr]"
+                )}
+              >
+                <p className="serif-body overflow-hidden pl-16 pr-12 text-lg text-[--color-ink]/85 md:pl-20">
+                  {f.a}
+                </p>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </Section>
   );

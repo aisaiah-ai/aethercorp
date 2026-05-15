@@ -1,48 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  /* Dark (default) — charcoal */
-  --color-bg: #0e1116;
-  --color-bg-soft: #141821;
-  --color-surface: #1a1f2a;
-  --color-surface-2: #232936;
+  /* Light cream paper aesthetic */
+  --color-paper: #ece6d7;
+  --color-paper-deep: #ddd5c2;
+  --color-paper-soft: #f3eee3;
 
-  /* Cream (light sections) */
-  --color-cream: #ebe4d5;
-  --color-cream-soft: #f1ebde;
-  --color-cream-deep: #d9d1bf;
+  /* Ink */
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #2a2622;
+  --color-ink-muted: #6b6862;
+  --color-ink-dim: #98948a;
 
-  /* Text */
-  --color-fg: #ebe4d5;             /* warm cream on dark */
-  --color-fg-muted: #98948a;
-  --color-fg-dim: #6b6862;
-  --color-fg-on-cream: #1a1d24;
-  --color-fg-on-cream-muted: #4d5159;
+  /* Accent — oxblood */
+  --color-oxblood: #6b1d24;
+  --color-oxblood-deep: #4f1318;
+  --color-oxblood-soft: #8e2a32;
 
-  /* Borders */
-  --color-border: rgba(235, 228, 213, 0.10);
-  --color-border-strong: rgba(235, 228, 213, 0.22);
-  --color-border-on-cream: rgba(26, 29, 36, 0.12);
-  --color-border-on-cream-strong: rgba(26, 29, 36, 0.28);
+  /* Signal — electric lime (used sparingly for "live"/"now") */
+  --color-signal: #b3d943;
+  --color-signal-deep: #8aa730;
 
-  /* Accent — Rivian-inspired Compass Yellow analog (warm sand/olive) */
-  --color-accent: #cfd784;
-  --color-accent-deep: #a4ad5c;
-  --color-accent-soft: #ddd9a1;
+  /* Dark inversion for full-takeover menus / contrast sections */
+  --color-coal: #0e0c0a;
+  --color-coal-soft: #1a1714;
 
-  /* Legacy aliases kept for any leftover refs */
-  --color-brand: #cfd784;
-  --color-brand-2: #cfd784;
-  --color-brand-3: #ddd9a1;
+  --color-border: rgba(10, 10, 10, 0.12);
+  --color-border-strong: rgba(10, 10, 10, 0.28);
+  --color-border-faint: rgba(10, 10, 10, 0.06);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-display), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Legacy aliases — kept so any leftover refs still resolve.
+     New components should use --color-paper / --color-ink / --color-oxblood. */
+  --color-bg: var(--color-paper);
+  --color-bg-soft: var(--color-paper-soft);
+  --color-surface: var(--color-paper-deep);
+  --color-surface-2: var(--color-paper-deep);
+  --color-fg: var(--color-ink);
+  --color-fg-muted: var(--color-ink-muted);
+  --color-fg-dim: var(--color-ink-dim);
+  --color-accent: var(--color-oxblood);
+  --color-brand: var(--color-oxblood);
+  --color-brand-2: var(--color-oxblood);
+  --color-brand-3: var(--color-signal);
+  --color-cream: var(--color-paper);
+  --color-cream-soft: var(--color-paper-soft);
+  --color-fg-on-cream: var(--color-ink);
+  --color-fg-on-cream-muted: var(--color-ink-muted);
+  --color-border-on-cream: var(--color-border);
+  --color-border-on-cream-strong: var(--color-border-strong);
+  --color-accent-deep: var(--color-oxblood-deep);
 
-  --radius-xl: 4px;
-  --radius-2xl: 6px;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-display: var(--font-display), Georgia, serif;
 
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee-slow: marquee 120s linear infinite;
+  --animate-marquee-fast: marquee 25s linear infinite;
+  --animate-spin-slow: spin-slow 40s linear infinite;
+  --animate-blink: blink 1.4s steps(2, start) infinite;
 }
 
 @keyframes marquee {
@@ -50,12 +66,22 @@
   to { transform: translateX(-50%); }
 }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 html, body {
-  background: var(--color-bg);
-  color: var(--color-fg);
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "ss01", "cv11";
+  font-feature-settings: "ss01";
 }
 
 * {
@@ -63,45 +89,200 @@ html, body {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #0e1116;
+  background: var(--color-oxblood);
+  color: var(--color-paper);
 }
 
-/* Editorial type display class — for huge confident headlines */
-.editorial-display {
+/* Editorial display — Fraunces, with optical sizing baked in */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  font-variation-settings: "SOFT" 50, "WONK" 0, "opsz" 144;
+}
+
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+}
+
+.display-wonky {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.04em;
+  font-style: italic;
+  letter-spacing: -0.03em;
   line-height: 0.92;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
 }
 
-.editorial-eyebrow {
+/* Tiny mono caps, used heavily */
+.label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.editorial-rule {
+.label-lg {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.serif-body {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+  font-variation-settings: "opsz" 24;
+}
+
+/* Drop cap — magazine style */
+.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  float: left;
+  font-size: 5em;
+  line-height: 0.8;
+  margin: 0.1em 0.12em 0 0;
+  color: var(--color-oxblood);
+  font-variation-settings: "opsz" 144;
+}
+
+/* Marquees */
+.marquee {
+  display: flex;
+  gap: 4rem;
+  animation: var(--animate-marquee);
+  white-space: nowrap;
+  width: max-content;
+}
+
+.marquee-slow {
+  animation: var(--animate-marquee-slow);
+}
+
+.marquee-fast {
+  animation: var(--animate-marquee-fast);
+}
+
+.spin-slow {
+  animation: var(--animate-spin-slow);
+  transform-origin: center;
+}
+
+.blink {
+  animation: var(--animate-blink);
+}
+
+/* Subtle paper grain */
+.paper-grain {
+  background-image:
+    radial-gradient(rgba(10, 10, 10, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.paper-grain-strong {
+  background-image:
+    radial-gradient(rgba(10, 10, 10, 0.08) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Dotted underline for editorial links */
+.dotted-link {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 4px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.dotted-link:hover {
+  color: var(--color-oxblood);
+}
+
+/* Rule */
+.hr-thin {
   border-top: 1px solid var(--color-border);
 }
 
-.editorial-rule-strong {
-  border-top: 1px solid var(--color-border-strong);
+.hr-thick {
+  border-top: 2px solid var(--color-ink);
 }
 
-/* Section number badge */
+/* Coal section variant (rare full-bleed dark moment) */
+.section-coal {
+  background: var(--color-coal);
+  color: var(--color-paper);
+}
+.section-coal * {
+  border-color: rgba(236, 230, 215, 0.16);
+}
+
+/* Asymmetric editorial column system */
+.editorial-prose {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 24;
+}
+
+.editorial-prose p + p {
+  text-indent: 1.4em;
+  margin-top: 0;
+}
+
+/* Cursor effect — a small ink dot, but only on pointer-fine devices */
+@media (pointer: fine) {
+  .cursor-target {
+    cursor: none;
+  }
+}
+
+/* Hover scale for big editorial CTAs */
+.lift-on-hover {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.lift-on-hover:hover {
+  transform: translateY(-3px);
+}
+
+/* Reset the legacy text-gradient class to be a flat oxblood */
+.text-gradient {
+  color: var(--color-oxblood);
+  background: none;
+  -webkit-text-fill-color: var(--color-oxblood);
+}
+
+/* Editorial helpers used in older components — keep working but minimal */
+.editorial-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  font-variation-settings: "SOFT" 50, "opsz" 144;
+}
+
+.editorial-eyebrow,
 .section-num {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--color-fg-muted);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-/* Spec stat — large number, small label (Rivian-style) */
 .spec-num {
   font-family: var(--font-display);
   font-weight: 600;
@@ -110,7 +291,25 @@ html, body {
   line-height: 1;
 }
 
-/* Hover underline that draws in */
+/* Older bg helpers — neutralize to paper */
+.bg-hairline,
+.bg-grain,
+.bg-grain-cream,
+.bg-radial-glow {
+  background-image: none;
+}
+
+/* Section-cream remains usable but now means "deeper paper" */
+.section-cream {
+  background: var(--color-paper-deep);
+  color: var(--color-ink);
+}
+
+.text-accent {
+  color: var(--color-oxblood);
+}
+
+/* Link-underline animated underline */
 .link-underline {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
@@ -120,54 +319,4 @@ html, body {
 }
 .link-underline:hover {
   background-size: 100% 1px;
-}
-
-/* Marquee row */
-.marquee-row {
-  display: flex;
-  gap: 4rem;
-  animation: var(--animate-marquee);
-  white-space: nowrap;
-}
-
-/* Subtle paper-grain noise for hero / cream sections */
-.bg-grain {
-  background-image:
-    radial-gradient(rgba(235, 228, 213, 0.03) 1px, transparent 1px);
-  background-size: 4px 4px;
-}
-
-.bg-grain-cream {
-  background-image:
-    radial-gradient(rgba(26, 29, 36, 0.04) 1px, transparent 1px);
-  background-size: 4px 4px;
-}
-
-/* Hairline grid (replacing the old chunky grid) */
-.bg-hairline {
-  background-image:
-    linear-gradient(to right, rgba(235, 228, 213, 0.04) 1px, transparent 1px);
-  background-size: 80px 100%;
-}
-
-/* Cream section variant */
-.section-cream {
-  background: var(--color-cream);
-  color: var(--color-fg-on-cream);
-}
-.section-cream * {
-  border-color: var(--color-border-on-cream);
-}
-
-.text-accent {
-  color: var(--color-accent);
-}
-
-/* Keep text-gradient class working in case anything still uses it,
-   but tone it down to a subtle cream-to-accent sweep. */
-.text-gradient {
-  background: linear-gradient(120deg, var(--color-fg) 0%, var(--color-accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }

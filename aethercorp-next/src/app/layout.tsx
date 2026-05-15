@@ -1,37 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const display = Space_Grotesk({
+const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aethercorp.io"),
   title: {
-    default: "AetherCorp — AI, Social, Web & Native Mobile Studio",
-    template: "%s · AetherCorp",
+    default: "Aethercorp — A Studio Building Things People Can't Ignore",
+    template: "%s · Aethercorp",
   },
   description:
-    "AetherCorp is a modern studio building AI products, social media engines, rich web platforms, and native iOS & Android apps for businesses ready to scale.",
+    "Aethercorp is a studio of AI engineers, designers, and storytellers — making AI products, social engines, web platforms, and native mobile apps.",
   openGraph: {
-    title: "AetherCorp — AI, Social, Web & Native Mobile Studio",
+    title: "Aethercorp — A Studio",
     description:
-      "We design, ship, and scale AI products, social presence, modern web platforms, and native mobile apps.",
+      "AI · Social · Web · Native Mobile. From $200 starter sites to eight-figure platforms.",
     type: "website",
   },
 };
@@ -42,11 +44,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${display.variable} h-full antialiased`}
+      className={`${inter.variable} ${mono.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="relative flex min-h-full flex-col bg-[--color-bg] text-[--color-fg]">
+      <body className="relative flex min-h-full flex-col bg-[--color-paper] text-[--color-ink]">
         <Header />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

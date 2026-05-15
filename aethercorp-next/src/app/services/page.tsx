@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const DETAILS = [
   {
     id: "ai",
-    num: "01",
+    num: "I.",
     title: "AI Engineering",
     points: [
       "Agentic systems with tool use, memory, and human-in-the-loop",
@@ -24,7 +24,7 @@ const DETAILS = [
   },
   {
     id: "social",
-    num: "02",
+    num: "II.",
     title: "Social Media",
     points: [
       "Brand strategy, narrative, and creative direction",
@@ -35,7 +35,7 @@ const DETAILS = [
   },
   {
     id: "web",
-    num: "03",
+    num: "III.",
     title: "Web Development",
     points: [
       "Next.js 16 marketing, dashboards, and full SaaS surfaces",
@@ -46,7 +46,7 @@ const DETAILS = [
   },
   {
     id: "mobile",
-    num: "04",
+    num: "IV.",
     title: "Native iOS & Android",
     points: [
       "SwiftUI + Jetpack Compose, no cross-platform compromise",
@@ -60,18 +60,23 @@ const DETAILS = [
 export default function ServicesPage() {
   return (
     <>
-      <Section className="!py-32 md:!py-40">
-        <div className="mb-16 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-          <span>↳ Services · 01 — 04</span>
-          <span className="hidden md:inline">Full studio</span>
+      <Section className="!py-24 md:!py-32 paper-grain">
+        <div className="mb-16 flex items-center justify-between border-b-2 border-[--color-ink] pb-4 label-lg">
+          <span>↳ Aethercorp · Services · 01 — 04</span>
+          <span className="hidden text-[--color-oxblood] md:inline">Full studio</span>
         </div>
 
-        <h1 className="editorial-display max-w-[14ch] text-5xl md:text-7xl lg:text-9xl">
+        <h1
+          className="display-italic text-[14vw] leading-[0.86] text-[--color-ink] md:text-[10vw] lg:text-[9vw]"
+          style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+        >
           Four practices.
           <br />
-          <span className="text-accent">One studio.</span>
+          <span className="display text-[--color-oxblood]" style={{ fontVariationSettings: '"opsz" 144' }}>
+            One studio.
+          </span>
         </h1>
-        <p className="mt-8 max-w-xl text-base text-[--color-fg]/85 md:text-lg">
+        <p className="serif-body mt-8 max-w-xl text-lg text-[--color-ink] md:text-xl">
           Each capability is excellent on its own. Run them together and you
           get a flywheel — AI that powers the product, social that spreads it,
           web that converts, mobile that retains.
@@ -80,45 +85,47 @@ export default function ServicesPage() {
 
       <Pillars />
 
-      <Section>
-        <div className="mb-16 border-b border-[--color-border] pb-12">
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-            ↳ What you actually get
-          </span>
-          <h2 className="editorial-display mt-6 max-w-[14ch] text-5xl md:text-7xl">
-            Inside each
-            <br />
-            <span className="text-accent">discipline.</span>
+      <Section className="!pt-0">
+        <div className="mb-16 border-b-2 border-[--color-ink] pb-12">
+          <div className="label text-[--color-ink-muted]">↳ Inside each discipline</div>
+          <h2
+            className="display-italic mt-6 text-6xl text-[--color-ink] md:text-8xl"
+            style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+          >
+            What you{" "}
+            <span className="display text-[--color-oxblood]" style={{ fontVariationSettings: '"opsz" 144' }}>
+              actually get.
+            </span>
           </h2>
         </div>
 
-        <div className="grid gap-px border border-[--color-border] bg-[--color-border] md:grid-cols-2">
+        <div className="grid gap-px border-2 border-[--color-ink] bg-[--color-ink] md:grid-cols-2">
           {DETAILS.map((d) => (
-            <div
-              key={d.id}
-              id={d.id}
-              className="bg-[--color-bg] p-8 md:p-10"
-            >
+            <div key={d.id} id={d.id} className="bg-[--color-paper] p-8 md:p-12">
               <div className="flex items-baseline justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                <span
+                  className="display-italic text-5xl text-[--color-oxblood] md:text-6xl"
+                  style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+                >
                   {d.num}
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-accent]">
+                <span className="label text-[--color-ink-muted]">
                   Discipline
                 </span>
               </div>
-              <h3 className="editorial-display mt-12 text-4xl md:text-5xl">
+              <h3
+                className="display mt-12 text-5xl text-[--color-ink] md:text-6xl"
+                style={{ fontVariationSettings: '"opsz" 144' }}
+              >
                 {d.title}
               </h3>
-              <ul className="mt-10 space-y-4 border-t border-[--color-border] pt-8">
+              <ul className="mt-10 space-y-4 border-t border-[--color-ink]/15 pt-8">
                 {d.points.map((p) => (
                   <li
                     key={p}
-                    className="flex gap-4 text-sm leading-relaxed text-[--color-fg]/85 md:text-base"
+                    className="serif-body flex gap-4 text-base leading-relaxed text-[--color-ink] md:text-lg"
                   >
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-accent]">
-                      —
-                    </span>
+                    <span className="label text-[--color-oxblood] shrink-0 pt-1.5">—</span>
                     {p}
                   </li>
                 ))}

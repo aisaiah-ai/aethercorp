@@ -13,7 +13,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative mx-auto w-full max-w-[1440px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40",
+        "relative mx-auto w-full max-w-[1600px] px-6 py-24 md:px-12 md:py-32 lg:px-16 lg:py-40",
         className
       )}
     >
@@ -28,7 +28,6 @@ export function SectionHeader({
   title,
   description,
   align = "left",
-  onCream = false,
 }: {
   num?: string;
   eyebrow?: string;
@@ -37,10 +36,6 @@ export function SectionHeader({
   align?: "left" | "center";
   onCream?: boolean;
 }) {
-  const mutedColor = onCream
-    ? "text-[--color-fg-on-cream-muted]"
-    : "text-[--color-fg-muted]";
-
   return (
     <div
       className={cn(
@@ -50,24 +45,15 @@ export function SectionHeader({
     >
       {(num || eyebrow) ? (
         <div className="flex items-center gap-6">
-          {num ? (
-            <span className={cn("section-num", mutedColor)}>{num}</span>
-          ) : null}
-          {eyebrow ? (
-            <span className={cn("section-num", mutedColor)}>{eyebrow}</span>
-          ) : null}
+          {num ? <span className="label">{num}</span> : null}
+          {eyebrow ? <span className="label">{eyebrow}</span> : null}
         </div>
       ) : null}
-      <h2 className="editorial-display max-w-[18ch] text-balance text-4xl md:text-6xl lg:text-7xl">
+      <h2 className="display max-w-[18ch] text-balance text-5xl md:text-7xl lg:text-8xl">
         {title}
       </h2>
       {description ? (
-        <p
-          className={cn(
-            "max-w-[52ch] text-pretty text-base md:text-lg",
-            mutedColor
-          )}
-        >
+        <p className="serif-body max-w-[55ch] text-pretty text-lg md:text-xl text-[--color-ink-soft]">
           {description}
         </p>
       ) : null}

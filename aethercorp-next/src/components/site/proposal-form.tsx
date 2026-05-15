@@ -2,21 +2,10 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 const TIERS = [
-  {
-    id: "starter",
-    label: "Starter",
-    sub: "$200 + $100/mo",
-    tag: "Fastest",
-  },
-  {
-    id: "growth",
-    label: "Growth",
-    sub: "$650 + $250/mo",
-    tag: "Most popular",
-  },
+  { id: "starter", label: "Starter", sub: "$200 + $100/mo", tag: "Fastest" },
+  { id: "growth", label: "Growth", sub: "$650 + $250/mo", tag: "Most popular" },
   { id: "pro", label: "Pro", sub: "Custom quote", tag: "Custom" },
   { id: "unsure", label: "Not sure yet", sub: "Let's talk it through" },
 ] as const;
@@ -59,21 +48,22 @@ export function ProposalForm() {
 
   if (submitted) {
     return (
-      <div className="relative border border-[--color-border-strong] bg-[--color-bg-soft] p-10 md:p-14">
-        <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-accent]">
-          ↳ Received · 01 / 01
-        </div>
-        <h3 className="editorial-display mt-6 text-4xl md:text-5xl">
+      <div className="border-2 border-[--color-ink] bg-[--color-oxblood] p-10 text-[--color-paper] md:p-14">
+        <div className="label text-[--color-paper]/70">↳ Received · 01 / 01</div>
+        <h3
+          className="display-italic mt-6 text-5xl md:text-6xl"
+          style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+        >
           Proposal
           <br />
-          <span className="text-accent">request received.</span>
+          <span className="text-[--color-signal]">received.</span>
         </h3>
-        <p className="mt-6 max-w-md text-[--color-fg]/85">
-          We&apos;ll email you a fixed-price proposal within one business day —
-          usually same-day. Check your spam folder just in case.
+        <p className="serif-body mt-6 max-w-md text-base text-[--color-paper]/90">
+          We&apos;ll email you a fixed-price proposal within one business
+          day — usually same-day. Check your spam folder just in case.
         </p>
-        <div className="mt-10 flex items-center gap-3 border-t border-[--color-border] pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-          <span className="size-1.5 rounded-full bg-[--color-accent]" />
+        <div className="mt-10 flex items-center gap-3 border-t border-[--color-paper]/25 pt-6 label text-[--color-paper]/80">
+          <span className="size-1.5 rounded-full bg-[--color-signal] blink" />
           Average response time · 3 hours
         </div>
       </div>
@@ -83,35 +73,35 @@ export function ProposalForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="border border-[--color-border-strong] bg-[--color-bg-soft]/60 p-7 md:p-10"
+      className="border-2 border-[--color-ink] bg-[--color-paper-soft] p-7 md:p-10"
     >
-      <div className="flex items-center justify-between border-b border-[--color-border] pb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+      <div className="flex items-center justify-between border-b-2 border-[--color-ink] pb-5 label-lg">
         <span>↳ Proposal · Form A</span>
         <span>2 min</span>
       </div>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        <Field label="Your name" name="name" required num="01" />
-        <Field label="Email" name="email" type="email" required num="02" />
+        <Field num="01" label="Your name" name="name" required />
+        <Field num="02" label="Email" name="email" type="email" required />
         <Field
+          num="03"
           label="Business name"
           name="business"
           className="sm:col-span-2"
           required
-          num="03"
         />
         <Field
+          num="04"
           label="Current website (optional)"
           name="website"
           type="url"
           placeholder="https://"
           className="sm:col-span-2"
-          num="04"
         />
       </div>
 
       <FieldGroup num="05" label="Industry">
-        <div className="flex flex-wrap gap-x-1 gap-y-1">
+        <div className="flex flex-wrap gap-1">
           {INDUSTRIES.map((i) => {
             const active = industry === i;
             return (
@@ -121,8 +111,8 @@ export function ProposalForm() {
                 onClick={() => setIndustry(i)}
                 className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-accent] bg-[--color-accent] text-[--color-bg]"
-                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
+                    ? "border-[--color-oxblood] bg-[--color-oxblood] text-[--color-paper]"
+                    : "border-[--color-ink]/40 bg-transparent text-[--color-ink] hover:border-[--color-ink] hover:bg-[--color-ink] hover:text-[--color-paper]"
                 }`}
               >
                 {i}
@@ -143,18 +133,21 @@ export function ProposalForm() {
                 onClick={() => setTier(t.id)}
                 className={`border px-4 py-4 text-left transition ${
                   active
-                    ? "border-[--color-fg] bg-[--color-fg] text-[--color-bg]"
-                    : "border-[--color-border-strong] bg-transparent text-[--color-fg] hover:border-[--color-fg]"
+                    ? "border-[--color-ink] bg-[--color-ink] text-[--color-paper]"
+                    : "border-[--color-ink]/40 bg-transparent text-[--color-ink] hover:border-[--color-ink]"
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-[family-name:var(--font-display)] text-lg font-semibold tracking-[-0.01em]">
+                <div className="flex items-baseline justify-between">
+                  <span
+                    className="display-italic text-xl"
+                    style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+                  >
                     {t.label}
                   </span>
                   {"tag" in t && t.tag ? (
                     <span
                       className={`font-mono text-[10px] uppercase tracking-[0.12em] ${
-                        active ? "text-[--color-bg]/70" : "text-[--color-accent]"
+                        active ? "text-[--color-signal]" : "text-[--color-oxblood]"
                       }`}
                     >
                       {t.tag}
@@ -163,7 +156,7 @@ export function ProposalForm() {
                 </div>
                 <div
                   className={`mt-1 font-mono text-[10px] uppercase tracking-[0.12em] ${
-                    active ? "text-[--color-bg]/70" : "text-[--color-fg-muted]"
+                    active ? "text-[--color-paper]/70" : "text-[--color-ink-muted]"
                   }`}
                 >
                   {t.sub}
@@ -185,8 +178,8 @@ export function ProposalForm() {
                 onClick={() => setTimeline(t)}
                 className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-accent] bg-[--color-accent] text-[--color-bg]"
-                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
+                    ? "border-[--color-oxblood] bg-[--color-oxblood] text-[--color-paper]"
+                    : "border-[--color-ink]/40 bg-transparent text-[--color-ink] hover:border-[--color-ink] hover:bg-[--color-ink] hover:text-[--color-paper]"
                 }`}
               >
                 {t}
@@ -201,7 +194,7 @@ export function ProposalForm() {
           name="description"
           rows={5}
           required
-          className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
+          className="w-full border-2 border-[--color-ink] bg-transparent px-4 py-3 text-base text-[--color-ink] placeholder:text-[--color-ink-dim] focus:bg-[--color-paper] focus:outline-none serif-body"
           placeholder="What do you sell, who's your customer, and what should the site do for you?"
         />
       </FieldGroup>
@@ -210,11 +203,15 @@ export function ProposalForm() {
       <input type="hidden" name="timeline" value={timeline ?? ""} />
       <input type="hidden" name="industry" value={industry ?? ""} />
 
-      <Button type="submit" size="lg" className="mt-10 w-full">
-        Send proposal request →
-      </Button>
+      <button
+        type="submit"
+        className="group mt-10 flex w-full items-center justify-between border-2 border-[--color-ink] bg-[--color-ink] px-6 py-5 font-mono text-[11px] uppercase tracking-[0.14em] text-[--color-paper] transition hover:bg-[--color-oxblood] hover:border-[--color-oxblood]"
+      >
+        <span>Send proposal request</span>
+        <span className="transition group-hover:translate-x-1">→</span>
+      </button>
 
-      <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+      <p className="mt-4 text-center label">
         No spam · No newsletter · We email you a quote, that&apos;s it
       </p>
     </form>
@@ -231,14 +228,10 @@ function FieldGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mt-8 border-t border-[--color-border] pt-8">
+    <div className="mt-8 border-t border-[--color-ink]/15 pt-8">
       <div className="mb-4 flex items-baseline gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-          {num}
-        </span>
-        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
-          {label}
-        </label>
+        <span className="label text-[--color-ink-muted]">{num}</span>
+        <label className="label-lg text-[--color-ink]">{label}</label>
       </div>
       {children}
     </div>
@@ -265,19 +258,15 @@ function Field({
   return (
     <div className={className}>
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-          {num}
-        </span>
-        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
-          {label}
-        </label>
+        <span className="label text-[--color-ink-muted]">{num}</span>
+        <label className="label-lg text-[--color-ink]">{label}</label>
       </div>
       <input
         name={name}
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
+        className="w-full border-2 border-[--color-ink] bg-transparent px-4 py-3 text-base text-[--color-ink] placeholder:text-[--color-ink-dim] focus:bg-[--color-paper] focus:outline-none serif-body"
       />
     </div>
   );

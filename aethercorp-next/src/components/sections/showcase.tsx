@@ -6,124 +6,187 @@ import { Section } from "@/components/ui/section";
 
 const ITEMS = [
   {
-    num: "01",
+    num: "I.",
     tag: "AI · SaaS",
     title: "Northwind",
     subtitle: "Agentic operations copilot",
+    summary:
+      "We replaced six dashboards with a single streaming agent. Multi-step tool use, audit logs, evals on every release.",
     metric: "+38%",
-    metricLabel: "Ops throughput, 90 days",
-    gradient: "from-[#5a6342] via-[#9eb867] to-[#cfd784]",
+    metricLabel: "Ops throughput · 90 days",
+    palette: "ink",
   },
   {
-    num: "02",
+    num: "II.",
     tag: "Native iOS · Health",
     title: "Lumen",
     subtitle: "SwiftUI wellness companion",
+    summary:
+      "Spec to App Store in eight weeks. Live activities, on-device coaching, HealthKit, 4.9★ at launch.",
     metric: "4.9★",
     metricLabel: "App Store · 220k MAU",
-    gradient: "from-[#2a3340] via-[#4a5970] to-[#7b8aa3]",
+    palette: "oxblood",
   },
   {
-    num: "03",
+    num: "III.",
     tag: "Web · Commerce",
     title: "Atlasly",
-    subtitle: "Headless storefront rebuild",
+    subtitle: "Headless storefront",
+    summary:
+      "Edge-rendered PDPs, AI search, composable commerce. Conversion lift 2.4× in a single quarter.",
     metric: "2.4×",
-    metricLabel: "Conversion · Lighthouse 96",
-    gradient: "from-[#3a2a1f] via-[#8b6a4a] to-[#d4a574]",
+    metricLabel: "Conversion · LH 96",
+    palette: "ink",
   },
   {
-    num: "04",
+    num: "IV.",
     tag: "Social · Creator",
     title: "Cinder",
     subtitle: "Short-form content engine",
+    summary:
+      "Daily output across TikTok, Reels, and Shorts powered by an AI editing pipeline and an in-house creator collective.",
     metric: "12M",
-    metricLabel: "Views, first quarter",
-    gradient: "from-[#1f2a3a] via-[#3a5572] to-[#a3b8d4]",
+    metricLabel: "Views · first 90 days",
+    palette: "oxblood",
   },
 ];
 
 export function Showcase() {
   return (
-    <Section id="case-studies" className="!py-0">
-      <div className="border-t border-[--color-border] py-24 md:py-32 lg:py-40">
-        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-16">
-          <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-              ↳ Selected work · 01 — 04
+    <Section id="case-studies" className="relative !pt-0">
+      <div className="mb-16 grid items-end gap-8 border-b-2 border-[--color-ink] pb-12 md:grid-cols-12">
+        <div className="md:col-span-1">
+          <div className="label">§ II.</div>
+        </div>
+        <div className="md:col-span-8">
+          <div className="label text-[--color-ink-muted]">↳ Selected from the atelier</div>
+          <h2
+            className="display-italic mt-6 text-6xl text-[--color-ink] md:text-8xl lg:text-[110px]"
+            style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+          >
+            Receipts.
+            <br />
+            <span className="display text-[--color-oxblood]" style={{ fontVariationSettings: '"opsz" 144' }}>
+              Not promises.
             </span>
-            <h2 className="editorial-display mt-6 max-w-[16ch] text-5xl md:text-7xl lg:text-8xl">
-              Outcomes,
-              <br />
-              <span className="text-accent">not deliverables.</span>
-            </h2>
-          </div>
+          </h2>
+        </div>
+        <div className="md:col-span-3 md:text-right">
           <Link
             href="/case-studies"
-            className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]"
+            className="group inline-flex items-center gap-3 border-2 border-[--color-ink] bg-[--color-ink] px-6 py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[--color-paper] transition hover:bg-[--color-oxblood] hover:border-[--color-oxblood]"
           >
-            <span className="link-underline">View archive</span>
-            <span className="text-[--color-accent] transition group-hover:translate-x-1">
-              →
-            </span>
+            <span>View all 40+</span>
+            <span>→</span>
           </Link>
         </div>
+      </div>
 
-        <div className="grid gap-px border border-[--color-border] bg-[--color-border] md:grid-cols-2">
-          {ITEMS.map((c, i) => (
-            <motion.div
-              key={c.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="bg-[--color-bg]"
+      {/* Editorial 2-col layout with alternating offset */}
+      <div className="grid gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
+        {ITEMS.map((c, i) => (
+          <motion.article
+            key={c.title}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: (i % 2) * 0.06 }}
+            className={i % 2 === 1 ? "md:mt-24" : ""}
+          >
+            <Link
+              href="/case-studies"
+              className="group block"
             >
-              <Link
-                href="/case-studies"
-                className="group relative block overflow-hidden transition"
+              {/* Image / mark */}
+              <div
+                className={`relative aspect-[4/5] w-full overflow-hidden border-2 border-[--color-ink] ${
+                  c.palette === "ink"
+                    ? "bg-[--color-coal]"
+                    : "bg-[--color-oxblood]"
+                }`}
               >
-                {/* Image area */}
-                <div
-                  className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${c.gradient}`}
+                <CaseStudyArt palette={c.palette} title={c.title} />
+
+                {/* Top meta */}
+                <div className="absolute left-5 right-5 top-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]">
+                  <span>{c.num} · {c.tag}</span>
+                  <span className="opacity-60">Case File</span>
+                </div>
+
+                {/* Big metric corner */}
+                <div className="absolute bottom-5 left-5">
+                  <div
+                    className="display text-7xl text-[--color-paper] md:text-9xl"
+                    style={{ fontVariationSettings: '"opsz" 144' }}
+                  >
+                    {c.metric}
+                  </div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]/70">
+                    {c.metricLabel}
+                  </div>
+                </div>
+              </div>
+
+              {/* Caption */}
+              <div className="mt-6 grid grid-cols-[auto_1fr_auto] items-baseline gap-4">
+                <span
+                  className="display-italic text-3xl text-[--color-oxblood]"
+                  style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
                 >
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22/></filter><rect width=%22100%22 height=%22100%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>')] mix-blend-overlay" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e1116]/80 via-[#0e1116]/20 to-transparent" />
-
-                  {/* Top meta */}
-                  <div className="absolute left-6 right-6 top-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/80">
-                    <span>{c.num}</span>
-                    <span>{c.tag}</span>
-                  </div>
-
-                  {/* Bottom title */}
-                  <div className="absolute inset-x-6 bottom-6">
-                    <h3 className="editorial-display text-4xl text-white md:text-5xl lg:text-6xl">
-                      {c.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-white/85">{c.subtitle}</p>
-                  </div>
-                </div>
-
-                {/* Spec strip below */}
-                <div className="flex items-end justify-between gap-4 bg-[--color-bg] px-6 py-6 md:px-8">
-                  <div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-                      {c.metricLabel}
-                    </div>
-                    <div className="mt-2 spec-num text-[--color-fg]">
-                      {c.metric}
-                    </div>
-                  </div>
-                  <span className="grid size-12 place-items-center border border-[--color-border-strong] text-[--color-fg] transition group-hover:border-[--color-accent] group-hover:text-[--color-accent]">
-                    →
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                  {c.title}
+                </span>
+                <span className="border-b border-dotted border-[--color-ink-dim]" />
+                <span className="font-mono text-xs uppercase tracking-[0.14em] text-[--color-ink-muted] transition group-hover:text-[--color-oxblood]">
+                  read →
+                </span>
+              </div>
+              <p className="serif-body mt-2 max-w-prose text-base text-[--color-ink]">
+                {c.summary}
+              </p>
+            </Link>
+          </motion.article>
+        ))}
       </div>
     </Section>
+  );
+}
+
+function CaseStudyArt({
+  palette,
+  title,
+}: {
+  palette: string;
+  title: string;
+}) {
+  const inkOnDark = palette === "ink";
+  return (
+    <div className="absolute inset-0">
+      {/* Massive typographic art — the title slammed against the frame */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 text-center">
+        <div
+          className={`display-italic text-[28vw] leading-[0.85] md:text-[18vw] ${
+            inkOnDark ? "text-[--color-paper]" : "text-[--color-paper]"
+          }`}
+          style={{
+            fontVariationSettings: '"WONK" 1, "opsz" 144',
+            opacity: 0.1,
+          }}
+        >
+          {title.toUpperCase().slice(0, 2)}
+        </div>
+      </div>
+
+      {/* Concentric rings */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div
+          className={`spin-slow size-64 rounded-full border border-dotted ${
+            inkOnDark
+              ? "border-[--color-paper]/30"
+              : "border-[--color-paper]/40"
+          }`}
+        />
+      </div>
+      <div className="absolute left-1/2 top-1/2 size-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[--color-paper]/25" />
+    </div>
   );
 }

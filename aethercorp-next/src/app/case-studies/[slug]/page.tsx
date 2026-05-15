@@ -7,23 +7,25 @@ import { CTA } from "@/components/sections/cta";
 const CASES: Record<
   string,
   {
+    num: string;
     tag: string;
     title: string;
     subtitle: string;
     metric: string;
     metricLabel: string;
-    gradient: string;
+    palette: string;
     summary: string;
     body: string[];
   }
 > = {
   northwind: {
+    num: "I.",
     tag: "AI · SaaS",
     title: "Northwind",
     subtitle: "Agentic operations copilot",
     metric: "+38%",
-    metricLabel: "Ops throughput, 90 days",
-    gradient: "from-[#5a6342] via-[#9eb867] to-[#cfd784]",
+    metricLabel: "Ops throughput · 90 days",
+    palette: "ink",
     summary:
       "Replaced a sprawling internal tooling stack with a single agent surface.",
     body: [
@@ -33,12 +35,13 @@ const CASES: Record<
     ],
   },
   lumen: {
+    num: "II.",
     tag: "Native iOS · Health",
     title: "Lumen",
     subtitle: "SwiftUI wellness companion",
     metric: "4.9★",
     metricLabel: "App Store · 220k MAU",
-    gradient: "from-[#2a3340] via-[#4a5970] to-[#7b8aa3]",
+    palette: "oxblood",
     summary:
       "A SwiftUI app with HealthKit, on-device coaching, and live activities.",
     body: [
@@ -48,12 +51,13 @@ const CASES: Record<
     ],
   },
   atlasly: {
+    num: "III.",
     tag: "Web · Commerce",
     title: "Atlasly",
     subtitle: "Headless storefront",
     metric: "2.4×",
     metricLabel: "Conversion · LH 96",
-    gradient: "from-[#3a2a1f] via-[#8b6a4a] to-[#d4a574]",
+    palette: "ink",
     summary:
       "Replatformed onto a composable commerce stack with AI-native search.",
     body: [
@@ -63,14 +67,14 @@ const CASES: Record<
     ],
   },
   cinder: {
+    num: "IV.",
     tag: "Social · Creator",
     title: "Cinder",
     subtitle: "Short-form content engine",
     metric: "12M",
-    metricLabel: "Views, first 90 days",
-    gradient: "from-[#1f2a3a] via-[#3a5572] to-[#a3b8d4]",
-    summary:
-      "Daily short-form output powered by a custom AI editing pipeline.",
+    metricLabel: "Views · first 90 days",
+    palette: "oxblood",
+    summary: "Daily short-form output powered by a custom AI editing pipeline.",
     body: [
       "Cinder needed to publish daily across TikTok, Reels, and Shorts without growing the team. We built a pipeline that ingests raw footage and produces edited clips with captions and hooks.",
       "A creator collective we curated and trained handles the human-in-the-loop QA, posting cadence, and partnership coordination.",
@@ -78,14 +82,14 @@ const CASES: Record<
     ],
   },
   vesper: {
+    num: "V.",
     tag: "Native Android · Fintech",
     title: "Vesper",
     subtitle: "Compose banking app",
     metric: "<200ms",
     metricLabel: "Cold start",
-    gradient: "from-[#1a2438] via-[#2f4566] to-[#5a6b78]",
-    summary:
-      "A fully native Kotlin app with biometric auth and instant payments.",
+    palette: "ink",
+    summary: "A fully native Kotlin app with biometric auth and instant payments.",
     body: [
       "Vesper wanted parity with the best fintech apps on Android. We built natively with Kotlin and Jetpack Compose, sharing a design language with the marketing site.",
       "Cold start sits below 200ms thanks to baseline profiles, dependency tuning, and a deliberately lean module graph.",
@@ -93,14 +97,14 @@ const CASES: Record<
     ],
   },
   mosaic: {
+    num: "VI.",
     tag: "AI · Internal",
     title: "Mosaic",
     subtitle: "Enterprise RAG",
     metric: "+65%",
     metricLabel: "Answer rate vs prior",
-    gradient: "from-[#1f1a2a] via-[#3a2a4a] to-[#7864a3]",
-    summary:
-      "Private RAG over 1.2M documents, used daily by 4,000 employees.",
+    palette: "oxblood",
+    summary: "Private RAG over 1.2M documents, used daily by 4,000 employees.",
     body: [
       "Mosaic deployed a private RAG over 1.2M internal documents — policy, runbooks, and historical Slack threads.",
       "We engineered role-aware retrieval, eval suites tied to release gates, and a Slack/Teams surface that integrates with their existing identity provider.",
@@ -135,99 +139,109 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <Section className="!py-32 md:!py-40">
+      <Section className="!py-24 md:!py-32 paper-grain">
         <Link
           href="/case-studies"
-          className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted] hover:text-[--color-fg]"
+          className="group inline-flex items-center gap-2 label hover:text-[--color-oxblood]"
         >
           <span className="transition group-hover:-translate-x-1">←</span>
-          <span className="link-underline">All work</span>
+          <span className="dotted-link">All work</span>
         </Link>
 
-        <div className="mt-12 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-          <span>↳ {c.tag}</span>
-          <span className="hidden text-[--color-accent] md:inline">
-            Case study
-          </span>
+        <div className="mt-12 flex items-center justify-between border-b-2 border-[--color-ink] pb-4 label-lg">
+          <span>↳ {c.num} {c.tag}</span>
+          <span className="hidden text-[--color-oxblood] md:inline">Case study</span>
         </div>
 
-        <h1 className="editorial-display mt-12 max-w-[14ch] text-6xl md:text-8xl lg:text-9xl">
+        <h1
+          className="display-italic mt-12 text-[16vw] leading-[0.85] text-[--color-ink] md:text-[12vw] lg:text-[10vw]"
+          style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+        >
           {c.title}
         </h1>
-        <p className="mt-6 max-w-xl text-xl text-[--color-fg]/85 md:text-2xl">
+        <p
+          className="display mt-6 max-w-2xl text-2xl text-[--color-ink] md:text-4xl"
+          style={{ fontVariationSettings: '"opsz" 144' }}
+        >
           {c.subtitle}
         </p>
 
         {/* Big image */}
         <div
-          className={`relative mt-16 aspect-[21/10] w-full overflow-hidden bg-gradient-to-br ${c.gradient}`}
+          className={`relative mt-16 aspect-[21/10] w-full overflow-hidden border-2 border-[--color-ink] ${
+            c.palette === "ink" ? "bg-[--color-coal]" : "bg-[--color-oxblood]"
+          }`}
         >
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22/></filter><rect width=%22100%22 height=%22100%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>')] mix-blend-overlay" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0e1116]/40 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 text-center">
+            <div
+              className="display-italic text-[24vw] leading-[0.85] text-[--color-paper] opacity-15"
+              style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+            >
+              {c.title.toUpperCase().slice(0, 2)}
+            </div>
+          </div>
+          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]">
             <span>{c.tag}</span>
             <span>{c.metricLabel}</span>
           </div>
         </div>
 
         {/* Spec strip */}
-        <div className="mt-16 grid gap-px border border-[--color-border] bg-[--color-border] md:grid-cols-4">
-          <div className="bg-[--color-bg] p-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-              Outcome
-            </span>
-            <div className="spec-num mt-6 text-[--color-accent]">
-              {c.metric}
-            </div>
-            <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-              {c.metricLabel}
-            </div>
-          </div>
-          <div className="bg-[--color-bg] p-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-              Discipline
-            </span>
-            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em]">
-              {c.tag.split(" · ")[0]}
-            </div>
-          </div>
-          <div className="bg-[--color-bg] p-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-              Stage
-            </span>
-            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em]">
-              Launched
-            </div>
-          </div>
-          <div className="bg-[--color-bg] p-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-              Status
-            </span>
-            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em] text-[--color-accent]">
-              Live
-            </div>
-          </div>
+        <div className="mt-16 grid gap-px border-2 border-[--color-ink] bg-[--color-ink] md:grid-cols-4">
+          <Spec label="Outcome" value={c.metric} note={c.metricLabel} accent />
+          <Spec label="Discipline" value={c.tag.split(" · ")[0]} />
+          <Spec label="Stage" value="Launched" />
+          <Spec label="Status" value="Live" accent />
         </div>
 
         {/* Body */}
         <div className="mt-20 grid gap-12 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-3">
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
-              ↳ Brief
-            </span>
-            <p className="mt-6 text-base text-[--color-fg]/85">{c.summary}</p>
+            <div className="label text-[--color-ink-muted]">↳ Brief</div>
+            <p className="serif-body mt-6 text-base text-[--color-ink]">
+              {c.summary}
+            </p>
           </div>
-          <div className="md:col-span-9">
-            <div className="space-y-6 text-lg leading-relaxed text-[--color-fg]/85 md:text-xl">
-              {c.body.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
+          <div className="md:col-span-9 space-y-6 serif-body text-lg leading-relaxed text-[--color-ink] md:text-xl">
+            {c.body.map((p, i) => (
+              <p key={i} className={i === 0 ? "drop-cap" : ""}>
+                {p}
+              </p>
+            ))}
           </div>
         </div>
       </Section>
 
       <CTA />
     </>
+  );
+}
+
+function Spec({
+  label,
+  value,
+  note,
+  accent,
+}: {
+  label: string;
+  value: string;
+  note?: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="bg-[--color-paper] p-6 md:p-8">
+      <span className="label text-[--color-ink-muted]">{label}</span>
+      <div
+        className={`display mt-6 text-4xl md:text-5xl ${
+          accent ? "text-[--color-oxblood]" : "text-[--color-ink]"
+        }`}
+        style={{ fontVariationSettings: '"opsz" 144' }}
+      >
+        {value}
+      </div>
+      {note ? (
+        <div className="mt-2 label text-[--color-ink-muted]">{note}</div>
+      ) : null}
+    </div>
   );
 }

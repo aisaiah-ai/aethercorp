@@ -2,108 +2,197 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Ticker } from "@/components/site/ticker";
 
 const NAV = [
+  { href: "/", label: "Index", num: "00" },
   { href: "/services", label: "Services", num: "01" },
-  { href: "/case-studies", label: "Work", num: "02" },
+  { href: "/case-studies", label: "Atelier", num: "02" },
   { href: "/starter", label: "Small Business", num: "03" },
   { href: "/blog", label: "Journal", num: "04" },
   { href: "/contact", label: "Contact", num: "05" },
+  { href: "/proposal", label: "Request Proposal", num: "06" },
 ];
 
+const DISCIPLINES = ["AI Engineering", "Social Media", "Web Development", "Native Mobile"];
+
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-[--color-border] bg-[--color-bg]/80 backdrop-blur-xl"
-          : "bg-transparent"
-      )}
-    >
-      <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-10 lg:px-14">
-        <Link
-          href="/"
-          className="font-[family-name:var(--font-display)] text-base font-semibold tracking-[-0.02em] text-[--color-fg]"
-        >
-          AETHERCORP<span className="text-[--color-accent]">.</span>
-        </Link>
+    <>
+      <Ticker />
 
-        <nav className="hidden items-center gap-10 md:flex">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group flex items-baseline gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]/70 transition hover:text-[--color-fg]"
-            >
-              <span className="text-[9px] text-[--color-fg-dim] transition group-hover:text-[--color-accent]">
-                {item.num}
-              </span>
-              <span>{item.label}</span>
-            </Link>
-          ))}
-        </nav>
+      {/* Spacer so content begins below the ticker */}
+      <div className="h-7" aria-hidden />
 
-        <div className="hidden items-center md:flex">
+      <header className="sticky top-7 z-50 border-b border-[--color-ink]/15 bg-[--color-paper]/85 backdrop-blur">
+        <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between px-6 md:h-20 md:px-12 lg:px-16">
           <Link
-            href="/contact"
-            className="group flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg] transition"
+            href="/"
+            aria-label="Aethercorp home"
+            className="group flex items-center gap-3"
           >
-            <span className="link-underline">Book a call</span>
-            <span className="text-[--color-accent] transition group-hover:translate-x-0.5">
-              →
+            <span
+              className="display-italic text-2xl text-[--color-ink] md:text-3xl"
+              style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+            >
+              Aethercorp
             </span>
+            <span className="size-1.5 rounded-full bg-[--color-oxblood] transition group-hover:scale-150" />
           </Link>
-        </div>
 
-        <button
-          className="grid size-10 place-items-center border border-[--color-border-strong] text-[--color-fg] md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          <button
+            onClick={() => setOpen(true)}
+            className="group flex items-center gap-3 border border-[--color-ink] bg-transparent px-5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[--color-ink] transition hover:bg-[--color-ink] hover:text-[--color-paper] md:px-6 md:py-2.5"
+            aria-label="Open menu"
+            aria-expanded={open}
+          >
+            <span className="grid grid-cols-2 gap-[3px]">
+              <span className="size-1 rounded-full bg-current" />
+              <span className="size-1 rounded-full bg-current" />
+              <span className="size-1 rounded-full bg-current" />
+              <span className="size-1 rounded-full bg-current" />
+            </span>
+            <span>Menu / Index</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Full-bleed menu takeover */}
+      {open ? <MenuTakeover onClose={() => setOpen(false)} /> : null}
+    </>
+  );
+}
+
+function MenuTakeover({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-[70] flex flex-col bg-[--color-coal] text-[--color-paper]"
+      role="dialog"
+      aria-modal="true"
+    >
+      {/* Top bar */}
+      <div className="flex h-7 shrink-0 items-center border-b border-[--color-paper]/20 bg-[--color-oxblood] px-4 font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]">
+        <span className="flex items-center gap-2">
+          <span className="size-1.5 rounded-full bg-[--color-signal] blink" />
+          Menu open · Esc to close
+        </span>
+        <span className="ml-auto hidden md:inline">Aethercorp Index 00 — 06</span>
+      </div>
+
+      <div className="flex h-16 shrink-0 items-center justify-between border-b border-[--color-paper]/15 px-6 md:h-20 md:px-12 lg:px-16">
+        <span
+          className="display-italic text-2xl text-[--color-paper] md:text-3xl"
+          style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
         >
-          {open ? <X className="size-4" /> : <Menu className="size-4" />}
+          Aethercorp
+          <span className="ml-2 inline-block size-1.5 translate-y-[-0.5em] rounded-full bg-[--color-signal]" />
+        </span>
+        <button
+          onClick={onClose}
+          className="group flex items-center gap-3 border border-[--color-paper] bg-transparent px-5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[--color-paper] transition hover:bg-[--color-paper] hover:text-[--color-coal] md:px-6 md:py-2.5"
+          aria-label="Close menu"
+        >
+          <span className="text-base leading-none">×</span>
+          <span>Close</span>
         </button>
       </div>
 
-      {open ? (
-        <div className="border-t border-[--color-border] bg-[--color-bg]/95 px-6 py-6 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-1">
-            {NAV.map((item) => (
-              <Link
+      <div className="grid flex-1 grid-rows-[1fr_auto] overflow-y-auto md:grid-cols-[1fr_360px] md:grid-rows-1">
+        {/* Nav list */}
+        <nav className="flex flex-col justify-center px-6 py-10 md:px-12 md:py-0 lg:px-16">
+          <ul>
+            {NAV.map((item, i) => (
+              <li
                 key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-baseline gap-3 border-b border-[--color-border] py-4 font-mono text-xs uppercase tracking-[0.16em] text-[--color-fg]/85 hover:text-[--color-fg]"
+                className="border-b border-[--color-paper]/10 first:border-t"
               >
-                <span className="text-[10px] text-[--color-fg-dim]">
-                  {item.num}
-                </span>
-                <span>{item.label}</span>
-              </Link>
+                <Link
+                  href={item.href}
+                  onClick={onClose}
+                  className="group flex items-baseline justify-between gap-6 py-5 md:py-6"
+                  style={{ animationDelay: `${i * 40}ms` }}
+                >
+                  <span className="flex items-baseline gap-6">
+                    <span className="label-lg w-10 text-[--color-paper]/40">
+                      {item.num}
+                    </span>
+                    <span
+                      className="display-italic text-4xl text-[--color-paper] transition group-hover:text-[--color-signal] md:text-6xl lg:text-7xl"
+                      style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+                    >
+                      {item.label}
+                    </span>
+                  </span>
+                  <span className="font-mono text-2xl text-[--color-paper]/30 transition group-hover:translate-x-2 group-hover:text-[--color-signal] md:text-3xl">
+                    →
+                  </span>
+                </Link>
+              </li>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-between border border-[--color-fg] bg-[--color-fg] px-4 py-4 font-mono text-xs uppercase tracking-[0.16em] text-[--color-bg]"
-            >
-              <span>Book a call</span>
-              <span>→</span>
-            </Link>
+          </ul>
+        </nav>
+
+        {/* Side meta column */}
+        <aside className="grid grid-rows-[auto_auto_auto] gap-10 border-t border-[--color-paper]/15 px-6 py-10 md:border-l md:border-t-0 md:px-10 md:py-12">
+          <div>
+            <div className="label text-[--color-paper]/50">
+              ↳ Disciplines
+            </div>
+            <ul className="mt-4 space-y-1">
+              {DISCIPLINES.map((d, i) => (
+                <li
+                  key={d}
+                  className="flex items-baseline gap-3 font-mono text-xs uppercase tracking-[0.14em] text-[--color-paper]/85"
+                >
+                  <span className="text-[--color-paper]/40">
+                    0{i + 1}
+                  </span>
+                  {d}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      ) : null}
-    </header>
+
+          <div>
+            <div className="label text-[--color-paper]/50">↳ Contact</div>
+            <a
+              href="mailto:hello@aethercorp.io"
+              className="mt-4 block font-mono text-sm uppercase tracking-[0.1em] text-[--color-paper] hover:text-[--color-signal]"
+            >
+              hello@aethercorp.io
+            </a>
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]/60">
+              Response within 1 business day
+            </p>
+          </div>
+
+          <div>
+            <div className="label text-[--color-paper]/50">↳ Status</div>
+            <div className="mt-4 flex items-center gap-2 font-mono text-sm text-[--color-paper]">
+              <span className="size-1.5 rounded-full bg-[--color-signal] blink" />
+              <span className="uppercase tracking-[0.1em]">
+                Now booking
+              </span>
+            </div>
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[--color-paper]/60">
+              Q3 — Q4 2026
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
   );
 }

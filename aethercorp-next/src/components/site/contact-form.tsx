@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 
 const SERVICES = ["AI", "Social Media", "Web Development", "Native Mobile"];
 const BUDGETS = ["< $25k", "$25k—$75k", "$75k—$200k", "$200k+"];
@@ -22,16 +21,17 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="border border-[--color-border-strong] bg-[--color-bg-soft] p-10 md:p-14">
-        <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-accent]">
-          ↳ Received
-        </div>
-        <h3 className="editorial-display mt-6 text-4xl md:text-5xl">
-          Thanks — we
+      <div className="border-2 border-[--color-ink] bg-[--color-oxblood] p-10 text-[--color-paper] md:p-14">
+        <div className="label text-[--color-paper]/70">↳ Received</div>
+        <h3
+          className="display-italic mt-6 text-5xl md:text-6xl"
+          style={{ fontVariationSettings: '"WONK" 1, "opsz" 144' }}
+        >
+          Brief
           <br />
-          <span className="text-accent">got it.</span>
+          <span className="text-[--color-signal]">received.</span>
         </h3>
-        <p className="mt-6 max-w-md text-[--color-fg]/85">
+        <p className="serif-body mt-6 max-w-md text-base text-[--color-paper]/90">
           A senior member of the team will be in touch within one business day
           with next steps.
         </p>
@@ -42,9 +42,9 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="border border-[--color-border-strong] bg-[--color-bg-soft]/60 p-7 md:p-10"
+      className="border-2 border-[--color-ink] bg-[--color-paper-soft] p-7 md:p-10"
     >
-      <div className="flex items-center justify-between border-b border-[--color-border] pb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+      <div className="flex items-center justify-between border-b-2 border-[--color-ink] pb-5 label-lg">
         <span>↳ Brief · Form B</span>
         <span>Studio inquiry</span>
       </div>
@@ -72,8 +72,8 @@ export function ContactForm() {
                 onClick={() => toggle(s)}
                 className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-accent] bg-[--color-accent] text-[--color-bg]"
-                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
+                    ? "border-[--color-oxblood] bg-[--color-oxblood] text-[--color-paper]"
+                    : "border-[--color-ink]/40 bg-transparent text-[--color-ink] hover:border-[--color-ink] hover:bg-[--color-ink] hover:text-[--color-paper]"
                 }`}
               >
                 {s}
@@ -94,8 +94,8 @@ export function ContactForm() {
                 onClick={() => setBudget(b)}
                 className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-fg] bg-[--color-fg] text-[--color-bg]"
-                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
+                    ? "border-[--color-ink] bg-[--color-ink] text-[--color-paper]"
+                    : "border-[--color-ink]/40 bg-transparent text-[--color-ink] hover:border-[--color-ink] hover:bg-[--color-ink] hover:text-[--color-paper]"
                 }`}
               >
                 {b}
@@ -110,14 +110,18 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
+          className="serif-body w-full border-2 border-[--color-ink] bg-transparent px-4 py-3 text-base text-[--color-ink] placeholder:text-[--color-ink-dim] focus:bg-[--color-paper] focus:outline-none"
           placeholder="Goals, timeline, current stack, anything that helps."
         />
       </FieldGroup>
 
-      <Button type="submit" size="lg" className="mt-10 w-full">
-        Send brief →
-      </Button>
+      <button
+        type="submit"
+        className="group mt-10 flex w-full items-center justify-between border-2 border-[--color-ink] bg-[--color-ink] px-6 py-5 font-mono text-[11px] uppercase tracking-[0.14em] text-[--color-paper] transition hover:bg-[--color-oxblood] hover:border-[--color-oxblood]"
+      >
+        <span>Send brief</span>
+        <span className="transition group-hover:translate-x-1">→</span>
+      </button>
     </form>
   );
 }
@@ -132,14 +136,10 @@ function FieldGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mt-8 border-t border-[--color-border] pt-8">
+    <div className="mt-8 border-t border-[--color-ink]/15 pt-8">
       <div className="mb-4 flex items-baseline gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-          {num}
-        </span>
-        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
-          {label}
-        </label>
+        <span className="label text-[--color-ink-muted]">{num}</span>
+        <label className="label-lg text-[--color-ink]">{label}</label>
       </div>
       {children}
     </div>
@@ -164,18 +164,14 @@ function Field({
   return (
     <div className={className}>
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
-          {num}
-        </span>
-        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
-          {label}
-        </label>
+        <span className="label text-[--color-ink-muted]">{num}</span>
+        <label className="label-lg text-[--color-ink]">{label}</label>
       </div>
       <input
         name={name}
         type={type}
         required={required}
-        className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
+        className="serif-body w-full border-2 border-[--color-ink] bg-transparent px-4 py-3 text-base text-[--color-ink] placeholder:text-[--color-ink-dim] focus:bg-[--color-paper] focus:outline-none"
       />
     </div>
   );
