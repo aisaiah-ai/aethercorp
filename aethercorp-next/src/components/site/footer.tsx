@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 
 const COLS = [
   {
+    num: "01",
     title: "Services",
     links: [
       { href: "/services#ai", label: "AI Engineering" },
@@ -12,17 +12,19 @@ const COLS = [
     ],
   },
   {
-    title: "Company",
+    num: "02",
+    title: "Studio",
     links: [
+      { href: "/case-studies", label: "Selected Work" },
       { href: "/starter", label: "Small Business" },
-      { href: "/proposal", label: "Request a proposal" },
-      { href: "/case-studies", label: "Case Studies" },
-      { href: "/blog", label: "Insights" },
+      { href: "/blog", label: "Journal" },
+      { href: "/proposal", label: "Request a Proposal" },
       { href: "/contact", label: "Contact" },
     ],
   },
   {
-    title: "Legal",
+    num: "03",
+    title: "Index",
     links: [
       { href: "#", label: "Privacy" },
       { href: "#", label: "Terms" },
@@ -33,61 +35,76 @@ const COLS = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-[--color-border] bg-[--color-bg-soft]">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_70%)]" />
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 py-16 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="grid size-8 place-items-center rounded-xl bg-gradient-to-br from-[--color-brand] via-[--color-brand-3] to-[--color-brand-2]">
-              <Sparkles className="size-4 text-white" />
-            </span>
-            <span className="text-base font-semibold tracking-tight">
-              Aether<span className="text-[--color-brand-2]">Corp</span>
-            </span>
-          </Link>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-[--color-fg-muted]">
-            We design, ship, and scale AI products, social presence, modern
-            web platforms, and native mobile apps for businesses ready to
-            redefine their category.
+    <footer className="relative border-t border-[--color-border] bg-[--color-bg]">
+      <div className="mx-auto w-full max-w-[1440px] px-6 py-20 md:px-10 lg:px-14">
+        {/* Closing statement */}
+        <div className="border-b border-[--color-border] pb-16">
+          <p className="editorial-display max-w-[18ch] text-4xl md:text-6xl lg:text-7xl">
+            Let&apos;s build
+            <br />
+            <span className="text-accent">something</span>
+            <br />
+            unmistakable.
           </p>
-        </div>
-
-        {COLS.map((col) => (
-          <div key={col.title} className="md:col-span-2">
-            <h3 className="text-sm font-semibold tracking-wide text-white">
-              {col.title}
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {col.links.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-sm text-[--color-fg-muted] transition hover:text-white"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-10 flex flex-wrap items-center gap-x-12 gap-y-4">
+            <Link
+              href="/contact"
+              className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.16em] text-[--color-fg]"
+            >
+              <span className="link-underline">Start a project</span>
+              <span className="text-[--color-accent] transition group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+            <a
+              href="mailto:hello@aethercorp.io"
+              className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.16em] text-[--color-fg]/70 hover:text-[--color-fg]"
+            >
+              <span className="link-underline">hello@aethercorp.io</span>
+            </a>
           </div>
-        ))}
-
-        <div className="md:col-span-3">
-          <h3 className="text-sm font-semibold tracking-wide text-white">
-            Get in touch
-          </h3>
-          <p className="mt-4 text-sm text-[--color-fg-muted]">
-            hello@aethercorp.io
-          </p>
-          <p className="mt-1 text-sm text-[--color-fg-muted]">
-            Remote · Worldwide
-          </p>
         </div>
-      </div>
-      <div className="relative border-t border-[--color-border]">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-[--color-fg-dim] md:flex-row">
-          <span>© {new Date().getFullYear()} AetherCorp. All rights reserved.</span>
-          <span>Crafted for businesses ready to scale.</span>
+
+        {/* Index columns */}
+        <div className="grid gap-12 pt-16 md:grid-cols-4">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+              00 — Index
+            </div>
+            <div className="mt-6 font-[family-name:var(--font-display)] text-xl font-semibold tracking-tight">
+              Aethercorp<span className="text-[--color-accent]">.</span>
+            </div>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-[--color-fg-muted]">
+              A studio building AI products, social engines, web platforms,
+              and native mobile apps.
+            </p>
+          </div>
+
+          {COLS.map((col) => (
+            <div key={col.title}>
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                {col.num} — {col.title}
+              </div>
+              <ul className="mt-6 space-y-3">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link
+                      href={l.href}
+                      className="text-sm text-[--color-fg]/85 transition hover:text-[--color-accent]"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom rule */}
+        <div className="mt-20 flex flex-col items-start justify-between gap-3 border-t border-[--color-border] pt-8 font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim] md:flex-row">
+          <span>© {new Date().getFullYear()} Aethercorp Studio</span>
+          <span>Based remote · Est 2024 · Available for Q3</span>
         </div>
       </div>
     </footer>

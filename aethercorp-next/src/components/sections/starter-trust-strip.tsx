@@ -1,31 +1,26 @@
-import { Clock, ShieldCheck, RefreshCw, KeyRound } from "lucide-react";
-
 const ITEMS = [
-  { icon: Clock, label: "Live in 7 days" },
-  { icon: KeyRound, label: "You own the code" },
-  { icon: RefreshCw, label: "Cancel anytime" },
-  { icon: ShieldCheck, label: "14-day money back" },
+  "Live in 7 days",
+  "You own the code",
+  "Cancel anytime",
+  "14-day money back",
 ];
 
 export function StarterTrustStrip() {
   return (
-    <section className="relative">
-      <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-3 rounded-2xl border border-[--color-border] bg-[--color-surface]/40 p-2 backdrop-blur md:grid-cols-4">
-          {ITEMS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.label}
-                className="flex items-center justify-center gap-3 rounded-xl border border-transparent px-4 py-4 text-sm text-white/85 transition hover:border-[--color-border] hover:bg-[--color-surface-2]/40"
-              >
-                <span className="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-[--color-brand]/25 via-[--color-brand-3]/15 to-[--color-brand-2]/25 text-[--color-brand-2]">
-                  <Icon className="size-4" />
-                </span>
-                <span className="font-medium">{item.label}</span>
-              </div>
-            );
-          })}
+    <section className="border-b border-[--color-border]">
+      <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-14">
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-3 py-8 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]/85">
+          {ITEMS.map((item, i) => (
+            <span key={item} className="flex items-center gap-12">
+              <span className="flex items-center gap-2">
+                <span className="size-1 rounded-full bg-[--color-accent]" />
+                {item}
+              </span>
+              {i < ITEMS.length - 1 ? (
+                <span className="hidden text-[--color-fg-dim] md:inline">·</span>
+              ) : null}
+            </span>
+          ))}
         </div>
       </div>
     </section>

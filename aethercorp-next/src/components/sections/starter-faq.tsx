@@ -1,4 +1,8 @@
-import { Section, SectionHeader } from "@/components/ui/section";
+"use client";
+
+import { useState } from "react";
+import { Section } from "@/components/ui/section";
+import { cn } from "@/lib/utils";
 
 const FAQS = [
   {
@@ -11,7 +15,7 @@ const FAQS = [
   },
   {
     q: "Will my site look like every other small-business site?",
-    a: "No. We work from a design system, not a template gallery — meaning every site shares our craft standards but ends up visually distinct. Browse the gallery above: those are six wildly different vibes, all from the same studio.",
+    a: "No. We work from a design system, not a template gallery — meaning every site shares our craft standards but ends up visually distinct.",
   },
   {
     q: "What if I cancel the $100/month?",
@@ -32,34 +36,64 @@ const FAQS = [
 ];
 
 export function StarterFaq() {
+  const [open, setOpen] = useState<number | null>(0);
   return (
-    <Section className="!pt-0">
-      <SectionHeader
-        eyebrow="FAQ"
-        title={
-          <>
-            Questions, asked{" "}
-            <span className="text-gradient">honestly.</span>
-          </>
-        }
-      />
-      <div className="mx-auto grid max-w-4xl gap-3">
-        {FAQS.map((f) => (
-          <details
-            key={f.q}
-            className="group rounded-2xl border border-[--color-border] bg-[--color-surface]/40 p-5 transition open:border-[--color-border-strong] open:bg-[--color-surface]/70 hover:border-[--color-border-strong]"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white">
-              {f.q}
-              <span className="grid size-7 shrink-0 place-items-center rounded-full border border-[--color-border-strong] bg-white/[0.04] text-white/70 transition group-open:rotate-45">
-                +
-              </span>
-            </summary>
-            <p className="mt-3 text-sm leading-relaxed text-[--color-fg-muted]">
-              {f.a}
-            </p>
-          </details>
-        ))}
+    <Section>
+      <div className="grid gap-12 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+            ↳ FAQ
+          </span>
+          <h2 className="editorial-display mt-6 text-5xl md:text-6xl lg:text-7xl">
+            Asked
+            <br />
+            <span className="text-accent">honestly.</span>
+          </h2>
+        </div>
+
+        <div className="md:col-span-8">
+          <div className="border-t border-[--color-border]">
+            {FAQS.map((f, i) => {
+              const isOpen = open === i;
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <button
+                  key={f.q}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="block w-full border-b border-[--color-border] text-left transition hover:bg-[--color-bg-soft]/40"
+                  aria-expanded={isOpen}
+                >
+                  <div className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-8">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                      {num}
+                    </span>
+                    <span className="font-[family-name:var(--font-display)] text-xl tracking-[-0.01em] text-[--color-fg] md:text-2xl">
+                      {f.q}
+                    </span>
+                    <span
+                      className={cn(
+                        "size-6 shrink-0 text-[--color-fg]/60 transition-transform",
+                        isOpen && "rotate-45 text-[--color-accent]"
+                      )}
+                    >
+                      +
+                    </span>
+                  </div>
+                  <div
+                    className={cn(
+                      "grid overflow-hidden transition-[grid-template-rows] duration-300",
+                      isOpen ? "grid-rows-[1fr] pb-8" : "grid-rows-[0fr]"
+                    )}
+                  >
+                    <p className="overflow-hidden pl-[3.5rem] text-base leading-relaxed text-[--color-fg]/75">
+                      {f.a}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </Section>
   );

@@ -1,122 +1,156 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
 import { CTA } from "@/components/sections/cta";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
+  title: "Selected Work",
   description:
     "Selected work across AI products, native mobile apps, web platforms, and social engines.",
 };
 
 const CASES = [
   {
+    num: "01",
     slug: "northwind",
     tag: "AI · SaaS",
-    title: "Northwind agentic ops copilot",
+    title: "Northwind",
+    subtitle: "Agentic ops copilot",
     summary:
-      "We replaced a sprawling internal tooling stack with a single agent surface — multi-step actions, audit logs, and evals across every release.",
-    metric: "+38% ops throughput",
-    gradient: "from-[#7c5cff] via-[#a78bfa] to-[#22d3ee]",
+      "Replaced a sprawling internal tooling stack with a single agent surface — multi-step actions, audit logs, evals.",
+    metric: "+38%",
+    metricLabel: "Ops throughput, 90 days",
+    gradient: "from-[#5a6342] via-[#9eb867] to-[#cfd784]",
   },
   {
+    num: "02",
     slug: "lumen",
     tag: "Native iOS · Health",
-    title: "Lumen wellness companion",
+    title: "Lumen",
+    subtitle: "Wellness companion",
     summary:
-      "A SwiftUI app with HealthKit, on-device coaching, and live activities. Shipped end-to-end in 8 weeks with a 4.9★ App Store launch.",
-    metric: "220k MAU · 4.9★",
-    gradient: "from-[#34d399] via-[#22d3ee] to-[#7c5cff]",
+      "SwiftUI with HealthKit, on-device coaching, Live Activities. Shipped end-to-end in 8 weeks.",
+    metric: "4.9★",
+    metricLabel: "App Store · 220k MAU",
+    gradient: "from-[#2a3340] via-[#4a5970] to-[#7b8aa3]",
   },
   {
+    num: "03",
     slug: "atlasly",
     tag: "Web · Commerce",
-    title: "Atlasly headless storefront",
+    title: "Atlasly",
+    subtitle: "Headless storefront",
     summary:
-      "Replatformed onto Next.js + a composable commerce stack. Edge-rendered PDPs, AI search, and a 2.4× conversion lift in a single quarter.",
-    metric: "2.4× conversion · 96 LH",
-    gradient: "from-[#f0abfc] via-[#7c5cff] to-[#22d3ee]",
+      "Replatformed onto Next.js + composable commerce. Edge-rendered PDPs, AI search.",
+    metric: "2.4×",
+    metricLabel: "Conversion · LH 96",
+    gradient: "from-[#3a2a1f] via-[#8b6a4a] to-[#d4a574]",
   },
   {
+    num: "04",
     slug: "cinder",
     tag: "Social · Creator",
-    title: "Cinder content engine",
+    title: "Cinder",
+    subtitle: "Short-form content engine",
     summary:
-      "Daily short-form output across TikTok, Reels, and Shorts powered by a custom AI editing pipeline and a creator collective we built in-house.",
-    metric: "12M views · 90 days",
-    gradient: "from-[#22d3ee] via-[#7c5cff] to-[#f0abfc]",
+      "Daily output across TikTok, Reels, Shorts powered by a custom AI editing pipeline.",
+    metric: "12M",
+    metricLabel: "Views, first 90 days",
+    gradient: "from-[#1f2a3a] via-[#3a5572] to-[#a3b8d4]",
   },
   {
+    num: "05",
     slug: "vesper",
     tag: "Native Android · Fintech",
-    title: "Vesper Compose banking app",
+    title: "Vesper",
+    subtitle: "Compose banking app",
     summary:
-      "Compose Multiplatform-free, fully native Kotlin app with biometric auth, instant payments, and a design system shared with the marketing site.",
-    metric: "Sub-200ms cold start",
-    gradient: "from-[#7c5cff] via-[#22d3ee] to-[#34d399]",
+      "Fully native Kotlin app with biometric auth, instant payments, polished onboarding.",
+    metric: "<200ms",
+    metricLabel: "Cold start",
+    gradient: "from-[#1a2438] via-[#2f4566] to-[#5a6b78]",
   },
   {
+    num: "06",
     slug: "mosaic",
     tag: "AI · Internal",
-    title: "Mosaic enterprise RAG",
+    title: "Mosaic",
+    subtitle: "Enterprise RAG",
     summary:
-      "Private RAG over 1.2M documents with role-aware retrieval, eval suites, and a Slack/Teams surface used by 4k employees daily.",
-    metric: "65% answer-rate jump",
-    gradient: "from-[#34d399] via-[#7c5cff] to-[#f0abfc]",
+      "Private RAG over 1.2M documents. Role-aware retrieval, eval suites, Slack/Teams surface.",
+    metric: "+65%",
+    metricLabel: "Answer rate vs prior",
+    gradient: "from-[#1f1a2a] via-[#3a2a4a] to-[#7864a3]",
   },
 ];
 
 export default function CaseStudiesPage() {
   return (
     <>
-      <Section className="!py-24 md:!py-32">
-        <div className="flex flex-col items-center text-center">
-          <Badge>Case studies</Badge>
-          <h1 className="mt-6 max-w-4xl text-balance font-[family-name:var(--font-display)] text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
-            Outcomes,{" "}
-            <span className="text-gradient">not deliverables.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-pretty text-lg text-[--color-fg-muted]">
-            A small selection of recent engagements. Every project is led by
-            a senior team and measured against the business KPI it was
-            commissioned to move.
-          </p>
+      <Section className="!py-32 md:!py-40">
+        <div className="mb-16 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+          <span>↳ Selected work · 06 of 40+</span>
+          <span className="hidden md:inline">2024 — 2026</span>
         </div>
+
+        <h1 className="editorial-display max-w-[16ch] text-5xl md:text-7xl lg:text-9xl">
+          Outcomes,
+          <br />
+          <span className="text-accent">not deliverables.</span>
+        </h1>
+        <p className="mt-8 max-w-xl text-base text-[--color-fg-muted] md:text-lg">
+          A small selection of recent engagements. Every project is led by a
+          senior team and measured against the business KPI it was
+          commissioned to move.
+        </p>
       </Section>
 
-      <Section className="!pt-0">
-        <div className="grid gap-5 md:grid-cols-2">
+      <Section className="!py-0">
+        <div className="grid gap-px border-y border-[--color-border] bg-[--color-border] md:grid-cols-2">
           {CASES.map((c) => (
             <Link
               key={c.slug}
               href={`/case-studies/${c.slug}`}
-              className="group relative overflow-hidden rounded-3xl border border-[--color-border] bg-[--color-surface]/70 p-1 transition hover:border-[--color-border-strong]"
+              className="group relative block bg-[--color-bg] transition"
             >
               <div
-                className={`relative aspect-[16/9] w-full overflow-hidden rounded-[22px] bg-gradient-to-br ${c.gradient}`}
+                className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${c.gradient}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
-                <div className="absolute left-5 top-5">
-                  <span className="rounded-full border border-white/30 bg-black/30 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-white backdrop-blur">
-                    {c.tag}
-                  </span>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22/></filter><rect width=%22100%22 height=%22100%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>')] mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1116]/85 via-[#0e1116]/25 to-transparent" />
+
+                <div className="absolute left-6 right-6 top-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white/80">
+                  <span>{c.num}</span>
+                  <span>{c.tag}</span>
                 </div>
-                <span className="absolute right-5 top-5 grid size-10 place-items-center rounded-full bg-white text-black transition group-hover:rotate-12">
-                  <ArrowUpRight className="size-5" />
-                </span>
-                <div className="absolute bottom-5 left-5 right-5">
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-semibold leading-tight tracking-tight text-white">
+
+                <div className="absolute inset-x-6 bottom-6">
+                  <h3 className="editorial-display text-4xl text-white md:text-5xl lg:text-6xl">
                     {c.title}
                   </h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
-                    {c.summary}
-                  </p>
-                  <p className="mt-3 text-xs font-medium uppercase tracking-wider text-white">
-                    {c.metric}
+                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-white/85">
+                    {c.subtitle}
                   </p>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-[1fr_auto] items-end gap-6 bg-[--color-bg] px-6 py-8 md:px-8">
+                <div>
+                  <p className="max-w-md text-sm text-[--color-fg]/85">
+                    {c.summary}
+                  </p>
+                  <div className="mt-4 flex items-baseline gap-4">
+                    <span className="spec-num text-[--color-fg]">
+                      {c.metric}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                      {c.metricLabel}
+                    </span>
+                  </div>
+                </div>
+                <span className="grid size-12 place-items-center border border-[--color-border-strong] text-[--color-fg] transition group-hover:border-[--color-accent] group-hover:text-[--color-accent]">
+                  →
+                </span>
               </div>
             </Link>
           ))}

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
 import { CTA } from "@/components/sections/cta";
 
 const CASES: Record<
@@ -11,7 +9,9 @@ const CASES: Record<
   {
     tag: string;
     title: string;
+    subtitle: string;
     metric: string;
+    metricLabel: string;
     gradient: string;
     summary: string;
     body: string[];
@@ -19,11 +19,13 @@ const CASES: Record<
 > = {
   northwind: {
     tag: "AI · SaaS",
-    title: "Northwind agentic ops copilot",
-    metric: "+38% ops throughput in 90 days",
-    gradient: "from-[#7c5cff] via-[#a78bfa] to-[#22d3ee]",
+    title: "Northwind",
+    subtitle: "Agentic operations copilot",
+    metric: "+38%",
+    metricLabel: "Ops throughput, 90 days",
+    gradient: "from-[#5a6342] via-[#9eb867] to-[#cfd784]",
     summary:
-      "We replaced a sprawling internal tooling stack with a single agent surface.",
+      "Replaced a sprawling internal tooling stack with a single agent surface.",
     body: [
       "Northwind's operations team was juggling six dashboards, three internal tools, and an aging chatbot. We unified the experience behind a single agent capable of executing multi-step workflows safely.",
       "Our team designed the tool registry, evaluation suite, and audit logging from scratch, then layered a streaming UI on top using Next.js 16 with Server Components and React 19.",
@@ -32,22 +34,26 @@ const CASES: Record<
   },
   lumen: {
     tag: "Native iOS · Health",
-    title: "Lumen wellness companion",
-    metric: "220k MAU · 4.9★ at launch",
-    gradient: "from-[#34d399] via-[#22d3ee] to-[#7c5cff]",
+    title: "Lumen",
+    subtitle: "SwiftUI wellness companion",
+    metric: "4.9★",
+    metricLabel: "App Store · 220k MAU",
+    gradient: "from-[#2a3340] via-[#4a5970] to-[#7b8aa3]",
     summary:
       "A SwiftUI app with HealthKit, on-device coaching, and live activities.",
     body: [
       "Lumen wanted a launch app that felt unmistakably native — fluid animations, Live Activities, and a coaching loop powered by an on-device model.",
-      "We shipped end-to-end in eight weeks: SwiftUI front-end, a Vapor backend on Vercel-fronted infrastructure, and an evaluation harness for the coaching prompts.",
+      "We shipped end-to-end in eight weeks: SwiftUI front-end, a Vapor backend on Cloudflare-fronted infrastructure, and an evaluation harness for the coaching prompts.",
       "Day-one App Store rating sat at 4.9★ across the first 8,000 reviews, and the product crossed 220k MAU within the first quarter.",
     ],
   },
   atlasly: {
     tag: "Web · Commerce",
-    title: "Atlasly headless storefront",
-    metric: "2.4× conversion · 96 Lighthouse",
-    gradient: "from-[#f0abfc] via-[#7c5cff] to-[#22d3ee]",
+    title: "Atlasly",
+    subtitle: "Headless storefront",
+    metric: "2.4×",
+    metricLabel: "Conversion · LH 96",
+    gradient: "from-[#3a2a1f] via-[#8b6a4a] to-[#d4a574]",
     summary:
       "Replatformed onto a composable commerce stack with AI-native search.",
     body: [
@@ -58,9 +64,11 @@ const CASES: Record<
   },
   cinder: {
     tag: "Social · Creator",
-    title: "Cinder content engine",
-    metric: "12M views in first 90 days",
-    gradient: "from-[#22d3ee] via-[#7c5cff] to-[#f0abfc]",
+    title: "Cinder",
+    subtitle: "Short-form content engine",
+    metric: "12M",
+    metricLabel: "Views, first 90 days",
+    gradient: "from-[#1f2a3a] via-[#3a5572] to-[#a3b8d4]",
     summary:
       "Daily short-form output powered by a custom AI editing pipeline.",
     body: [
@@ -71,9 +79,11 @@ const CASES: Record<
   },
   vesper: {
     tag: "Native Android · Fintech",
-    title: "Vesper Compose banking app",
-    metric: "Sub-200ms cold start",
-    gradient: "from-[#7c5cff] via-[#22d3ee] to-[#34d399]",
+    title: "Vesper",
+    subtitle: "Compose banking app",
+    metric: "<200ms",
+    metricLabel: "Cold start",
+    gradient: "from-[#1a2438] via-[#2f4566] to-[#5a6b78]",
     summary:
       "A fully native Kotlin app with biometric auth and instant payments.",
     body: [
@@ -84,9 +94,11 @@ const CASES: Record<
   },
   mosaic: {
     tag: "AI · Internal",
-    title: "Mosaic enterprise RAG",
-    metric: "65% answer-rate jump",
-    gradient: "from-[#34d399] via-[#7c5cff] to-[#f0abfc]",
+    title: "Mosaic",
+    subtitle: "Enterprise RAG",
+    metric: "+65%",
+    metricLabel: "Answer rate vs prior",
+    gradient: "from-[#1f1a2a] via-[#3a2a4a] to-[#7864a3]",
     summary:
       "Private RAG over 1.2M documents, used daily by 4,000 employees.",
     body: [
@@ -123,36 +135,95 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <Section className="!py-20 md:!py-28">
+      <Section className="!py-32 md:!py-40">
         <Link
           href="/case-studies"
-          className="inline-flex items-center gap-2 text-sm text-[--color-fg-muted] hover:text-white"
+          className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted] hover:text-[--color-fg]"
         >
-          <ArrowLeft className="size-4" />
-          All case studies
+          <span className="transition group-hover:-translate-x-1">←</span>
+          <span className="link-underline">All work</span>
         </Link>
 
-        <div className="mt-8 flex flex-col gap-3">
-          <Badge>{c.tag}</Badge>
-          <h1 className="max-w-4xl text-balance font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            {c.title}
-          </h1>
-          <p className="text-lg text-[--color-fg-muted]">{c.summary}</p>
+        <div className="mt-12 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+          <span>↳ {c.tag}</span>
+          <span className="hidden text-[--color-accent] md:inline">
+            Case study
+          </span>
         </div>
 
+        <h1 className="editorial-display mt-12 max-w-[14ch] text-6xl md:text-8xl lg:text-9xl">
+          {c.title}
+        </h1>
+        <p className="mt-6 max-w-xl text-xl text-[--color-fg]/85 md:text-2xl">
+          {c.subtitle}
+        </p>
+
+        {/* Big image */}
         <div
-          className={`relative mt-12 aspect-[21/9] w-full overflow-hidden rounded-3xl bg-gradient-to-br ${c.gradient}`}
+          className={`relative mt-16 aspect-[21/10] w-full overflow-hidden bg-gradient-to-br ${c.gradient}`}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 rounded-full bg-black/40 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-white backdrop-blur">
-            {c.metric}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22/></filter><rect width=%22100%22 height=%22100%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>')] mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e1116]/40 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+            <span>{c.tag}</span>
+            <span>{c.metricLabel}</span>
           </div>
         </div>
 
-        <div className="mx-auto mt-14 max-w-3xl space-y-5 text-lg leading-relaxed text-white/85">
-          {c.body.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
+        {/* Spec strip */}
+        <div className="mt-16 grid gap-px border border-[--color-border] bg-[--color-border] md:grid-cols-4">
+          <div className="bg-[--color-bg] p-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+              Outcome
+            </span>
+            <div className="spec-num mt-6 text-[--color-accent]">
+              {c.metric}
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+              {c.metricLabel}
+            </div>
+          </div>
+          <div className="bg-[--color-bg] p-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+              Discipline
+            </span>
+            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em]">
+              {c.tag.split(" · ")[0]}
+            </div>
+          </div>
+          <div className="bg-[--color-bg] p-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+              Stage
+            </span>
+            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em]">
+              Launched
+            </div>
+          </div>
+          <div className="bg-[--color-bg] p-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+              Status
+            </span>
+            <div className="mt-6 font-[family-name:var(--font-display)] text-3xl font-semibold tracking-[-0.02em] text-[--color-accent]">
+              Live
+            </div>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="mt-20 grid gap-12 md:grid-cols-12 md:gap-16">
+          <div className="md:col-span-3">
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+              ↳ Brief
+            </span>
+            <p className="mt-6 text-base text-[--color-fg]/85">{c.summary}</p>
+          </div>
+          <div className="md:col-span-9">
+            <div className="space-y-6 text-lg leading-relaxed text-[--color-fg]/85 md:text-xl">
+              {c.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 

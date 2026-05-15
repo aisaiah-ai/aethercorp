@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { Section, SectionHeader } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
 
 const FAQS = [
@@ -32,49 +31,61 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Section id="faq">
-      <SectionHeader
-        eyebrow="FAQ"
-        title={
-          <>
-            Things teams usually{" "}
-            <span className="text-gradient">ask first.</span>
-          </>
-        }
-      />
-      <div className="mx-auto max-w-3xl divide-y divide-[--color-border] rounded-3xl border border-[--color-border] bg-[--color-surface]/60">
-        {FAQS.map((f, i) => {
-          const isOpen = open === i;
-          return (
-            <button
-              key={f.q}
-              onClick={() => setOpen(isOpen ? null : i)}
-              className="block w-full text-left"
-              aria-expanded={isOpen}
-            >
-              <div className="flex items-center justify-between gap-6 px-6 py-5">
-                <span className="text-base font-medium text-white md:text-lg">
-                  {f.q}
-                </span>
-                <ChevronDown
-                  className={cn(
-                    "size-5 shrink-0 text-white/60 transition-transform",
-                    isOpen && "rotate-180"
-                  )}
-                />
-              </div>
-              <div
-                className={cn(
-                  "grid overflow-hidden px-6 transition-[grid-template-rows] duration-300",
-                  isOpen ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"
-                )}
-              >
-                <p className="overflow-hidden text-[--color-fg-muted]">
-                  {f.a}
-                </p>
-              </div>
-            </button>
-          );
-        })}
+      <div className="grid gap-12 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+            ↳ Frequently asked
+          </span>
+          <h2 className="editorial-display mt-6 text-5xl md:text-6xl lg:text-7xl">
+            Asked
+            <br />
+            <span className="text-accent">first.</span>
+          </h2>
+        </div>
+
+        <div className="md:col-span-8">
+          <div className="border-t border-[--color-border]">
+            {FAQS.map((f, i) => {
+              const isOpen = open === i;
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <button
+                  key={f.q}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="block w-full border-b border-[--color-border] text-left transition hover:bg-[--color-bg-soft]/40"
+                  aria-expanded={isOpen}
+                >
+                  <div className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 py-8">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                      {num}
+                    </span>
+                    <span className="font-[family-name:var(--font-display)] text-xl tracking-[-0.01em] text-[--color-fg] md:text-2xl">
+                      {f.q}
+                    </span>
+                    <span
+                      className={cn(
+                        "size-6 shrink-0 text-[--color-fg]/60 transition-transform",
+                        isOpen && "rotate-45 text-[--color-accent]"
+                      )}
+                    >
+                      +
+                    </span>
+                  </div>
+                  <div
+                    className={cn(
+                      "grid overflow-hidden transition-[grid-template-rows] duration-300",
+                      isOpen ? "grid-rows-[1fr] pb-8" : "grid-rows-[0fr]"
+                    )}
+                  >
+                    <p className="overflow-hidden pl-[3.5rem] text-base leading-relaxed text-[--color-fg]/75">
+                      {f.a}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </Section>
   );

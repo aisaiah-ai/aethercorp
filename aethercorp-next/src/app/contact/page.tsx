@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Calendar, MapPin } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/site/contact-form";
 
 export const metadata: Metadata = {
@@ -10,62 +8,62 @@ export const metadata: Metadata = {
     "Tell us about your project. We respond within one business day.",
 };
 
+const META = [
+  { num: "01", label: "Email", value: "hello@aethercorp.io" },
+  { num: "02", label: "Discovery call", value: "30 min, no slides" },
+  { num: "03", label: "Location", value: "Remote · Worldwide" },
+  { num: "04", label: "Response time", value: "1 business day" },
+];
+
 export default function ContactPage() {
   return (
-    <Section className="!py-24 md:!py-32">
-      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-        <div>
-          <Badge>Contact</Badge>
-          <h1 className="mt-6 max-w-xl text-balance font-[family-name:var(--font-display)] text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Let&apos;s build{" "}
-            <span className="text-gradient">your next chapter.</span>
-          </h1>
-          <p className="mt-6 max-w-md text-lg text-[--color-fg-muted]">
-            Tell us where you want to be in twelve months. We respond within
-            one business day with a plan, a timeline, and a senior team.
-          </p>
+    <section className="relative overflow-hidden border-b border-[--color-border]">
+      <div className="bg-hairline pointer-events-none absolute inset-0 opacity-50" />
+      <div className="bg-grain pointer-events-none absolute inset-0 opacity-40" />
 
-          <ul className="mt-10 space-y-4">
-            <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-2xl border border-[--color-border-strong] bg-[--color-surface]">
-                <Mail className="size-5 text-[--color-brand-2]" />
-              </span>
-              <div>
-                <div className="text-sm font-medium text-white">Email</div>
-                <div className="text-sm text-[--color-fg-muted]">
-                  hello@aethercorp.io
-                </div>
-              </div>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-2xl border border-[--color-border-strong] bg-[--color-surface]">
-                <Calendar className="size-5 text-[--color-brand-2]" />
-              </span>
-              <div>
-                <div className="text-sm font-medium text-white">
-                  Book a call
-                </div>
-                <div className="text-sm text-[--color-fg-muted]">
-                  30 min discovery, no slides
-                </div>
-              </div>
-            </li>
-            <li className="flex items-center gap-4">
-              <span className="grid size-11 place-items-center rounded-2xl border border-[--color-border-strong] bg-[--color-surface]">
-                <MapPin className="size-5 text-[--color-brand-2]" />
-              </span>
-              <div>
-                <div className="text-sm font-medium text-white">Where</div>
-                <div className="text-sm text-[--color-fg-muted]">
-                  Remote · Worldwide
-                </div>
-              </div>
-            </li>
-          </ul>
+      <Section className="relative !py-32 md:!py-40">
+        <div className="mb-16 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+          <span>↳ Contact · Studio inquiry</span>
+          <span className="hidden text-[--color-accent] md:inline">
+            Available for Q3 — Q4
+          </span>
         </div>
 
-        <ContactForm />
-      </div>
-    </Section>
+        <div className="grid gap-16 md:grid-cols-2 md:gap-24">
+          <div>
+            <h1 className="editorial-display text-5xl md:text-7xl lg:text-8xl">
+              Let&apos;s build
+              <br />
+              <span className="text-accent">your next chapter.</span>
+            </h1>
+            <p className="mt-8 max-w-md text-base text-[--color-fg]/85 md:text-lg">
+              Tell us where you want to be in twelve months. We respond within
+              one business day with a plan, a timeline, and a senior team.
+            </p>
+
+            <div className="mt-16 border-t border-[--color-border]">
+              {META.map((m) => (
+                <div
+                  key={m.num}
+                  className="grid grid-cols-[auto_1fr_auto] items-baseline gap-6 border-b border-[--color-border] py-6"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                    {m.num}
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+                    {m.label}
+                  </span>
+                  <span className="font-[family-name:var(--font-display)] text-base font-medium tracking-[-0.01em] text-[--color-fg]">
+                    {m.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <ContactForm />
+        </div>
+      </Section>
+    </section>
   );
 }

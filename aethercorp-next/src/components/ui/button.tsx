@@ -4,22 +4,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const button = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-brand] focus-visible:ring-offset-2 focus-visible:ring-offset-[--color-bg] disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-[13px] font-medium uppercase tracking-[0.12em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-accent] focus-visible:ring-offset-2 focus-visible:ring-offset-[--color-bg] disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
         primary:
-          "bg-[--color-brand] text-white shadow-[0_10px_30px_-10px_rgba(124,92,255,0.6)] hover:bg-[#8d72ff] hover:-translate-y-0.5",
+          "bg-[--color-fg] text-[--color-bg] hover:bg-[--color-accent] hover:text-[--color-bg]",
         secondary:
-          "bg-white text-black hover:bg-white/90 hover:-translate-y-0.5",
+          "bg-[--color-accent] text-[--color-bg] hover:bg-[--color-accent-deep] hover:text-[--color-bg]",
         ghost:
-          "border border-[--color-border-strong] bg-white/[0.02] text-white hover:bg-white/[0.06]",
-        link: "text-white/80 hover:text-white underline-offset-4 hover:underline",
+          "border border-[--color-border-strong] bg-transparent text-[--color-fg] hover:border-[--color-fg] hover:bg-[--color-fg]/[0.04]",
+        link: "text-[--color-fg] underline underline-offset-4 decoration-[--color-border-strong] hover:decoration-[--color-fg]",
+        cream:
+          "bg-[--color-fg-on-cream] text-[--color-cream] hover:bg-[--color-accent-deep] hover:text-[--color-bg]",
+        ghostCream:
+          "border border-[--color-border-on-cream-strong] bg-transparent text-[--color-fg-on-cream] hover:border-[--color-fg-on-cream] hover:bg-[--color-fg-on-cream]/[0.04]",
       },
       size: {
-        sm: "h-9 px-4",
-        md: "h-11 px-6",
-        lg: "h-12 px-7 text-[15px]",
+        sm: "h-10 px-5",
+        md: "h-12 px-7",
+        lg: "h-14 px-8 text-[13px]",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },

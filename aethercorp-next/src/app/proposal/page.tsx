@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Clock, Mail, Shield, Sparkles } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import { Badge } from "@/components/ui/badge";
 import { ProposalForm } from "@/components/site/proposal-form";
 
 export const metadata: Metadata = {
@@ -13,17 +11,17 @@ export const metadata: Metadata = {
 
 const PERKS = [
   {
-    icon: Clock,
+    num: "01",
     title: "Same-day response",
-    body: "Submit before 5pm ET on a weekday and you'll have a written proposal by end of day. Faster than most agencies return your first call.",
+    body: "Submit before 5pm ET on a weekday and you'll have a written proposal by end of day. Faster than most agencies return a call.",
   },
   {
-    icon: Mail,
+    num: "02",
     title: "Fixed pricing, in writing",
     body: "No hourly billing, no surprise add-ons. The quote we send is the quote you pay — period.",
   },
   {
-    icon: Shield,
+    num: "03",
     title: "Zero commitment",
     body: "No retainer, no contract. Maintenance is month-to-month and you own your site outright.",
   },
@@ -31,66 +29,55 @@ const PERKS = [
 
 export default function ProposalPage() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="bg-radial-glow pointer-events-none absolute inset-0 -z-10" />
-      <div className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+    <section className="relative overflow-hidden border-b border-[--color-border]">
+      <div className="bg-hairline pointer-events-none absolute inset-0 opacity-50" />
+      <div className="bg-grain pointer-events-none absolute inset-0 opacity-40" />
 
-      <Section className="!py-24 md:!py-32">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <Section className="relative !py-32 md:!py-40">
+        <div className="mb-16 flex items-center justify-between border-b border-[--color-border] pb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+          <span>↳ Request a proposal · 2 minutes</span>
+          <span className="hidden text-[--color-accent] md:inline">
+            Same-day response
+          </span>
+        </div>
+
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
           <div>
-            <Badge>
-              <Sparkles className="size-3" />
-              Request a proposal
-            </Badge>
-            <h1 className="mt-6 max-w-xl text-balance font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-              Tell us about{" "}
-              <span className="text-gradient">your business.</span>
+            <h1 className="editorial-display text-5xl md:text-7xl lg:text-8xl">
+              Tell us about
+              <br />
+              <span className="text-accent">your business.</span>
             </h1>
-            <p className="mt-5 max-w-md text-pretty text-base text-[--color-fg-muted] md:text-lg">
+            <p className="mt-8 max-w-md text-base text-[--color-fg]/85 md:text-lg">
               Two minutes of your time, a fixed quote in your inbox. No
               obligation, no sales call unless you want one.
             </p>
 
-            <ul className="mt-10 space-y-5">
-              {PERKS.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <li key={p.title} className="flex gap-4">
-                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[--color-brand]/30 via-[--color-brand-3]/20 to-[--color-brand-2]/30 text-[--color-brand-2] shadow-[0_8px_30px_-10px_rgba(124,92,255,0.5)]">
-                      <Icon className="size-5" />
-                    </span>
-                    <div>
-                      <div className="font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight">
-                        {p.title}
-                      </div>
-                      <div className="mt-1 text-sm leading-relaxed text-[--color-fg-muted]">
-                        {p.body}
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="mt-12 flex items-center gap-4 rounded-2xl border border-[--color-border] bg-[--color-surface]/50 p-5 backdrop-blur">
-              <div className="grid size-10 place-items-center rounded-xl bg-[--color-accent]/15 text-[--color-accent]">
-                <Shield className="size-5" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">
-                  Built on the same studio stack
+            <div className="mt-16 border-t border-[--color-border]">
+              {PERKS.map((p) => (
+                <div
+                  key={p.num}
+                  className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-b border-[--color-border] py-8"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+                    {p.num}
+                  </span>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold tracking-[-0.01em] md:text-2xl">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[--color-fg-muted]">
+                      {p.body}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-xs text-[--color-fg-muted]">
-                  Used by funded startups for AI products & mobile apps —
-                  scaled down for small business.
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <Suspense
             fallback={
-              <div className="h-[700px] rounded-3xl border border-[--color-border] bg-[--color-surface]/40" />
+              <div className="h-[700px] border border-[--color-border] bg-[--color-bg-soft]/40" />
             }
           >
             <ProposalForm />

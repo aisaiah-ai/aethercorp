@@ -2,16 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/services", label: "Services" },
-  { href: "/starter", label: "Small Business" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/blog", label: "Insights" },
-  { href: "/contact", label: "Contact" },
+  { href: "/services", label: "Services", num: "01" },
+  { href: "/case-studies", label: "Work", num: "02" },
+  { href: "/starter", label: "Small Business", num: "03" },
+  { href: "/blog", label: "Journal", num: "04" },
+  { href: "/contact", label: "Contact", num: "05" },
 ];
 
 export function Header() {
@@ -30,43 +29,47 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-[--color-border] bg-[--color-bg]/70 backdrop-blur-xl"
+          ? "border-b border-[--color-border] bg-[--color-bg]/80 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="group flex items-center gap-2.5">
-          <span className="relative grid size-8 place-items-center rounded-xl bg-gradient-to-br from-[--color-brand] via-[--color-brand-3] to-[--color-brand-2] shadow-[0_8px_30px_-8px_rgba(124,92,255,0.6)]">
-            <Sparkles className="size-4 text-white" />
-          </span>
-          <span className="text-base font-semibold tracking-tight">
-            Aether<span className="text-[--color-brand-2]">Corp</span>
-          </span>
+      <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-10 lg:px-14">
+        <Link
+          href="/"
+          className="font-[family-name:var(--font-display)] text-base font-semibold tracking-[-0.02em] text-[--color-fg]"
+        >
+          AETHERCORP<span className="text-[--color-accent]">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-10 md:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm text-white/70 transition hover:bg-white/[0.04] hover:text-white"
+              className="group flex items-baseline gap-1.5 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]/70 transition hover:text-[--color-fg]"
             >
-              {item.label}
+              <span className="text-[9px] text-[--color-fg-dim] transition group-hover:text-[--color-accent]">
+                {item.num}
+              </span>
+              <span>{item.label}</span>
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Button href="/contact" variant="ghost" size="sm">
-            Book a call
-          </Button>
-          <Button href="/contact" size="sm">
-            Start a project
-          </Button>
+        <div className="hidden items-center md:flex">
+          <Link
+            href="/contact"
+            className="group flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg] transition"
+          >
+            <span className="link-underline">Book a call</span>
+            <span className="text-[--color-accent] transition group-hover:translate-x-0.5">
+              →
+            </span>
+          </Link>
         </div>
 
         <button
-          className="grid size-10 place-items-center rounded-full border border-[--color-border-strong] bg-white/[0.04] md:hidden"
+          className="grid size-10 place-items-center border border-[--color-border-strong] text-[--color-fg] md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -75,26 +78,29 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-[--color-border] bg-[--color-bg]/95 px-6 py-4 backdrop-blur-xl md:hidden">
+        <div className="border-t border-[--color-border] bg-[--color-bg]/95 px-6 py-6 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-sm text-white/80 hover:bg-white/[0.06]"
+                className="flex items-baseline gap-3 border-b border-[--color-border] py-4 font-mono text-xs uppercase tracking-[0.16em] text-[--color-fg]/85 hover:text-[--color-fg]"
               >
-                {item.label}
+                <span className="text-[10px] text-[--color-fg-dim]">
+                  {item.num}
+                </span>
+                <span>{item.label}</span>
               </Link>
             ))}
-            <div className="mt-3 flex gap-2">
-              <Button href="/contact" variant="ghost" size="sm" className="flex-1">
-                Book a call
-              </Button>
-              <Button href="/contact" size="sm" className="flex-1">
-                Start a project
-              </Button>
-            </div>
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-4 flex items-center justify-between border border-[--color-fg] bg-[--color-fg] px-4 py-4 font-mono text-xs uppercase tracking-[0.16em] text-[--color-bg]"
+            >
+              <span>Book a call</span>
+              <span>→</span>
+            </Link>
           </div>
         </div>
       ) : null}

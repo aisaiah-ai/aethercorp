@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SERVICES = ["AI", "Social Media", "Web Development", "Native Mobile"];
-const BUDGETS = ["< $25k", "$25k–$75k", "$75k–$200k", "$200k+"];
+const BUDGETS = ["< $25k", "$25k—$75k", "$75k—$200k", "$200k+"];
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -23,16 +22,18 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-[--color-border] bg-[--color-surface]/70 p-10 text-center">
-        <span className="grid size-14 place-items-center rounded-full bg-[--color-accent]/15 text-[--color-accent]">
-          <CheckCircle2 className="size-7" />
-        </span>
-        <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight">
-          Thanks — we got it.
+      <div className="border border-[--color-border-strong] bg-[--color-bg-soft] p-10 md:p-14">
+        <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-accent]">
+          ↳ Received
+        </div>
+        <h3 className="editorial-display mt-6 text-4xl md:text-5xl">
+          Thanks — we
+          <br />
+          <span className="text-accent">got it.</span>
         </h3>
-        <p className="mt-2 max-w-sm text-[--color-fg-muted]">
-          A senior member of the team will be in touch within one business
-          day with next steps.
+        <p className="mt-6 max-w-md text-[--color-fg]/85">
+          A senior member of the team will be in touch within one business day
+          with next steps.
         </p>
       </div>
     );
@@ -41,12 +42,18 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-3xl border border-[--color-border] bg-[--color-surface]/70 p-7 backdrop-blur md:p-9"
+      className="border border-[--color-border-strong] bg-[--color-bg-soft]/60 p-7 md:p-10"
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Full name" name="name" required />
-        <Field label="Work email" name="email" type="email" required />
+      <div className="flex items-center justify-between border-b border-[--color-border] pb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg-muted]">
+        <span>↳ Brief · Form B</span>
+        <span>Studio inquiry</span>
+      </div>
+
+      <div className="mt-8 grid gap-5 sm:grid-cols-2">
+        <Field num="01" label="Full name" name="name" required />
+        <Field num="02" label="Work email" name="email" type="email" required />
         <Field
+          num="03"
           label="Company"
           name="company"
           className="sm:col-span-2"
@@ -54,11 +61,8 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="mt-6">
-        <label className="mb-2 block text-sm font-medium text-white">
-          What do you need?
-        </label>
-        <div className="flex flex-wrap gap-2">
+      <FieldGroup num="04" label="What do you need?">
+        <div className="flex flex-wrap gap-1">
           {SERVICES.map((s) => {
             const active = picked.includes(s);
             return (
@@ -66,10 +70,10 @@ export function ContactForm() {
                 key={s}
                 type="button"
                 onClick={() => toggle(s)}
-                className={`rounded-full border px-3.5 py-1.5 text-sm transition ${
+                className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-brand] bg-[--color-brand]/15 text-white"
-                    : "border-[--color-border-strong] bg-white/[0.03] text-white/75 hover:bg-white/[0.06]"
+                    ? "border-[--color-accent] bg-[--color-accent] text-[--color-bg]"
+                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
                 }`}
               >
                 {s}
@@ -77,13 +81,10 @@ export function ContactForm() {
             );
           })}
         </div>
-      </div>
+      </FieldGroup>
 
-      <div className="mt-6">
-        <label className="mb-2 block text-sm font-medium text-white">
-          Budget
-        </label>
-        <div className="flex flex-wrap gap-2">
+      <FieldGroup num="05" label="Budget">
+        <div className="flex flex-wrap gap-1">
           {BUDGETS.map((b) => {
             const active = budget === b;
             return (
@@ -91,10 +92,10 @@ export function ContactForm() {
                 key={b}
                 type="button"
                 onClick={() => setBudget(b)}
-                className={`rounded-full border px-3.5 py-1.5 text-sm transition ${
+                className={`border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition ${
                   active
-                    ? "border-[--color-brand-2] bg-[--color-brand-2]/15 text-white"
-                    : "border-[--color-border-strong] bg-white/[0.03] text-white/75 hover:bg-white/[0.06]"
+                    ? "border-[--color-fg] bg-[--color-fg] text-[--color-bg]"
+                    : "border-[--color-border-strong] bg-transparent text-[--color-fg]/75 hover:border-[--color-fg] hover:text-[--color-fg]"
                 }`}
               >
                 {b}
@@ -102,36 +103,58 @@ export function ContactForm() {
             );
           })}
         </div>
-      </div>
+      </FieldGroup>
 
-      <div className="mt-6">
-        <label className="mb-2 block text-sm font-medium text-white">
-          Tell us about your project
-        </label>
+      <FieldGroup num="06" label="Tell us about your project">
         <textarea
           name="message"
           rows={5}
           required
-          className="w-full rounded-2xl border border-[--color-border-strong] bg-[--color-bg-soft] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[--color-brand] focus:outline-none focus:ring-2 focus:ring-[--color-brand]/40"
+          className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
           placeholder="Goals, timeline, current stack, anything that helps."
         />
-      </div>
+      </FieldGroup>
 
-      <Button type="submit" size="lg" className="mt-7 w-full">
-        <Send className="size-4" />
-        Send brief
+      <Button type="submit" size="lg" className="mt-10 w-full">
+        Send brief →
       </Button>
     </form>
   );
 }
 
+function FieldGroup({
+  num,
+  label,
+  children,
+}: {
+  num: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mt-8 border-t border-[--color-border] pt-8">
+      <div className="mb-4 flex items-baseline gap-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+          {num}
+        </span>
+        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
+          {label}
+        </label>
+      </div>
+      {children}
+    </div>
+  );
+}
+
 function Field({
+  num,
   label,
   name,
   type = "text",
   required,
   className,
 }: {
+  num: string;
   label: string;
   name: string;
   type?: string;
@@ -140,14 +163,19 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="mb-2 block text-sm font-medium text-white">
-        {label}
-      </label>
+      <div className="mb-2 flex items-baseline gap-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[--color-fg-dim]">
+          {num}
+        </span>
+        <label className="font-mono text-[11px] uppercase tracking-[0.16em] text-[--color-fg]">
+          {label}
+        </label>
+      </div>
       <input
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-2xl border border-[--color-border-strong] bg-[--color-bg-soft] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[--color-brand] focus:outline-none focus:ring-2 focus:ring-[--color-brand]/40"
+        className="w-full border border-[--color-border-strong] bg-transparent px-4 py-3 text-sm text-[--color-fg] placeholder:text-[--color-fg-dim] focus:border-[--color-fg] focus:outline-none"
       />
     </div>
   );

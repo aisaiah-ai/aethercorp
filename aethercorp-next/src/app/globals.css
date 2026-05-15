@@ -1,33 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #05060a;
-  --color-bg-soft: #0b0d14;
-  --color-surface: #11141d;
-  --color-surface-2: #161a26;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.16);
-  --color-fg: #f5f7fb;
-  --color-fg-muted: #9aa3b2;
-  --color-fg-dim: #6b7280;
+  /* Dark (default) — charcoal */
+  --color-bg: #0e1116;
+  --color-bg-soft: #141821;
+  --color-surface: #1a1f2a;
+  --color-surface-2: #232936;
 
-  --color-brand: #7c5cff;
-  --color-brand-2: #22d3ee;
-  --color-brand-3: #f0abfc;
-  --color-accent: #34d399;
+  /* Cream (light sections) */
+  --color-cream: #ebe4d5;
+  --color-cream-soft: #f1ebde;
+  --color-cream-deep: #d9d1bf;
+
+  /* Text */
+  --color-fg: #ebe4d5;             /* warm cream on dark */
+  --color-fg-muted: #98948a;
+  --color-fg-dim: #6b6862;
+  --color-fg-on-cream: #1a1d24;
+  --color-fg-on-cream-muted: #4d5159;
+
+  /* Borders */
+  --color-border: rgba(235, 228, 213, 0.10);
+  --color-border-strong: rgba(235, 228, 213, 0.22);
+  --color-border-on-cream: rgba(26, 29, 36, 0.12);
+  --color-border-on-cream-strong: rgba(26, 29, 36, 0.28);
+
+  /* Accent — Rivian-inspired Compass Yellow analog (warm sand/olive) */
+  --color-accent: #cfd784;
+  --color-accent-deep: #a4ad5c;
+  --color-accent-soft: #ddd9a1;
+
+  /* Legacy aliases kept for any leftover refs */
+  --color-brand: #cfd784;
+  --color-brand-2: #cfd784;
+  --color-brand-3: #ddd9a1;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-display: var(--font-display), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
 
-  --shadow-glow: 0 0 0 1px rgba(124, 92, 255, 0.25), 0 30px 80px -20px rgba(124, 92, 255, 0.45);
-
-  --animate-marquee: marquee 30s linear infinite;
-  --animate-shine: shine 6s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
 }
 
 @keyframes marquee {
@@ -35,21 +50,12 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes shine {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
 html, body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
 }
 
 * {
@@ -57,33 +63,111 @@ html, body {
 }
 
 ::selection {
-  background: rgba(124, 92, 255, 0.35);
-  color: white;
+  background: var(--color-accent);
+  color: #0e1116;
 }
 
-.bg-grid {
+/* Editorial type display class — for huge confident headlines */
+.editorial-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.editorial-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.editorial-rule {
+  border-top: 1px solid var(--color-border);
+}
+
+.editorial-rule-strong {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+/* Section number badge */
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-fg-muted);
+  text-transform: uppercase;
+}
+
+/* Spec stat — large number, small label (Rivian-style) */
+.spec-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Hover underline that draws in */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* Marquee row */
+.marquee-row {
+  display: flex;
+  gap: 4rem;
+  animation: var(--animate-marquee);
+  white-space: nowrap;
+}
+
+/* Subtle paper-grain noise for hero / cream sections */
+.bg-grain {
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
+    radial-gradient(rgba(235, 228, 213, 0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
 }
 
-.bg-radial-glow {
-  background:
-    radial-gradient(60% 50% at 50% 0%, rgba(124, 92, 255, 0.35) 0%, transparent 60%),
-    radial-gradient(40% 40% at 80% 30%, rgba(34, 211, 238, 0.20) 0%, transparent 70%),
-    radial-gradient(40% 40% at 10% 60%, rgba(240, 171, 252, 0.18) 0%, transparent 70%);
+.bg-grain-cream {
+  background-image:
+    radial-gradient(rgba(26, 29, 36, 0.04) 1px, transparent 1px);
+  background-size: 4px 4px;
 }
 
+/* Hairline grid (replacing the old chunky grid) */
+.bg-hairline {
+  background-image:
+    linear-gradient(to right, rgba(235, 228, 213, 0.04) 1px, transparent 1px);
+  background-size: 80px 100%;
+}
+
+/* Cream section variant */
+.section-cream {
+  background: var(--color-cream);
+  color: var(--color-fg-on-cream);
+}
+.section-cream * {
+  border-color: var(--color-border-on-cream);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Keep text-gradient class working in case anything still uses it,
+   but tone it down to a subtle cream-to-accent sweep. */
 .text-gradient {
-  background: linear-gradient(120deg, #fff 0%, #c4b5fd 35%, #67e8f9 70%, #f5d0fe 100%);
+  background: linear-gradient(120deg, var(--color-fg) 0%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.shine {
-  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
-  background-size: 200% 100%;
-  animation: var(--animate-shine);
 }

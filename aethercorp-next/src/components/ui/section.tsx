@@ -13,7 +13,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative mx-auto w-full max-w-7xl px-6 py-20 md:py-28 lg:py-32",
+        "relative mx-auto w-full max-w-[1440px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40",
         className
       )}
     >
@@ -23,33 +23,51 @@ export function Section({
 }
 
 export function SectionHeader({
+  num,
   eyebrow,
   title,
   description,
-  align = "center",
+  align = "left",
+  onCream = false,
 }: {
+  num?: string;
   eyebrow?: string;
   title: React.ReactNode;
   description?: string;
   align?: "left" | "center";
+  onCream?: boolean;
 }) {
+  const mutedColor = onCream
+    ? "text-[--color-fg-on-cream-muted]"
+    : "text-[--color-fg-muted]";
+
   return (
     <div
       className={cn(
-        "mb-14 flex flex-col gap-4",
+        "mb-16 flex flex-col gap-6",
         align === "center" ? "items-center text-center" : "items-start"
       )}
     >
-      {eyebrow ? (
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[--color-brand-2]">
-          {eyebrow}
-        </span>
+      {(num || eyebrow) ? (
+        <div className="flex items-center gap-6">
+          {num ? (
+            <span className={cn("section-num", mutedColor)}>{num}</span>
+          ) : null}
+          {eyebrow ? (
+            <span className={cn("section-num", mutedColor)}>{eyebrow}</span>
+          ) : null}
+        </div>
       ) : null}
-      <h2 className="max-w-3xl text-balance text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+      <h2 className="editorial-display max-w-[18ch] text-balance text-4xl md:text-6xl lg:text-7xl">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-2xl text-pretty text-base text-[--color-fg-muted] md:text-lg">
+        <p
+          className={cn(
+            "max-w-[52ch] text-pretty text-base md:text-lg",
+            mutedColor
+          )}
+        >
           {description}
         </p>
       ) : null}
