@@ -4,11 +4,17 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-04-28",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    { "pattern": "aethercorp.us", "custom_domain": true },
+    { "pattern": "www.aethercorp.us", "custom_domain": true }
+  ]
 }

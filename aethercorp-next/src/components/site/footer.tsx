@@ -14,6 +14,8 @@ const COLS = [
   {
     title: "Company",
     links: [
+      { href: "/starter", label: "Small Business" },
+      { href: "/proposal", label: "Request a proposal" },
       { href: "/case-studies", label: "Case Studies" },
       { href: "/blog", label: "Insights" },
       { href: "/contact", label: "Contact" },
