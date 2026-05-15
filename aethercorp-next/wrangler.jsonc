@@ -16,5 +16,16 @@
   "routes": [
     { "pattern": "aethercorp.us", "custom_domain": true },
     { "pattern": "www.aethercorp.us", "custom_domain": true }
-  ]
+  ],
+  "env": {
+    "dev": {
+      "name": "aethercorp-next-dev",
+      "workers_dev": true,
+      "preview_urls": true,
+      "observability": { "enabled": true },
+      "routes": [
+        { "pattern": "dev.aethercorp.us", "custom_domain": true }
+      ]
+    }
+  }
 }
