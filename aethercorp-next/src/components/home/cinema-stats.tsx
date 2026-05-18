@@ -8,7 +8,7 @@ const STATS = [
     k: "AI agents, automations & copilots shipped",
   },
   {
-    v: "40+",
+    v: "17+",
     k: "Native mobile products launched",
   },
   {

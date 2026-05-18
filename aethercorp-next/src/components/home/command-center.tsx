@@ -53,8 +53,8 @@ export function CommandCenter() {
           <div className="grid gap-4 p-4 sm:gap-5 sm:p-6">
             {/* KPI row */}
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              <Kpi icon={TrendingUp} label="Pipeline" value="$1.84M" delta="+38%" tone="electric" />
-              <Kpi icon={Zap} label="Automations" value="2,914" delta="+612 / wk" tone="cyan" />
+              <Kpi icon={TrendingUp} label="Pipeline" value="$200k" delta="+38%" tone="electric" />
+              <Kpi icon={Zap} label="Automations" value="1,142" delta="+35 this week" tone="cyan" />
               <Kpi icon={Activity} label="Conv. rate" value="6.7%" delta="+2.4×" tone="amber" />
             </div>
 
@@ -66,7 +66,7 @@ export function CommandCenter() {
                     Demand · last 14 days
                   </div>
                   <div className="mt-1 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                    +312% inbound
+                    +18% inbound
                   </div>
                 </div>
                 <div className="rounded-full border border-white/15 bg-white/[0.04] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-[--color-lime]">
