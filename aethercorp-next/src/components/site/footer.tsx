@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const COLS = [
   {
@@ -34,6 +37,8 @@ const COLS = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
   return (
     <footer className="relative bg-[--color-coal] text-[--color-paper]">
       {/* Top rule with mini ticker */}

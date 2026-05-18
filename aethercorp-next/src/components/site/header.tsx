@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Ticker } from "@/components/site/ticker";
 
@@ -17,6 +18,7 @@ const NAV = [
 const DISCIPLINES = ["AI Engineering", "Social Media", "Web Development", "Native Mobile"];
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -29,6 +31,9 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Homepage owns its own bespoke cinematic chrome.
+  if (pathname === "/") return null;
 
   return (
     <>

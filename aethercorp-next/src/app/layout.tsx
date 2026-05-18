@@ -23,17 +23,18 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aethercorp.io"),
+  metadataBase: new URL("https://aethercorp.us"),
   title: {
-    default: "Aethercorp — A Studio Building Things People Can't Ignore",
-    template: "%s · Aethercorp",
+    default:
+      "AetherCorp — Web apps, mobile apps, AI systems & growth engines",
+    template: "%s · AetherCorp",
   },
   description:
-    "Aethercorp is a studio of AI engineers, designers, and storytellers — making AI products, social engines, web platforms, and native mobile apps.",
+    "AetherCorp builds flagship web apps, native iOS & Android products, custom AI systems, and end-to-end launch engines for companies that need to look, feel, and perform like the market leader.",
   openGraph: {
-    title: "Aethercorp — A Studio",
+    title: "AetherCorp — Build a site people cannot ignore.",
     description:
-      "AI · Social · Web · Native Mobile. From $200 starter sites to eight-figure platforms.",
+      "Flagship web apps, native mobile, AI systems, and growth engines. From $200 starter sites to eight-figure platforms.",
     type: "website",
   },
 };

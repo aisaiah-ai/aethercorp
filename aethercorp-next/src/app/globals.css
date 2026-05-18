@@ -1,6 +1,67 @@
 @import "tailwindcss";
 
 @theme {
+  /* ---- Cinematic dark (homepage only) ---- */
+  --color-night: #06070a;
+  --color-night-soft: #0a0c12;
+  --color-night-2: #11141d;
+  --color-night-3: #181b28;
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-glass-strong: rgba(255, 255, 255, 0.08);
+  --color-glass-line: rgba(255, 255, 255, 0.10);
+  --color-glass-line-strong: rgba(255, 255, 255, 0.22);
+  --color-snow: #ffffff;
+  --color-snow-muted: #a0a4b8;
+  --color-snow-dim: #6b6f82;
+  --color-electric: #7c5cff;
+  --color-electric-soft: #a78bfa;
+  --color-cyan: #00e1ff;
+  --color-amber: #ffb76b;
+  --color-rose: #ff5b8a;
+  --color-lime: #b3ff5b;
+
+  --animate-aurora: aurora 24s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-rise: rise 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-bar-grow: bar-grow 2.6s ease-in-out infinite;
+}
+
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0.65; }
+  33% { transform: translate3d(8%, -6%, 0) rotate(8deg); opacity: 0.85; }
+  66% { transform: translate3d(-6%, 4%, 0) rotate(-6deg); opacity: 0.7; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(124, 92, 255, 0.55); opacity: 1; }
+  70% { box-shadow: 0 0 0 22px rgba(124, 92, 255, 0); opacity: 0.6; }
+  100% { box-shadow: 0 0 0 0 rgba(124, 92, 255, 0); opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-12px) translateX(6px); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bar-grow {
+  0% { width: 18%; }
+  50% { width: 84%; }
+  100% { width: 42%; }
+}
+
+@theme {
   /* Light cream paper aesthetic */
   --color-paper: #ece6d7;
   --color-paper-deep: #ddd5c2;
@@ -319,4 +380,231 @@ html, body {
 }
 .link-underline:hover {
   background-size: 100% 1px;
+}
+
+/* ---------- Cinematic homepage helpers ---------- */
+
+/* Force homepage onto the dark night palette regardless of body bg */
+.cinema {
+  background: var(--color-night);
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+}
+.cinema * {
+  border-color: var(--color-glass-line);
+}
+.cinema ::selection {
+  background: var(--color-electric);
+  color: var(--color-snow);
+}
+
+/* Fluid display sizes */
+.cinema-display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
+  font-size: clamp(2.75rem, 8.5vw, 8.25rem);
+}
+.cinema-display-lg {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  font-size: clamp(3.25rem, 10.5vw, 10rem);
+}
+.cinema-h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
+}
+.cinema-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+.cinema-body {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+.cinema-eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Aurora background — animated gradient blob */
+.aurora {
+  background:
+    radial-gradient(60% 50% at 20% 30%, rgba(124, 92, 255, 0.45) 0%, transparent 60%),
+    radial-gradient(45% 45% at 80% 30%, rgba(0, 225, 255, 0.30) 0%, transparent 65%),
+    radial-gradient(45% 45% at 50% 80%, rgba(255, 91, 138, 0.18) 0%, transparent 70%);
+  filter: blur(40px) saturate(120%);
+  animation: var(--animate-aurora);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  .aurora {
+    filter: blur(28px) saturate(115%);
+  }
+}
+
+/* Subtle grid for backdrop depth */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.noise-bg {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Glass panel — used everywhere on the homepage */
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--color-glass-line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.glass-strong {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--color-glass-line-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass-strong {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+/* Gradient text — electric → cyan */
+.text-electric {
+  background: linear-gradient(110deg, #ffffff 0%, #a78bfa 35%, #7c5cff 55%, #00e1ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 9s linear infinite;
+}
+
+.text-warm {
+  background: linear-gradient(110deg, #ffffff 0%, #ffb76b 60%, #ff5b8a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button with animated edge */
+.btn-cinema {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-night);
+  background: linear-gradient(110deg, #ffffff 0%, #f0f0ff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 40px -12px rgba(124, 92, 255, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+}
+.btn-cinema:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 60px -10px rgba(124, 92, 255, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-cinema-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-snow);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.btn-cinema-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Outer ring used on hero stat callouts */
+.ring-glow {
+  box-shadow:
+    0 0 0 1px rgba(124, 92, 255, 0.35),
+    0 30px 80px -20px rgba(124, 92, 255, 0.5);
+}
+
+/* Live pulse dot */
+.live-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+}
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--color-lime);
+  opacity: 0.6;
+  animation: var(--animate-pulse-ring);
+  box-shadow: 0 0 0 0 rgba(179, 255, 91, 0.6);
+}
+
+/* Reduced motion guard */
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .live-dot::after,
+  .marquee,
+  .marquee-slow,
+  .marquee-fast,
+  .spin-slow,
+  .blink {
+    animation: none !important;
+  }
+}
+
+/* No horizontal scroll guard for narrow phones */
+.cinema {
+  overflow-x: clip;
 }
